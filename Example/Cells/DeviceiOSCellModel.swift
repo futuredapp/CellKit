@@ -13,7 +13,7 @@ struct DeviceiOSCellModel: Equatable {
     let name: String
 }
 
-extension DeviceiOSCellModel: EquatableCellModel {
+extension DeviceiOSCellModel: CellModel {
     func cellType() -> UIView.Type {
         return DeviceiOSCell.self
     }

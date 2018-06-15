@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataSource = CellModelDataSource([CellModelSection()]) { (cell, model) in
+        let cellModels = phones.map { DeviceiOSCellModel(name: $0) }
+        dataSource = CellModelDataSource([CellModelSection(cells: cellModels)]) { (cell, model) in
             switch (cell, model) {
             case let (cell as DeviceiOSCell, model as DeviceiOSCellModel):
                 cell.configure(with: model)

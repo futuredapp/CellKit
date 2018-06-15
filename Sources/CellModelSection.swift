@@ -9,21 +9,21 @@
 import Foundation
 
 public class CellModelSection: ExpressibleByArrayLiteral {
-    public typealias ArrayLiteralElement = EquatableCellModel
+    public typealias ArrayLiteralElement = CellModel
 
-    let cells: [EquatableCellModel]
+    let cells: [CellModel]
     let headerView: SupplementaryViewModel?
     let footerView: SupplementaryViewModel?
     let identifier: String
 
-    init(cells: [EquatableCellModel] = [], headerView: SupplementaryViewModel? = nil, footerView: SupplementaryViewModel? = nil, identifier: String = "") {
+    public init(cells: [CellModel] = [], headerView: SupplementaryViewModel? = nil, footerView: SupplementaryViewModel? = nil, identifier: String = "") {
         self.cells = cells
         self.headerView = headerView
         self.footerView = footerView
         self.identifier = identifier
     }
 
-    public convenience required init(arrayLiteral elements: EquatableCellModel...) {
+    public convenience required init(arrayLiteral elements: CellModel...) {
         self.init(cells: elements)
     }
 
