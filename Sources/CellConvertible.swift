@@ -11,10 +11,6 @@ public protocol CellConvertible: CellModel {
 }
 
 extension CellConvertible {
-    static var cellType: AnyClass {
-        return Cell.self
-    }
-
     static var reuseIdentifier: String {
         return String(describing: Cell.self)
     }
