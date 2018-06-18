@@ -10,13 +10,13 @@ public protocol CellConvertible: CellModel {
     associatedtype Cell: CellConfigurable
 }
 
-extension CellConvertible {
-    static var reuseIdentifier: String {
+public extension CellConvertible {
+    var reuseIdentifier: String {
         return String(describing: Cell.self)
     }
 }
 
-extension CellConvertible where Self == Cell.Model {
+public extension CellConvertible where Self == Cell.Model {
     func configure(cell: AnyObject) {
         if let cell = cell as? Cell {
             cell.configure(with: self)
