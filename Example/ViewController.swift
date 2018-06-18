@@ -20,14 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let cellModels = phones.map { DeviceiOSCellModel(name: $0) }
-        dataSource = CellModelDataSource([CellModelSection(cells: cellModels)]) { (cell, model) in
-            switch (cell, model) {
-            case let (cell as DeviceiOSCell, model as DeviceiOSCellModel):
-                cell.configure(with: model)
-            default:
-                break
-            }
-        }
+        dataSource = CellModelDataSource([CellModelSection(cells: cellModels)])
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
     }
