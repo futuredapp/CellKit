@@ -9,6 +9,7 @@
 import struct UIKit.CGFloat
 
 public protocol CellModel {
+    var cellClass: AnyClass { get }
     var reuseIdentifier: String { get }
 
     var cellHeight: CGFloat { get }
@@ -61,6 +62,9 @@ public struct AnyEquatableCellModel: EquatableCellModel {
 
     private let cellModel: CellModel
 
+    public var cellClass: AnyClass {
+        return cellModel.cellClass
+    }
     public var reuseIdentifier: String {
         return cellModel.reuseIdentifier
     }
