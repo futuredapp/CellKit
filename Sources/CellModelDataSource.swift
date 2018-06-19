@@ -18,6 +18,10 @@ public class CellModelDataSource: NSObject {
 
     public weak var delegate: CellModelDataSourceDelegate?
 
+    public var registersCellsLazily: Bool = true
+    private var registeredCellReuseIdentifiers: Set<String> = []
+    private var registeredHeaderFooterReuseIdentifiers: Set<String> = []
+
     public var first: CellModelSection? {
         return sections.first
     }
@@ -28,6 +32,41 @@ public class CellModelDataSource: NSObject {
 
     subscript(index: Int) -> CellModelSection {
         return sections[index]
+    }
+
+    private func registerLazily(cellModel: CellModel, to tableView: UITableView) {
+        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+            return
+        }
+        tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
+        registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
+    }
+
+    private func registerLazily(cellModel: CellModel, to collectionView: UICollectionView) {
+        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+            return
+        }
+        collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
+        registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
+    }
+
+    private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
+        guard registersCellsLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+            return
+        }
+        tableView.register(headerFooter.cellClass, forCellReuseIdentifier: headerFooter.reuseIdentifier)
+        registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
+    }
+
+    private func view(for headerFooter: SupplementaryViewModel?, in tableView: UITableView) -> UIView? {
+        guard let headerFooter = headerFooter else {
+            return nil
+        }
+        registerLazily(headerFooter: headerFooter, to: tableView)
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerFooter.reuseIdentifier) else {
+            return nil
+        }
+        return header
     }
 }
 
@@ -42,6 +81,7 @@ extension CellModelDataSource: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = sections[indexPath.section].cells[indexPath.row]
+        registerLazily(cellModel: item, to: tableView)
         let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier, for: indexPath)
         item.configure(cell: cell)
         return cell
@@ -52,27 +92,19 @@ extension CellModelDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let item = sections[section].headerView, let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: item.reuseIdentifier) {
-            item.configure(cell: header)
-            return header
-        }
-        return nil
+        return view(for: sections[section].headerView, in: tableView)
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sections[section].headerView?.height ?? CGFloat.leastNonzeroMagnitude
+        return sections[section].headerView?.height ?? .leastNonzeroMagnitude
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let item = sections[section].footerView, let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: item.reuseIdentifier) {
-            item.configure(cell: footer)
-            return footer
-        }
-        return nil
+        return view(for: sections[section].footerView, in: tableView)
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return sections[section].footerView?.height ?? CGFloat.leastNonzeroMagnitude
+        return sections[section].footerView?.height ?? .leastNonzeroMagnitude
     }
 }
 
@@ -101,6 +133,7 @@ extension CellModelDataSource: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = sections[indexPath.section].cells[indexPath.row]
+        registerLazily(cellModel: item, to: collectionView)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
         item.configure(cell: cell)
         return cell
