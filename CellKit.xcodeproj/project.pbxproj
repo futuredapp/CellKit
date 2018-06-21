@@ -45,6 +45,8 @@
 		DD7502881C68FEDE006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CellKit.framework */; };
 		DD7502921C690C7A006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* CellKit.framework */; };
 		E77A5EE520DBCB79004DC315 /* ReusableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A5EE420DBCB79004DC315 /* ReusableCellModel.swift */; };
+		E77A5EE820DBD388004DC315 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A5EE620DBD388004DC315 /* NibTableViewCell.swift */; };
+		E77A5EE920DBD388004DC315 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E77A5EE720DBD388004DC315 /* NibTableViewCell.xib */; };
 		E7BF419E20D7BC5700187490 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF419D20D7BC5700187490 /* CellConfigurable.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		DD75027A1C68FCFC006590AF /* CellKit-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD75028D1C690C7A006590AF /* CellKit-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77A5EE420DBCB79004DC315 /* ReusableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellModel.swift; sourceTree = "<group>"; };
+		E77A5EE620DBD388004DC315 /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
+		E77A5EE720DBD388004DC315 /* NibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		E7BF419D20D7BC5700187490 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +262,8 @@
 			children = (
 				D082B7CC20CA9F9400B5E7C8 /* DeviceiOSCell.swift */,
 				D082B7C920CA985100B5E7C8 /* DeviceiOSCellModel.swift */,
+				E77A5EE620DBD388004DC315 /* NibTableViewCell.swift */,
+				E77A5EE720DBD388004DC315 /* NibTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D02135B120CA609F00EE79D1 /* LaunchScreen.storyboard in Resources */,
+				E77A5EE920DBD388004DC315 /* NibTableViewCell.xib in Resources */,
 				D02135AE20CA609F00EE79D1 /* Assets.xcassets in Resources */,
 				D02135AC20CA609D00EE79D1 /* Main.storyboard in Resources */,
 			);
@@ -658,6 +665,7 @@
 				D02135A920CA609D00EE79D1 /* ViewController.swift in Sources */,
 				D082B7CD20CA9F9400B5E7C8 /* DeviceiOSCell.swift in Sources */,
 				D082B7CA20CA985100B5E7C8 /* DeviceiOSCellModel.swift in Sources */,
+				E77A5EE820DBD388004DC315 /* NibTableViewCell.swift in Sources */,
 				D02135A720CA609D00EE79D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let cellModels = phones.map { DeviceiOSCellModel(name: $0) }
-        dataSource = CellModelDataSource([CellModelSection(cells: cellModels)])
+        dataSource = CellModelDataSource([
+            [NibTableViewCellModel(text: "Welcome!")],
+            CellModelSection(cells: cellModels)
+        ])
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
     }
