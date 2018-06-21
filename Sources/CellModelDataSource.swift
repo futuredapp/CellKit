@@ -35,26 +35,42 @@ public class CellModelDataSource: NSObject {
     }
 
     private func registerLazily(cellModel: CellModel, to tableView: UITableView) {
-        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
-            return
+        guard registersCellsLazily, let cellModel = cellModel as? ReusableCellModel, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+            return 
         }
-        tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
+
+        if let nib = cellModel.nib {
+            tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
+        } else {
+            tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
+        }
         registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
     }
 
     private func registerLazily(cellModel: CellModel, to collectionView: UICollectionView) {
-        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+        guard registersCellsLazily, let cellModel = cellModel as? ReusableCellModel, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
             return
+        }
+
+        if let nib = cellModel.nib {
+            collectionView.register(nib, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
+        } else {
+            collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         }
         collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
     }
 
     private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+        guard registersCellsLazily, let cellModel = headerFooter as? ReusableCellModel, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
             return
         }
-        tableView.register(headerFooter.cellClass, forCellReuseIdentifier: headerFooter.reuseIdentifier)
+
+        if let nib = cellModel.nib {
+            tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
+        } else {
+            tableView.register(cellModel.cellClass, forHeaderFooterViewReuseIdentifier: cellModel.reuseIdentifier)
+        }
         registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
     }
 
