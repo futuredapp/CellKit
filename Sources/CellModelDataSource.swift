@@ -15,7 +15,6 @@ public protocol CellModelDataSourceDelegate: class {
 public class CellModelDataSource: NSObject {
 
     public var sections: [CellModelSection]
-    private(set) var configure: (Any, Any) -> Void
 
     public weak var delegate: CellModelDataSourceDelegate?
 
@@ -23,9 +22,8 @@ public class CellModelDataSource: NSObject {
         return sections.first
     }
 
-    public init(_ sections: [CellModelSection], configure: @escaping (Any, Any) -> Void) {
+    public init(_ sections: [CellModelSection]) {
         self.sections = sections
-        self.configure = configure
     }
 
     subscript(index: Int) -> CellModelSection {
@@ -45,7 +43,7 @@ extension CellModelDataSource: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = sections[indexPath.section].cells[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier, for: indexPath)
-        configure(cell, item.model())
+        item.configure(cell: cell)
         return cell
     }
 
@@ -55,7 +53,7 @@ extension CellModelDataSource: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let item = sections[section].headerView, let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: item.reuseIdentifier) {
-            configure(header, item.model())
+            item.configure(cell: header)
             return header
         }
         return nil
@@ -67,7 +65,7 @@ extension CellModelDataSource: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if let item = sections[section].footerView, let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: item.reuseIdentifier) {
-            configure(footer, item.model())
+            item.configure(cell: footer)
             return footer
         }
         return nil
@@ -104,8 +102,7 @@ extension CellModelDataSource: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = sections[indexPath.section].cells[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
-
-        configure(cell, item.model())
+        item.configure(cell: cell)
         return cell
     }
 }

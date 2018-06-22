@@ -9,7 +9,7 @@
 import UIKit
 import CellKit
 
-class DeviceiOSCell: UITableViewCell {
+final class DeviceiOSCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
 }
 
