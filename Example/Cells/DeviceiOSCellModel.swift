@@ -13,10 +13,8 @@ struct DeviceiOSCellModel: Equatable {
     let name: String
 }
 
-extension DeviceiOSCellModel: CellModel {
-    func cellType() -> UIView.Type {
-        return DeviceiOSCell.self
-    }
+extension DeviceiOSCellModel: CellConvertible {
+    typealias Cell = DeviceiOSCell
 
     var cellHeight: CGFloat {
         return 60.0

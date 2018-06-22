@@ -6,32 +6,22 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-import UIKit
+public protocol CellConvertible: CellModel {
+    associatedtype Cell: CellConfigurable
+}
 
-public extension UIView {
-    static var nibName: String {
-        return String(describing: self)
+public extension CellConvertible {
+    var reuseIdentifier: String {
+        return String(describing: Cell.self)
     }
 }
 
-public protocol CellConvertible {
-    var reuseIdentifier: String { get }
-
-    func cellType() -> UIView.Type
-    func model() -> Any
-}
-
-extension CellConvertible {
-    public var reuseIdentifier: String {
-        return cellType().nibName
+public extension CellConvertible where Self == Cell.Model {
+    func configure(cell: AnyObject) {
+        if let cell = cell as? Cell {
+            cell.configure(with: self)
+        } else {
+            assertionFailure("Wrong cell type \(type(of: cell)) provided for configuration to \(type(of: self))'!")
+        }
     }
-
-    public func model() -> Any {
-        return self
-    }
-}
-
-public protocol CellConfigurable {
-    associatedtype Model
-    func configure(with model: Model)
 }

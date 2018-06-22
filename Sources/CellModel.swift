@@ -6,13 +6,17 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-import UIKit
+import struct UIKit.CGFloat
 
-public protocol CellModel: CellConvertible {
+public protocol CellModel {
+    var reuseIdentifier: String { get }
+
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
     var hashableElement: AnyHashable? { get }
+
+    func configure(cell: AnyObject)
 }
 
 public protocol EquatableCellModel: CellModel {
@@ -49,12 +53,17 @@ public extension CellModel {
     }
 }
 
-public protocol SupplementaryViewModel: CellConvertible {
+public protocol SupplementaryViewModel: CellModel {
     var height: CGFloat { get }
 }
 
 public struct AnyEquatableCellModel: EquatableCellModel {
-    var cellModel: CellModel
+
+    private let cellModel: CellModel
+
+    public var reuseIdentifier: String {
+        return cellModel.reuseIdentifier
+    }
 
     public var cellHeight: CGFloat {
         return cellModel.cellHeight
@@ -73,8 +82,8 @@ public struct AnyEquatableCellModel: EquatableCellModel {
         self.cellModel = cellModel
     }
 
-    public func cellType() -> UIView.Type {
-        return cellModel.cellType()
+    public func configure(cell: AnyObject) {
+        cellModel.configure(cell: cell)
     }
 }
 

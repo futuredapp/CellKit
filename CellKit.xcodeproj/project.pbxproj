@@ -44,6 +44,7 @@
 		D082B7EC20D3A75400B5E7C8 /* CellModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02135C020CA6EDE00EE79D1 /* CellModelDataSource.swift */; };
 		DD7502881C68FEDE006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CellKit.framework */; };
 		DD7502921C690C7A006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* CellKit.framework */; };
+		E7BF419E20D7BC5700187490 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF419D20D7BC5700187490 /* CellConfigurable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		D082B7CE20CACA4500B5E7C8 /* EquatableCellModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableCellModelDataSource.swift; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* CellKit-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD75028D1C690C7A006590AF /* CellKit-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7BF419D20D7BC5700187490 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			children = (
 				D02135B620CA6E6D00EE79D1 /* CellModel.swift */,
 				D02135BB20CA6EA600EE79D1 /* CellConvertible.swift */,
+				E7BF419D20D7BC5700187490 /* CellConfigurable.swift */,
 				D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */,
 				D02135C020CA6EDE00EE79D1 /* CellModelDataSource.swift */,
 				D082B7CE20CACA4500B5E7C8 /* EquatableCellModelDataSource.swift */,
@@ -589,6 +592,7 @@
 			files = (
 				D02135BC20CA6EA600EE79D1 /* CellConvertible.swift in Sources */,
 				D082B7D320CACA8300B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
+				E7BF419E20D7BC5700187490 /* CellConfigurable.swift in Sources */,
 				D02135C120CA6EDE00EE79D1 /* CellModelDataSource.swift in Sources */,
 				D02135C520CA742B00EE79D1 /* CellModelSelectable.swift in Sources */,
 				D02135B720CA6E6D00EE79D1 /* CellModel.swift in Sources */,
