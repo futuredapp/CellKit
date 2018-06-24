@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Dwifft
 
 public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [EquatableCellModelSection] {
         get {
-            return diffCalculator.sectionedValues.sections
+            return diffCalculator.sectionedValues.sectionsAndValues.map { $0.0 }
         }
         set {
             diffCalculator.sectionedValues = SectionedValues(newValue.map { ($0, $0.cells.map { $0.asEquatable() }) })
@@ -20,7 +21,7 @@ public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
     }    
 
     public var first: EquatableCellModelSection? {
-        return diffCalculator.sectionedValues.sections.first
+        return sections.first
     }
 
     let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, AnyEquatableCellModel>
@@ -40,7 +41,7 @@ public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
     }
 
     public subscript(index: Int) -> EquatableCellModelSection {
-        return diffCalculator.sectionedValues.sections[index]
+        return diffCalculator.value(forSection: index)
     }
 
     public override func sectionsCount() -> Int {
