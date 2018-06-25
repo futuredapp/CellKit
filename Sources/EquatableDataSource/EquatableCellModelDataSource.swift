@@ -44,7 +44,7 @@ public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         return diffCalculator.value(forSection: index)
     }
 
-    public override func sectionsCount() -> Int {
+    public override func numberOfSections() -> Int {
         return self.diffCalculator.numberOfSections()
     }
 

@@ -21,7 +21,7 @@ public protocol DataSource {
 public class AbstractDataSource: NSObject {
     public weak var delegate: CellModelDataSourceDelegate?
 
-    public func sectionsCount() -> Int {
+    public func numberOfSections() -> Int {
         fatalError("Needs to be overriden")
     }
 
@@ -44,7 +44,7 @@ public class AbstractDataSource: NSObject {
 
 extension AbstractDataSource: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionsCount()
+        return numberOfSections()
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,7 +90,7 @@ extension AbstractDataSource: UITableViewDataSource {
 
 extension AbstractDataSource: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionsCount()
+        return numberOfSections()
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

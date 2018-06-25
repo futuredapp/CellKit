@@ -28,7 +28,7 @@ public class CellModelDataSource: AbstractDataSource, DataSource {
         return sections[index]
     }
 
-    public override func sectionsCount() -> Int {
+    public override func numberOfSections() -> Int {
         return sections.count
     }
 
