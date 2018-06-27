@@ -12,7 +12,7 @@ public protocol CellModelDataSourceDelegate: class {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath)
 }
 
-public class CellModelDataSource: AbstractDataSource, DataSource {
+open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
@@ -28,23 +28,23 @@ public class CellModelDataSource: AbstractDataSource, DataSource {
         return sections[index]
     }
 
-    public override func numberOfSections() -> Int {
+    override func numberOfSections() -> Int {
         return sections.count
     }
 
-    public override func cellModels(in section: Int) -> [CellModel] {
+    override func cellModels(in section: Int) -> [CellModel] {
         return sections[section].cells
     }
 
-    public override func header(in section: Int) -> SupplementaryViewModel? {
+    override func header(in section: Int) -> SupplementaryViewModel? {
         return sections[section].headerView
     }
 
-    public override func footer(in section: Int) -> SupplementaryViewModel? {
+    override func footer(in section: Int) -> SupplementaryViewModel? {
         return sections[section].footerView
     }
 
-    public override func cellModel(at indexPath: IndexPath) -> CellModel {
+    override func cellModel(at indexPath: IndexPath) -> CellModel {
         return sections[indexPath.section].cells[indexPath.row]
     }
 }

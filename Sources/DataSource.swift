@@ -19,25 +19,28 @@ public protocol DataSource {
 }
 
 public class AbstractDataSource: NSObject {
+
+    internal override init() { }
+
     public weak var delegate: CellModelDataSourceDelegate?
 
-    public func numberOfSections() -> Int {
+    func numberOfSections() -> Int {
         fatalError("Needs to be overriden")
     }
 
-    public func cellModels(in section: Int) -> [CellModel] {
+    func cellModels(in section: Int) -> [CellModel] {
         fatalError("Needs to be overriden")
     }
 
-    public func header(in section: Int) -> SupplementaryViewModel? {
+    func header(in section: Int) -> SupplementaryViewModel? {
         fatalError("Needs to be overriden")
     }
 
-    public func footer(in section: Int) -> SupplementaryViewModel? {
+    func footer(in section: Int) -> SupplementaryViewModel? {
         fatalError("Needs to be overriden")
     }
 
-    public func cellModel(at indexPath: IndexPath) -> CellModel {
+    func cellModel(at indexPath: IndexPath) -> CellModel {
         fatalError("Needs to be overriden")
     }
 }

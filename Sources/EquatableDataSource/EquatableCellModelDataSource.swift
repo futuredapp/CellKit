@@ -9,7 +9,7 @@
 import UIKit
 import Dwifft
 
-public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
+open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [EquatableCellModelSection] {
         get {
@@ -44,23 +44,23 @@ public class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         return diffCalculator.value(forSection: index)
     }
 
-    public override func numberOfSections() -> Int {
+    override func numberOfSections() -> Int {
         return self.diffCalculator.numberOfSections()
     }
 
-    public override func cellModels(in section: Int) -> [CellModel] {
+    override func cellModels(in section: Int) -> [CellModel] {
         return self.diffCalculator.value(forSection: section).cells
     }
 
-    public override func header(in section: Int) -> SupplementaryViewModel? {
+    override func header(in section: Int) -> SupplementaryViewModel? {
         return self.diffCalculator.value(forSection: section).headerView
     }
 
-    public override func footer(in section: Int) -> SupplementaryViewModel? {
+    override func footer(in section: Int) -> SupplementaryViewModel? {
         return self.diffCalculator.value(forSection: section).footerView
     }
 
-    public override func cellModel(at indexPath: IndexPath) -> CellModel {
+    override func cellModel(at indexPath: IndexPath) -> CellModel {
         return self.diffCalculator.value(atIndexPath: indexPath)
     }
 }
