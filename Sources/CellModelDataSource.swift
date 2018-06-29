@@ -16,7 +16,7 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
-    public var first: CellModelSection? {
+    public var firstSection: CellModelSection? {
         return sections.first
     }
 
