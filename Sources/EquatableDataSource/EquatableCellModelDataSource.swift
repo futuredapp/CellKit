@@ -20,7 +20,7 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         }
     }    
 
-    public var first: EquatableCellModelSection? {
+    public var firstSection: EquatableCellModelSection? {
         return sections.first
     }
 

@@ -39,6 +39,8 @@
 		D095541920DD335900BA32F9 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541820DD335900BA32F9 /* DataSource.swift */; };
 		D095541E20DFDDE100BA32F9 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095541D20DFDDE100BA32F9 /* Dwifft.framework */; };
 		D095542020DFDDF400BA32F9 /* Dwifft_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095541F20DFDDF400BA32F9 /* Dwifft_tvOS.framework */; };
+		D095541520DD1D4D00BA32F9 /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541420DD1D4D00BA32F9 /* DeviceAndroidCell.swift */; };
+		D095541720DD1D7300BA32F9 /* DeviceAndroidCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541620DD1D7300BA32F9 /* DeviceAndroidCellModel.swift */; };
 		D095542620DFE96900BA32F9 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095542520DFE96800BA32F9 /* Dwifft.framework */; };
 		D095542720DFE96900BA32F9 /* Dwifft.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095542520DFE96800BA32F9 /* Dwifft.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD7502881C68FEDE006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CellKit.framework */; };
@@ -114,6 +116,8 @@
 		D082B7C920CA985100B5E7C8 /* DeviceiOSCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceiOSCellModel.swift; sourceTree = "<group>"; };
 		D082B7CC20CA9F9400B5E7C8 /* DeviceiOSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceiOSCell.swift; sourceTree = "<group>"; };
 		D082B7CE20CACA4500B5E7C8 /* EquatableCellModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableCellModelDataSource.swift; sourceTree = "<group>"; };
+		D095541420DD1D4D00BA32F9 /* DeviceAndroidCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCell.swift; sourceTree = "<group>"; };
+		D095541620DD1D7300BA32F9 /* DeviceAndroidCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCellModel.swift; sourceTree = "<group>"; };
 		D095541820DD335900BA32F9 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		D095541A20DFDA7F00BA32F9 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
 		D095541D20DFDDE100BA32F9 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/Mac/Dwifft.framework; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 			children = (
 				D082B7CC20CA9F9400B5E7C8 /* DeviceiOSCell.swift */,
 				D082B7C920CA985100B5E7C8 /* DeviceiOSCellModel.swift */,
+				D095541420DD1D4D00BA32F9 /* DeviceAndroidCell.swift */,
+				D095541620DD1D7300BA32F9 /* DeviceAndroidCellModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -630,8 +636,10 @@
 			files = (
 				D02135A920CA609D00EE79D1 /* ViewController.swift in Sources */,
 				D082B7CD20CA9F9400B5E7C8 /* DeviceiOSCell.swift in Sources */,
+				D095541520DD1D4D00BA32F9 /* DeviceAndroidCell.swift in Sources */,
 				D082B7CA20CA985100B5E7C8 /* DeviceiOSCellModel.swift in Sources */,
 				D02135A720CA609D00EE79D1 /* AppDelegate.swift in Sources */,
+				D095541720DD1D7300BA32F9 /* DeviceAndroidCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
