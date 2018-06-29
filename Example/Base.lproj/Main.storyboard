@@ -50,6 +50,34 @@
                                             <outlet property="nameLabel" destination="ye3-08-H2W" id="Edr-nb-o3i"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeviceAndroidCell" rowHeight="60" id="yOJ-vK-HYr" customClass="DeviceAndroidCell" customModule="Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yOJ-vK-HYr" id="o2u-rF-Oxz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="☏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Hs-2ga">
+                                                    <rect key="frame" x="15" y="11" width="26" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bf-lE-h7w">
+                                                    <rect key="frame" x="57" y="19" width="303" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="1Bf-lE-h7w" id="Kvw-MW-hm1"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="4ep-YE-PQI"/>
@@ -68,14 +96,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="8Oi-AF-U8J">
                         <rightBarButtonItems>
-                            <barButtonItem title="+RowB" id="aPE-3X-9Pe">
+                            <barButtonItem title="+Android" id="aPE-3X-9Pe">
                                 <connections>
-                                    <action selector="didTapAddRowB" destination="BYZ-38-t0r" id="Ij6-5l-vtW"/>
+                                    <action selector="didTapAddAndroid" destination="BYZ-38-t0r" id="9tU-yq-vVP"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="+RowA" id="O2O-dM-fd0">
+                            <barButtonItem title="+iPhone" id="O2O-dM-fd0">
                                 <connections>
-                                    <action selector="didTapAddRowA" destination="BYZ-38-t0r" id="8t7-e3-4dh"/>
+                                    <action selector="didTapAddIPhone" destination="BYZ-38-t0r" id="94O-8j-PKk"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Reset" id="ih0-d8-ZNp">
