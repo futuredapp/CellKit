@@ -13,7 +13,7 @@ struct DeviceiOSCellModel: Equatable {
     let name: String
 }
 
-extension DeviceiOSCellModel: CellConvertible {
+extension DeviceiOSCellModel: CellConvertible, EquatableCellModel {
     typealias Cell = DeviceiOSCell
 
     var cellHeight: CGFloat {

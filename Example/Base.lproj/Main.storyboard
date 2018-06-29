@@ -78,9 +78,9 @@
                                     <action selector="didTapAddRowA" destination="BYZ-38-t0r" id="8t7-e3-4dh"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="+Section" id="ih0-d8-ZNp">
+                            <barButtonItem title="Reset" id="ih0-d8-ZNp">
                                 <connections>
-                                    <action selector="didTapAddSection" destination="BYZ-38-t0r" id="7i8-0O-HKN"/>
+                                    <action selector="didTapReset" destination="BYZ-38-t0r" id="ieK-z4-cV2"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
