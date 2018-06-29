@@ -18,7 +18,7 @@ public protocol DataSource {
     subscript(index: Int) -> Section { get }
 }
 
-public class AbstractDataSource: NSObject {
+open class AbstractDataSource: NSObject {
 
     internal override init() { }
 
