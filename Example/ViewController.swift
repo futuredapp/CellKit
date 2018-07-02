@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapAddIPhone() {
-        let visibleItems = dataSource?.firstSection?.cells
+        let visibleItems = dataSource?.sections.last?.cells
             .compactMap { $0 as? DeviceiOSCellModel }
             .compactMap { $0.name } ?? []
 
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapAddAndroid() {
-        let visibleItems = dataSource?.firstSection?.cells
+        let visibleItems = dataSource?.sections.last?.cells
             .compactMap { $0 as? DeviceAndroidCellModel }
             .compactMap { $0.name } ?? []
 

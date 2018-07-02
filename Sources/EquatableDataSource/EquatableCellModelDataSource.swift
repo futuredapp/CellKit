@@ -18,10 +18,6 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         set {
             diffCalculator.sectionedValues = SectionedValues(newValue.map { ($0, $0.cells.map { $0.asEquatable() }) })
         }
-    }    
-
-    public var firstSection: EquatableCellModelSection? {
-        return sections.first
     }
 
     let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, AnyEquatableCellModel>

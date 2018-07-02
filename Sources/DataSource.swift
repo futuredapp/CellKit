@@ -13,7 +13,6 @@ public protocol DataSource {
 
     var sections: [Section] { get }
     var delegate: CellModelDataSourceDelegate? { get }
-    var firstSection: Section? { get }
 
     subscript(index: Int) -> Section { get }
 }
