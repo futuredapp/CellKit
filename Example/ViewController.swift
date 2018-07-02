@@ -19,23 +19,34 @@ class ViewController: UIViewController {
     private var androids = ["Samsung Galaxy Note", "OnePlus 2", "Nexus 6", "Huawei P9", "Kindle Fire", "Samsung Galaxy S6", "Nexus 5"]
 
     private var phonesSection: EquatableCellModelSection {
-        var cellModels = [EquatableCellModel]()
-        cellModels.append(contentsOf: iPhones.prefix(5).map { DeviceiOSCellModel(name: $0) })
-        cellModels.append(contentsOf: androids.prefix(5).map { DeviceAndroidCellModel(name: $0) })
+        let iPhoneCellModels: [EquatableCellModel] = iPhones.prefix(5).map { DeviceiOSCellModel(name: $0) }
+        let androidCellModels: [EquatableCellModel] = androids.prefix(5).map { DeviceAndroidCellModel(name: $0) }
+        let cellModels = iPhoneCellModels + androidCellModels
         return EquatableCellModelSection(cells: cellModels, identifier: "Section 1")
+    }
+
+    private var welcomeSection: EquatableCellModelSection {
+        return [NibTableViewCellModel(text: "Welcome!")]
+    }
+
+    private var defaultSections: [EquatableCellModelSection] {
+        return [
+            welcomeSection,
+            phonesSection
+        ]
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataSource = EquatableCellModelDataSource(tableView, sections: [phonesSection])
+        dataSource = EquatableCellModelDataSource(tableView, sections: defaultSections)
         dataSource.delegate = self
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
     }
 
     @IBAction func didTapReset() {
-        dataSource?.sections = [phonesSection]
+        dataSource?.sections = defaultSections
     }
 
     @IBAction func didTapAddIPhone() {
@@ -44,10 +55,8 @@ class ViewController: UIViewController {
             .compactMap { $0.name } ?? []
 
         let available = Set(iPhones).subtracting(Set(visibleItems))
-        if let item = available.first, let section = dataSource?.firstSection {
-            var section = section
-            section.cells.insert(DeviceiOSCellModel(name: item), at: 0)
-            dataSource?.sections = [section]
+        if let item = available.first {
+            dataSource?.sections[1].cells.insert(DeviceiOSCellModel(name: item), at: 0)
         }
     }
 
@@ -57,20 +66,16 @@ class ViewController: UIViewController {
             .compactMap { $0.name } ?? []
 
         let available = Set(androids).subtracting(Set(visibleItems))
-        if let item = available.first, let section = dataSource?.firstSection {
-            var section = section
-            section.cells.insert(DeviceAndroidCellModel(name: item), at: 0)
-            dataSource?.sections = [section]
+        if let item = available.first {
+            dataSource?.sections[1].cells.insert(DeviceAndroidCellModel(name: item), at: 0)
         }
     }
 }
 
 extension ViewController: CellModelDataSourceDelegate {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath) {
-        if let section = dataSource?.sections[indexPath.section] {
-            var section = section
-            section.cells.remove(at: indexPath.row)
-            dataSource?.sections = [section]
+        if indexPath.section == 1 {
+            dataSource?.sections[indexPath.section].cells.remove(at: indexPath.row)
         }
     }
 }
