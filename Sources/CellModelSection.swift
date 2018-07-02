@@ -8,27 +8,35 @@
 
 import Foundation
 
-public class CellModelSection: ExpressibleByArrayLiteral {
-    public typealias ArrayLiteralElement = CellModel
+public typealias CellModelSection = GenericCellModelSection<CellModel>
+public typealias EquatableCellModelSection = GenericCellModelSection<EquatableCellModel>
 
-    let cells: [CellModel]
-    let headerView: SupplementaryViewModel?
-    let footerView: SupplementaryViewModel?
-    let identifier: String
+public struct GenericCellModelSection<Cell>: ExpressibleByArrayLiteral {
+    public typealias ArrayLiteralElement = Cell
 
-    public init(cells: [CellModel] = [], headerView: SupplementaryViewModel? = nil, footerView: SupplementaryViewModel? = nil, identifier: String = "") {
+    public var cells: [Cell]
+    public var headerView: SupplementaryViewModel?
+    public var footerView: SupplementaryViewModel?
+    public let identifier: String
+
+    public init(cells: [Cell] = [], headerView: SupplementaryViewModel? = nil, footerView: SupplementaryViewModel? = nil, identifier: String = "") {
         self.cells = cells
         self.headerView = headerView
         self.footerView = footerView
         self.identifier = identifier
     }
 
-    public convenience required init(arrayLiteral elements: CellModel...) {
+    public init(arrayLiteral elements: Cell...) {
         self.init(cells: elements)
     }
 
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         return cells.isEmpty
     }
 }
 
+extension GenericCellModelSection: Equatable {
+    public static func == (lhs: GenericCellModelSection<Cell>, rhs: GenericCellModelSection<Cell>) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}

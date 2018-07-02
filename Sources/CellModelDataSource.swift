@@ -12,17 +12,11 @@ public protocol CellModelDataSourceDelegate: class {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath)
 }
 
-public class CellModelDataSource: NSObject {
+open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
-    public weak var delegate: CellModelDataSourceDelegate?
-
-    public var registersCellsLazily: Bool = true
-    private var registeredCellReuseIdentifiers: Set<String> = []
-    private var registeredHeaderFooterReuseIdentifiers: Set<String> = []
-
-    public var first: CellModelSection? {
+    public var firstSection: CellModelSection? {
         return sections.first
     }
 
@@ -30,134 +24,27 @@ public class CellModelDataSource: NSObject {
         self.sections = sections
     }
 
-    subscript(index: Int) -> CellModelSection {
+    public subscript(index: Int) -> CellModelSection {
         return sections[index]
     }
 
-    private func registerLazily(cellModel: CellModel, to tableView: UITableView) {
-        guard registersCellsLazily, let cellModel = cellModel as? ReusableCellModel, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
-            return 
-        }
-
-        if let nib = cellModel.nib {
-            tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
-        } else {
-            tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
-        }
-        registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
-    }
-
-    private func registerLazily(cellModel: CellModel, to collectionView: UICollectionView) {
-        guard registersCellsLazily, let cellModel = cellModel as? ReusableCellModel, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
-            return
-        }
-
-        if let nib = cellModel.nib {
-            collectionView.register(nib, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
-        } else {
-            collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
-        }
-        collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
-        registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
-    }
-
-    private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, let cellModel = headerFooter as? ReusableCellModel, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
-            return
-        }
-
-        if let nib = cellModel.nib {
-            tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
-        } else {
-            tableView.register(cellModel.cellClass, forHeaderFooterViewReuseIdentifier: cellModel.reuseIdentifier)
-        }
-        registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
-    }
-
-    private func view(for headerFooter: SupplementaryViewModel?, in tableView: UITableView) -> UIView? {
-        guard let headerFooter = headerFooter else {
-            return nil
-        }
-        registerLazily(headerFooter: headerFooter, to: tableView)
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerFooter.reuseIdentifier) else {
-            return nil
-        }
-        return header
-    }
-}
-
-extension CellModelDataSource: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections() -> Int {
         return sections.count
     }
 
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].cells.count
+    override func cellModels(in section: Int) -> [CellModel] {
+        return sections[section].cells
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = sections[indexPath.section].cells[indexPath.row]
-        registerLazily(cellModel: item, to: tableView)
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier, for: indexPath)
-        item.configure(cell: cell)
-        return cell
+    override func header(in section: Int) -> SupplementaryViewModel? {
+        return sections[section].headerView
     }
 
-    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return sections[indexPath.section].cells[indexPath.row].highlighting
+    override func footer(in section: Int) -> SupplementaryViewModel? {
+        return sections[section].footerView
     }
 
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return view(for: sections[section].headerView, in: tableView)
-    }
-
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sections[section].headerView?.height ?? .leastNonzeroMagnitude
-    }
-
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return view(for: sections[section].footerView, in: tableView)
-    }
-
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return sections[section].footerView?.height ?? .leastNonzeroMagnitude
-    }
-}
-
-extension CellModelDataSource: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].cells[indexPath.row].cellHeight
-    }
-
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cellModel = sections[indexPath.section].cells[indexPath.row] as? CellModelSelectable {
-            cellModel.didSelect()
-        } else {
-            delegate?.didSelectCellModel(sections[indexPath.section].cells[indexPath.row], at: indexPath)
-        }
-    }
-}
-
-extension CellModelDataSource: UICollectionViewDataSource {
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].cells.count
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = sections[indexPath.section].cells[indexPath.row]
-        registerLazily(cellModel: item, to: collectionView)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
-        item.configure(cell: cell)
-        return cell
-    }
-}
-
-extension CellModelDataSource: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectCellModel(sections[indexPath.section].cells[indexPath.row], at: indexPath)
+    override func cellModel(at indexPath: IndexPath) -> CellModel {
+        return sections[indexPath.section].cells[indexPath.row]
     }
 }

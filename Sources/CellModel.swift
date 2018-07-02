@@ -31,8 +31,8 @@ extension EquatableCellModel where Self: Equatable {
     }
 
     public func isEqualTo(_ other: CellModel) -> Bool {
-        guard let otherFruit = other as? Self else { return false }
-        return self == otherFruit
+        guard let otherCellModel = other as? Self else { return false }
+        return self == otherCellModel
     }
 }
 
@@ -59,8 +59,7 @@ public protocol SupplementaryViewModel: CellModel {
 }
 
 public struct AnyEquatableCellModel: EquatableCellModel {
-
-    private let cellModel: CellModel
+    public var cellModel: EquatableCellModel
 
     public var cellClass: AnyClass {
         return cellModel.cellClass
@@ -82,7 +81,7 @@ public struct AnyEquatableCellModel: EquatableCellModel {
         return cellModel.hashableElement
     }
 
-    init(_ cellModel: CellModel) {
+    init(_ cellModel: EquatableCellModel) {
         self.cellModel = cellModel
     }
 
@@ -93,6 +92,6 @@ public struct AnyEquatableCellModel: EquatableCellModel {
 
 extension AnyEquatableCellModel: Equatable {
     public static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
-        return lhs.isEqualTo(rhs)
+        return lhs.cellModel.isEqualTo(rhs.cellModel)
     }
 }
