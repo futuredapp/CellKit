@@ -16,10 +16,6 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
-    public var firstSection: CellModelSection? {
-        return sections.first
-    }
-
     public init(_ sections: [CellModelSection]) {
         self.sections = sections
     }
