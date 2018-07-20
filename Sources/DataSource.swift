@@ -143,7 +143,6 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 }
 
-
 extension AbstractDataSource: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numberOfSections()

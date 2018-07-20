@@ -50,7 +50,7 @@ public extension CellModel {
 
 public protocol SupplementaryViewModel: ReusableView {
     var height: CGFloat { get }
-    
+
     func configure(cell: AnyObject)
 }
 
@@ -59,7 +59,6 @@ public struct AnyEquatableCellModel: EquatableCellModel {
 
     // MARK: - Reusable view properties
 
-    
     public var registersLazily: Bool {
         return cellModel.registersLazily
     }
@@ -89,7 +88,7 @@ public struct AnyEquatableCellModel: EquatableCellModel {
     public var cellHeight: CGFloat {
         return cellModel.cellHeight
     }
-    
+
     public var highlighting: Bool {
         return cellModel.highlighting
     }
