@@ -58,35 +58,11 @@ public protocol SupplementaryViewModel: CellModel {
     var height: CGFloat { get }
 }
 
-public struct AnyEquatableCellModel: EquatableCellModel {
+public struct AnyEquatableCellModel {
     public var cellModel: EquatableCellModel
-
-    public var cellClass: AnyClass {
-        return cellModel.cellClass
-    }
-    public var reuseIdentifier: String {
-        return cellModel.reuseIdentifier
-    }
-
-    public var cellHeight: CGFloat {
-        return cellModel.cellHeight
-    }
-    public var highlighting: Bool {
-        return cellModel.highlighting
-    }
-    public var separatorIsHidden: Bool {
-        return cellModel.separatorIsHidden
-    }
-    public var hashableElement: AnyHashable? {
-        return cellModel.hashableElement
-    }
 
     init(_ cellModel: EquatableCellModel) {
         self.cellModel = cellModel
-    }
-
-    public func configure(cell: AnyObject) {
-        cellModel.configure(cell: cell)
     }
 }
 

@@ -57,6 +57,6 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
     }
 
     override func cellModel(at indexPath: IndexPath) -> CellModel {
-        return self.diffCalculator.value(atIndexPath: indexPath)
+        return self.diffCalculator.value(atIndexPath: indexPath).cellModel
     }
 }
