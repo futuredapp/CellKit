@@ -7,11 +7,10 @@
 //
 
 import struct UIKit.CGFloat
+import class Foundation.Bundle
+import class UIKit.UINib
 
-public protocol CellModel {
-    var cellClass: AnyClass { get }
-    var reuseIdentifier: String { get }
-
+public protocol CellModel: ReusableView {
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
@@ -54,19 +53,41 @@ public extension CellModel {
     }
 }
 
-public protocol SupplementaryViewModel: CellModel {
+public protocol SupplementaryViewModel: ReusableView {
     var height: CGFloat { get }
 }
 
 public struct AnyEquatableCellModel: EquatableCellModel {
     public var cellModel: EquatableCellModel
 
+    // MARK: - Reusable view
+
+    
+    public var registersLazily: Bool {
+        return cellModel.registersLazily
+    }
+
+    public var usesNib: Bool {
+        return cellModel.usesNib
+    }
+
+    public var bundle: Bundle {
+        return cellModel.bundle
+    }
+
+    public var nib: UINib? {
+        return cellModel.nib
+    }
+
     public var cellClass: AnyClass {
         return cellModel.cellClass
     }
+
     public var reuseIdentifier: String {
         return cellModel.reuseIdentifier
     }
+
+    // MARK: -
 
     public var cellHeight: CGFloat {
         return cellModel.cellHeight

@@ -6,7 +6,7 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-public typealias ReusableCellConvertible = CellConvertible & ReusableCellModel
+public typealias ReusableCellConvertible = CellConvertible & ReusableView
 
 public protocol CellConvertible: CellModel {
     associatedtype Cell: CellConfigurable

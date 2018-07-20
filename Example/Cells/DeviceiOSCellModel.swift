@@ -9,16 +9,12 @@
 import UIKit
 import CellKit
 
-struct DeviceiOSCellModel: Equatable {
-    let name: String
-}
-
-extension DeviceiOSCellModel: CellConvertible, EquatableCellModel {
+struct DeviceiOSCellModel: CellConvertible, EquatableCellModel, Equatable {
     typealias Cell = DeviceiOSCell
 
-    var cellHeight: CGFloat {
-        return 60.0
-    }
+    let name: String
+    let cellHeight: CGFloat = 60.0
+    let registersLazily: Bool = false
 }
 
 extension DeviceiOSCellModel: CellModelSelectable {

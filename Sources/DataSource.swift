@@ -47,12 +47,8 @@ open class AbstractDataSource: NSObject {
         fatalError("Needs to be overriden")
     }
 
-    private func reusable(cellModel: CellModel) -> ReusableCellModel? {
-        return cellModel as? ReusableCellModel ?? (cellModel as? AnyEquatableCellModel)?.cellModel as? ReusableCellModel
-    }
-
     private func registerLazily(cellModel: CellModel, to tableView: UITableView) {
-        guard registersCellsLazily, let cellModel = reusable(cellModel: cellModel), !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+        guard registersCellsLazily, cellModel.registersLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
             return
         }
 
@@ -65,7 +61,7 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(cellModel: CellModel, to collectionView: UICollectionView) {
-        guard registersCellsLazily, let cellModel = reusable(cellModel: cellModel), !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
             return
         }
 
@@ -79,14 +75,14 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, let cellModel = reusable(cellModel: headerFooter), !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+        guard registersCellsLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
             return
         }
 
-        if let nib = cellModel.nib {
-            tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
+        if let nib = headerFooter.nib {
+            tableView.register(nib, forCellReuseIdentifier: headerFooter.reuseIdentifier)
         } else {
-            tableView.register(cellModel.cellClass, forHeaderFooterViewReuseIdentifier: cellModel.reuseIdentifier)
+            tableView.register(headerFooter.cellClass, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         }
         registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
     }
