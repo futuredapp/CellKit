@@ -8,7 +8,7 @@
 
 public typealias ReusableCellConvertible = CellConvertible & ReusableView
 
-public protocol CellConvertible: CellModel {
+public protocol CellConvertible {
     associatedtype Cell: CellConfigurable
 }
 

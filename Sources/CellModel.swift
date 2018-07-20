@@ -55,6 +55,8 @@ public extension CellModel {
 
 public protocol SupplementaryViewModel: ReusableView {
     var height: CGFloat { get }
+    
+    func configure(cell: AnyObject)
 }
 
 public struct AnyEquatableCellModel: EquatableCellModel {

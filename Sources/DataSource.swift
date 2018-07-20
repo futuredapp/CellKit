@@ -61,7 +61,7 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(cellModel: CellModel, to collectionView: UICollectionView) {
-        guard registersCellsLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
+        guard registersCellsLazily, cellModel.registersLazily, !registeredCellReuseIdentifiers.contains(cellModel.reuseIdentifier) else {
             return
         }
 
@@ -75,12 +75,12 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+        guard registersCellsLazily, headerFooter.registersLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
             return
         }
 
         if let nib = headerFooter.nib {
-            tableView.register(nib, forCellReuseIdentifier: headerFooter.reuseIdentifier)
+            tableView.register(nib, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         } else {
             tableView.register(headerFooter.cellClass, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         }
@@ -121,7 +121,10 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return view(for: header(in: section), in: tableView)
+        let model = header(in: section)
+        let headerView = view(for: model, in: tableView)
+        headerView.flatMap { model?.configure(cell: $0) }
+        return headerView
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -129,7 +132,10 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return view(for: footer(in: section), in: tableView)
+        let model = header(in: section)
+        let footerView = view(for: model, in: tableView)
+        footerView.flatMap { model?.configure(cell: $0) }
+        return footerView
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
