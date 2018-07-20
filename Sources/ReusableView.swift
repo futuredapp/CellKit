@@ -9,13 +9,21 @@
 import class Foundation.Bundle
 import class UIKit.UINib
 
-public protocol ReusableCellModel: CellModel {
+public protocol ReusableView {
+    var registersLazily: Bool { get }
     var usesNib: Bool { get }
     var bundle: Bundle { get }
     var nib: UINib? { get }
+
+    var cellClass: AnyClass { get }
+    var reuseIdentifier: String { get }
 }
 
-public extension ReusableCellModel {
+public extension ReusableView {
+    var registersLazily: Bool {
+        return true
+    }
+
     var usesNib: Bool {
         return true
     }

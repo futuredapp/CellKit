@@ -7,15 +7,13 @@
 //
 
 import struct UIKit.CGFloat
+import class Foundation.Bundle
+import class UIKit.UINib
 
-public protocol CellModel {
-    var cellClass: AnyClass { get }
-    var reuseIdentifier: String { get }
-
+public protocol CellModel: ReusableView {
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
-    var hashableElement: AnyHashable? { get }
 
     func configure(cell: AnyObject)
 }
@@ -48,37 +46,55 @@ public extension CellModel {
     var separatorIsHidden: Bool {
         return false
     }
-
-    var hashableElement: AnyHashable? {
-        return nil
-    }
 }
 
-public protocol SupplementaryViewModel: CellModel {
+public protocol SupplementaryViewModel: ReusableView {
     var height: CGFloat { get }
+
+    func configure(cell: AnyObject)
 }
 
 public struct AnyEquatableCellModel: EquatableCellModel {
     public var cellModel: EquatableCellModel
 
+    // MARK: - Reusable view properties
+
+    public var registersLazily: Bool {
+        return cellModel.registersLazily
+    }
+
+    public var usesNib: Bool {
+        return cellModel.usesNib
+    }
+
+    public var bundle: Bundle {
+        return cellModel.bundle
+    }
+
+    public var nib: UINib? {
+        return cellModel.nib
+    }
+
     public var cellClass: AnyClass {
         return cellModel.cellClass
     }
+
     public var reuseIdentifier: String {
         return cellModel.reuseIdentifier
     }
 
+    // MARK: - Cell model properties
+
     public var cellHeight: CGFloat {
         return cellModel.cellHeight
     }
+
     public var highlighting: Bool {
         return cellModel.highlighting
     }
+
     public var separatorIsHidden: Bool {
         return cellModel.separatorIsHidden
-    }
-    public var hashableElement: AnyHashable? {
-        return cellModel.hashableElement
     }
 
     init(_ cellModel: EquatableCellModel) {

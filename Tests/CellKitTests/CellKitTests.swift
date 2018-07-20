@@ -16,8 +16,8 @@ class CellKitTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         //// XCTAssertEqual(CellKit().text, "Hello, World!")
     }
-    
+
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }
