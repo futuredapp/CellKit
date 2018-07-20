@@ -14,7 +14,6 @@ public protocol CellModel: ReusableView {
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
-    var hashableElement: AnyHashable? { get }
 
     func configure(cell: AnyObject)
 }
@@ -46,10 +45,6 @@ public extension CellModel {
 
     var separatorIsHidden: Bool {
         return false
-    }
-
-    var hashableElement: AnyHashable? {
-        return nil
     }
 }
 
@@ -94,14 +89,13 @@ public struct AnyEquatableCellModel: EquatableCellModel {
     public var cellHeight: CGFloat {
         return cellModel.cellHeight
     }
+    
     public var highlighting: Bool {
         return cellModel.highlighting
     }
+
     public var separatorIsHidden: Bool {
         return cellModel.separatorIsHidden
-    }
-    public var hashableElement: AnyHashable? {
-        return cellModel.hashableElement
     }
 
     init(_ cellModel: EquatableCellModel) {
