@@ -27,6 +27,9 @@
 		D02135C520CA742B00EE79D1 /* CellModelSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */; };
 		D02135C620CA742B00EE79D1 /* CellModelSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */; };
 		D02135C820CA742B00EE79D1 /* CellModelSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */; };
+		D08037442101DD3C00FE8C2A /* PhonesHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08037412101DD3B00FE8C2A /* PhonesHeaderModel.swift */; };
+		D08037452101DD3C00FE8C2A /* PhonesHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08037422101DD3B00FE8C2A /* PhonesHeader.xib */; };
+		D08037462101DD3C00FE8C2A /* PhonesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08037432101DD3C00FE8C2A /* PhonesHeader.swift */; };
 		D082B7CA20CA985100B5E7C8 /* DeviceiOSCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082B7C920CA985100B5E7C8 /* DeviceiOSCellModel.swift */; };
 		D082B7CD20CA9F9400B5E7C8 /* DeviceiOSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082B7CC20CA9F9400B5E7C8 /* DeviceiOSCell.swift */; };
 		D082B7D020CACA8100B5E7C8 /* EquatableCellModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082B7CE20CACA4500B5E7C8 /* EquatableCellModelDataSource.swift */; };
@@ -45,9 +48,9 @@
 		D095542720DFE96900BA32F9 /* Dwifft.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095542520DFE96800BA32F9 /* Dwifft.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD7502881C68FEDE006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CellKit.framework */; };
 		DD7502921C690C7A006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* CellKit.framework */; };
-		E7AE9F5920EA6E0700830345 /* ReusableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableCellModel.swift */; };
-		E7AE9F5A20EA6E0700830345 /* ReusableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableCellModel.swift */; };
-		E7AE9F5B20EA6E0700830345 /* ReusableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableCellModel.swift */; };
+		E7AE9F5920EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
+		E7AE9F5A20EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
+		E7AE9F5B20EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
 		E7AE9F5F20EA6F8F00830345 /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7AE9F5C20EA6F8F00830345 /* NibTableViewCell.xib */; };
 		E7AE9F6120EA6F8F00830345 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5D20EA6F8F00830345 /* NibTableViewCell.swift */; };
 		E7BF419E20D7BC5700187490 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF419D20D7BC5700187490 /* CellConfigurable.swift */; };
@@ -118,6 +121,9 @@
 		D02135C020CA6EDE00EE79D1 /* CellModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModelDataSource.swift; sourceTree = "<group>"; };
 		D02135C220CA6FEE00EE79D1 /* CellModelSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModelSection.swift; sourceTree = "<group>"; };
 		D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModelSelectable.swift; sourceTree = "<group>"; };
+		D08037412101DD3B00FE8C2A /* PhonesHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeaderModel.swift; sourceTree = "<group>"; };
+		D08037422101DD3B00FE8C2A /* PhonesHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhonesHeader.xib; sourceTree = "<group>"; };
+		D08037432101DD3C00FE8C2A /* PhonesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeader.swift; sourceTree = "<group>"; };
 		D082B7C920CA985100B5E7C8 /* DeviceiOSCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceiOSCellModel.swift; sourceTree = "<group>"; };
 		D082B7CC20CA9F9400B5E7C8 /* DeviceiOSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceiOSCell.swift; sourceTree = "<group>"; };
 		D082B7CE20CACA4500B5E7C8 /* EquatableCellModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableCellModelDataSource.swift; sourceTree = "<group>"; };
@@ -130,7 +136,7 @@
 		D095542520DFE96800BA32F9 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* CellKit-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD75028D1C690C7A006590AF /* CellKit-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7AE9F5820EA6E0700830345 /* ReusableCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellModel.swift; sourceTree = "<group>"; };
+		E7AE9F5820EA6E0700830345 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		E7AE9F5C20EA6F8F00830345 /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
 		E7AE9F5D20EA6F8F00830345 /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		E7BF419D20D7BC5700187490 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
@@ -200,9 +206,9 @@
 			children = (
 				D095542520DFE96800BA32F9 /* Dwifft.framework */,
 				8933C7811EB5B7E0000D00A4 /* Sources */,
+				D02135A520CA609D00EE79D1 /* Example */,
 				8933C7831EB5B7EB000D00A4 /* Tests */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
-				D02135A520CA609D00EE79D1 /* Example */,
 				52D6D97D1BEFF229002C0205 /* Products */,
 				D02135CB20CA7ABF00EE79D1 /* Frameworks */,
 			);
@@ -238,7 +244,7 @@
 				D02135B620CA6E6D00EE79D1 /* CellModel.swift */,
 				D02135BB20CA6EA600EE79D1 /* CellConvertible.swift */,
 				E7BF419D20D7BC5700187490 /* CellConfigurable.swift */,
-				E7AE9F5820EA6E0700830345 /* ReusableCellModel.swift */,
+				E7AE9F5820EA6E0700830345 /* ReusableView.swift */,
 				D095541820DD335900BA32F9 /* DataSource.swift */,
 				D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */,
 				D02135C020CA6EDE00EE79D1 /* CellModelDataSource.swift */,
@@ -259,6 +265,7 @@
 		D02135A520CA609D00EE79D1 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				D08037402101DD3300FE8C2A /* Headers */,
 				D082B7CB20CA9F8600B5E7C8 /* Cells */,
 				D02135A620CA609D00EE79D1 /* AppDelegate.swift */,
 				D02135A820CA609D00EE79D1 /* ViewController.swift */,
@@ -278,6 +285,16 @@
 				D095541A20DFDA7F00BA32F9 /* Dwifft.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D08037402101DD3300FE8C2A /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D08037432101DD3C00FE8C2A /* PhonesHeader.swift */,
+				D08037422101DD3B00FE8C2A /* PhonesHeader.xib */,
+				D08037412101DD3B00FE8C2A /* PhonesHeaderModel.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		D082B7CB20CA9F8600B5E7C8 /* Cells */ = {
@@ -573,6 +590,7 @@
 				E7AE9F5F20EA6F8F00830345 /* NibTableViewCell.xib in Resources */,
 				D02135AE20CA609F00EE79D1 /* Assets.xcassets in Resources */,
 				D02135AC20CA609D00EE79D1 /* Main.storyboard in Resources */,
+				D08037452101DD3C00FE8C2A /* PhonesHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AE9F5920EA6E0700830345 /* ReusableCellModel.swift in Sources */,
+				E7AE9F5920EA6E0700830345 /* ReusableView.swift in Sources */,
 				D02135BC20CA6EA600EE79D1 /* CellConvertible.swift in Sources */,
 				D082B7D320CACA8300B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
 				E7BF419E20D7BC5700187490 /* CellConfigurable.swift in Sources */,
@@ -624,7 +642,7 @@
 				D02135C820CA742B00EE79D1 /* CellModelSelectable.swift in Sources */,
 				D082B7D020CACA8100B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
 				D082B7E920D3A73C00B5E7C8 /* CellModelSection.swift in Sources */,
-				E7AE9F5B20EA6E0700830345 /* ReusableCellModel.swift in Sources */,
+				E7AE9F5B20EA6E0700830345 /* ReusableView.swift in Sources */,
 				D02135BD20CA6EAA00EE79D1 /* CellConvertible.swift in Sources */,
 				D082B7EB20D3A75300B5E7C8 /* CellModelDataSource.swift in Sources */,
 				D02135B820CA6E7100EE79D1 /* CellModel.swift in Sources */,
@@ -638,7 +656,7 @@
 				D02135C620CA742B00EE79D1 /* CellModelSelectable.swift in Sources */,
 				D082B7D220CACA8200B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
 				D082B7E720D3A73B00B5E7C8 /* CellModelSection.swift in Sources */,
-				E7AE9F5A20EA6E0700830345 /* ReusableCellModel.swift in Sources */,
+				E7AE9F5A20EA6E0700830345 /* ReusableView.swift in Sources */,
 				D02135BF20CA6EAA00EE79D1 /* CellConvertible.swift in Sources */,
 				D082B7EA20D3A75200B5E7C8 /* CellModelDataSource.swift in Sources */,
 				D02135BA20CA6E7100EE79D1 /* CellModel.swift in Sources */,
@@ -650,8 +668,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D02135A920CA609D00EE79D1 /* ViewController.swift in Sources */,
+				D08037462101DD3C00FE8C2A /* PhonesHeader.swift in Sources */,
 				D082B7CD20CA9F9400B5E7C8 /* DeviceiOSCell.swift in Sources */,
 				D095541520DD1D4D00BA32F9 /* DeviceAndroidCell.swift in Sources */,
+				D08037442101DD3C00FE8C2A /* PhonesHeaderModel.swift in Sources */,
 				D082B7CA20CA985100B5E7C8 /* DeviceiOSCellModel.swift in Sources */,
 				E7AE9F6120EA6F8F00830345 /* NibTableViewCell.swift in Sources */,
 				D02135A720CA609D00EE79D1 /* AppDelegate.swift in Sources */,

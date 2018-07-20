@@ -22,7 +22,9 @@ class ViewController: UIViewController {
         let iPhoneCellModels: [EquatableCellModel] = iPhones.prefix(5).map { DeviceiOSCellModel(name: $0) }
         let androidCellModels: [EquatableCellModel] = androids.prefix(5).map { DeviceAndroidCellModel(name: $0) }
         let cellModels = iPhoneCellModels + androidCellModels
-        return EquatableCellModelSection(cells: cellModels, identifier: "Section 1")
+        let header = PhonesHeaderModel(title: "Cell Phones")
+
+        return EquatableCellModelSection(cells: cellModels, headerView: header, identifier: "Section 1")
     }
 
     private var welcomeSection: EquatableCellModelSection {

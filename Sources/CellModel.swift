@@ -7,11 +7,10 @@
 //
 
 import struct UIKit.CGFloat
+import class Foundation.Bundle
+import class UIKit.UINib
 
-public protocol CellModel {
-    var cellClass: AnyClass { get }
-    var reuseIdentifier: String { get }
-
+public protocol CellModel: ReusableView {
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
@@ -33,7 +32,11 @@ public extension CellModel {
     }
 }
 
-// MARK: - Equatable cell models
+public protocol SupplementaryViewModel: ReusableView {
+    var height: CGFloat { get }
+
+    func configure(cell: AnyObject)
+}
 
 public protocol EquatableCellModel: CellModel {
     func isEqualTo(_ other: CellModel) -> Bool
@@ -64,10 +67,4 @@ extension AnyEquatableCellModel: Equatable {
     static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
         return lhs.cellModel.isEqualTo(rhs.cellModel)
     }
-}
-
-// MARK: - Headers and footers
-
-public protocol SupplementaryViewModel: CellModel {
-    var height: CGFloat { get }
 }

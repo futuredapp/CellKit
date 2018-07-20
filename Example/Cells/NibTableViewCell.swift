@@ -13,10 +13,7 @@ struct NibTableViewCellModel: ReusableCellConvertible, EquatableCellModel, Equat
     typealias Cell = NibTableViewCell
 
     let text: String
-
-    var cellHeight: CGFloat {
-        return 170.0
-    }
+    let cellHeight: CGFloat  = 170.0
 }
 
 final class NibTableViewCell: UITableViewCell, CellConfigurable {
