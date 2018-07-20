@@ -57,7 +57,7 @@ public protocol SupplementaryViewModel: ReusableView {
 public struct AnyEquatableCellModel: EquatableCellModel {
     public var cellModel: EquatableCellModel
 
-    // MARK: - Reusable view
+    // MARK: - Reusable view properties
 
     
     public var registersLazily: Bool {
@@ -84,7 +84,7 @@ public struct AnyEquatableCellModel: EquatableCellModel {
         return cellModel.reuseIdentifier
     }
 
-    // MARK: -
+    // MARK: - Cell model properties
 
     public var cellHeight: CGFloat {
         return cellModel.cellHeight
