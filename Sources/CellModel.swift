@@ -15,7 +15,6 @@ public protocol CellModel {
     var cellHeight: CGFloat { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
-    var hashableElement: AnyHashable? { get }
 
     func configure(cell: AnyObject)
 }
@@ -47,10 +46,6 @@ public extension CellModel {
 
     var separatorIsHidden: Bool {
         return false
-    }
-
-    var hashableElement: AnyHashable? {
-        return nil
     }
 }
 
