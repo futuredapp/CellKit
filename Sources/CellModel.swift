@@ -19,22 +19,6 @@ public protocol CellModel {
     func configure(cell: AnyObject)
 }
 
-public protocol EquatableCellModel: CellModel {
-    func asEquatable() -> AnyEquatableCellModel
-    func isEqualTo(_ other: CellModel) -> Bool
-}
-
-extension EquatableCellModel where Self: Equatable {
-    public func asEquatable() -> AnyEquatableCellModel {
-        return AnyEquatableCellModel(self)
-    }
-
-    public func isEqualTo(_ other: CellModel) -> Bool {
-        guard let otherCellModel = other as? Self else { return false }
-        return self == otherCellModel
-    }
-}
-
 public extension CellModel {
     var cellHeight: CGFloat {
         return 44
@@ -49,12 +33,27 @@ public extension CellModel {
     }
 }
 
-public protocol SupplementaryViewModel: CellModel {
-    var height: CGFloat { get }
+// MARK: - Equatable cell models
+
+public protocol EquatableCellModel: CellModel {
+    func isEqualTo(_ other: CellModel) -> Bool
 }
 
-public struct AnyEquatableCellModel {
-    public var cellModel: EquatableCellModel
+extension EquatableCellModel {
+    func asEquatable() -> AnyEquatableCellModel {
+        return AnyEquatableCellModel(self)
+    }
+}
+
+extension EquatableCellModel where Self: Equatable {
+    public func isEqualTo(_ other: CellModel) -> Bool {
+        guard let otherCellModel = other as? Self else { return false }
+        return self == otherCellModel
+    }
+}
+
+struct AnyEquatableCellModel {
+    let cellModel: EquatableCellModel
 
     init(_ cellModel: EquatableCellModel) {
         self.cellModel = cellModel
@@ -62,7 +61,13 @@ public struct AnyEquatableCellModel {
 }
 
 extension AnyEquatableCellModel: Equatable {
-    public static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
+    static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
         return lhs.cellModel.isEqualTo(rhs.cellModel)
     }
+}
+
+// MARK: - Headers and footers
+
+public protocol SupplementaryViewModel: CellModel {
+    var height: CGFloat { get }
 }
