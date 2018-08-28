@@ -132,7 +132,7 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let model = header(in: section)
+        let model = footer(in: section)
         let footerView = view(for: model, in: tableView)
         footerView.flatMap { model?.configure(cell: $0) }
         return footerView
