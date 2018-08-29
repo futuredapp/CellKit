@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol CellModelPresentationHandling: class {
-    func prepareForPresentation()
-    func tidyAfterPresentation()
+    func willDisplay()
+    func didEndDisplay()
 }

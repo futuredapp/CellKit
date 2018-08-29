@@ -176,13 +176,13 @@ extension AbstractDataSource: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
-            theCellModel.prepareForPresentation()
+            theCellModel.willDisplay()
         }
     }
 
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
-            theCellModel.tidyAfterPresentation()
+            theCellModel.didEndDisplay()
         }
     }
 }
@@ -194,13 +194,13 @@ extension AbstractDataSource: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
-            theCellModel.prepareForPresentation()
+            theCellModel.willDisplay()
         }
     }
 
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
-            theCellModel.tidyAfterPresentation()
+            theCellModel.didEndDisplay()
         }
     }
 }
