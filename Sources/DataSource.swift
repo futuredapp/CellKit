@@ -188,6 +188,10 @@ extension AbstractDataSource: UITableViewDelegate {
 }
 
 extension AbstractDataSource: UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
+    }
+
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
             theCellModel.prepareForPresentation()
@@ -198,11 +202,5 @@ extension AbstractDataSource: UICollectionViewDelegate {
         if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
             theCellModel.tidyAfterPresentation()
         }
-    }
-}
-
-extension AbstractDataSource: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
     }
 }
