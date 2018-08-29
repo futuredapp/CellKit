@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161F50722136C02A002C345A /* CellModelPresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F50712136C02A002C345A /* CellModelPresentationHandling.swift */; };
 		52D6D9871BEFF229002C0205 /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* CellKit.framework */; };
 		8933C78E1EB5B82C000D00A4 /* CellKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* CellKitTests.swift */; };
 		8933C78F1EB5B82C000D00A4 /* CellKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* CellKitTests.swift */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		161F50712136C02A002C345A /* CellModelPresentationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModelPresentationHandling.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* CellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* CellKit-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CellKit-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* CellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 				D095541820DD335900BA32F9 /* DataSource.swift */,
 				D02135C420CA742B00EE79D1 /* CellModelSelectable.swift */,
 				D02135C020CA6EDE00EE79D1 /* CellModelDataSource.swift */,
+				161F50712136C02A002C345A /* CellModelPresentationHandling.swift */,
 				D02135C220CA6FEE00EE79D1 /* CellModelSection.swift */,
 			);
 			path = Sources;
@@ -615,6 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161F50722136C02A002C345A /* CellModelPresentationHandling.swift in Sources */,
 				E7AE9F5920EA6E0700830345 /* ReusableView.swift in Sources */,
 				D02135BC20CA6EA600EE79D1 /* CellConvertible.swift in Sources */,
 				D082B7D320CACA8300B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
