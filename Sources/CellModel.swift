@@ -12,6 +12,7 @@ import class UIKit.UINib
 
 public protocol CellModel: ReusableView {
     var cellHeight: CGFloat { get }
+    var cellWidth: CGFloat? { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
 
@@ -37,6 +38,10 @@ extension EquatableCellModel where Self: Equatable {
 public extension CellModel {
     var cellHeight: CGFloat {
         return 44
+    }
+
+    var cellWidth: CGFloat {
+        return nil
     }
 
     var highlighting: Bool {
