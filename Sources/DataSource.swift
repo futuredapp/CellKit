@@ -181,7 +181,7 @@ extension AbstractDataSource: UICollectionViewDelegate {
     }
 }
 
-extension AbstractDataSource: UICollectionViewFlowLayoutInvalidationContext {
+extension AbstractDataSource: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let model = cellModel(at: indexPath)
         return CGSize(width: model.cellWidth ?? model.cellHeight, height: model.cellHeight)

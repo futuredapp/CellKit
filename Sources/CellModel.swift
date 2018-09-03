@@ -40,7 +40,7 @@ public extension CellModel {
         return 44
     }
 
-    var cellWidth: CGFloat {
+    var cellWidth: CGFloat? {
         return nil
     }
 
