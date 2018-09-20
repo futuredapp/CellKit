@@ -20,7 +20,7 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         }
     }
 
-    let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, AnyEquatableCellModel>
+    let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, EquatableCellModelWrapper>
 
     public init(_ tableView: UITableView, sections: [EquatableCellModelSection]) {
         self.diffCalculator = TableViewDiffCalculator(tableView: tableView)

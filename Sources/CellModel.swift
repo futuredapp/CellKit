@@ -43,8 +43,8 @@ public protocol EquatableCellModel: CellModel {
 }
 
 extension EquatableCellModel {
-    func asEquatable() -> AnyEquatableCellModel {
-        return AnyEquatableCellModel(self)
+    func asEquatable() -> EquatableCellModelWrapper {
+        return EquatableCellModelWrapper(self)
     }
 }
 
@@ -55,7 +55,7 @@ extension EquatableCellModel where Self: Equatable {
     }
 }
 
-struct AnyEquatableCellModel {
+struct EquatableCellModelWrapper {
     let cellModel: EquatableCellModel
 
     init(_ cellModel: EquatableCellModel) {
@@ -63,8 +63,8 @@ struct AnyEquatableCellModel {
     }
 }
 
-extension AnyEquatableCellModel: Equatable {
-    static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
+extension EquatableCellModelWrapper: Equatable {
+    static func ==(lhs: EquatableCellModelWrapper, rhs: EquatableCellModelWrapper) -> Bool {
         return lhs.cellModel.isEqual(to: rhs.cellModel)
     }
 }
