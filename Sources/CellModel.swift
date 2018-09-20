@@ -39,7 +39,7 @@ public protocol SupplementaryViewModel: ReusableView {
 }
 
 public protocol EquatableCellModel: CellModel {
-    func isEqualTo(_ other: CellModel) -> Bool
+    func isEqual(to other: CellModel) -> Bool
 }
 
 extension EquatableCellModel {
@@ -49,7 +49,7 @@ extension EquatableCellModel {
 }
 
 extension EquatableCellModel where Self: Equatable {
-    public func isEqualTo(_ other: CellModel) -> Bool {
+    public func isEqual(to other: CellModel) -> Bool {
         guard let otherCellModel = other as? Self else { return false }
         return self == otherCellModel
     }
@@ -65,6 +65,6 @@ struct AnyEquatableCellModel {
 
 extension AnyEquatableCellModel: Equatable {
     static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
-        return lhs.cellModel.isEqualTo(rhs.cellModel)
+        return lhs.cellModel.isEqual(to: rhs.cellModel)
     }
 }
