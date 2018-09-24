@@ -70,7 +70,6 @@ open class AbstractDataSource: NSObject {
         } else {
             collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         }
-        collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         registeredCellReuseIdentifiers.insert(cellModel.reuseIdentifier)
     }
 
