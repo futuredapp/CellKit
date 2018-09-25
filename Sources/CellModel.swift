@@ -18,22 +18,6 @@ public protocol CellModel: ReusableView {
     func configure(cell: AnyObject)
 }
 
-public protocol EquatableCellModel: CellModel {
-    func asEquatable() -> AnyEquatableCellModel
-    func isEqualTo(_ other: CellModel) -> Bool
-}
-
-extension EquatableCellModel where Self: Equatable {
-    public func asEquatable() -> AnyEquatableCellModel {
-        return AnyEquatableCellModel(self)
-    }
-
-    public func isEqualTo(_ other: CellModel) -> Bool {
-        guard let otherCellModel = other as? Self else { return false }
-        return self == otherCellModel
-    }
-}
-
 public extension CellModel {
     var cellHeight: CGFloat {
         return 44
@@ -54,60 +38,33 @@ public protocol SupplementaryViewModel: ReusableView {
     func configure(cell: AnyObject)
 }
 
-public struct AnyEquatableCellModel: EquatableCellModel {
-    public var cellModel: EquatableCellModel
+public protocol EquatableCellModel: CellModel {
+    func isEqual(to other: CellModel) -> Bool
+}
 
-    // MARK: - Reusable view properties
-
-    public var registersLazily: Bool {
-        return cellModel.registersLazily
+extension EquatableCellModel {
+    func asEquatable() -> EquatableCellModelWrapper {
+        return EquatableCellModelWrapper(self)
     }
+}
 
-    public var usesNib: Bool {
-        return cellModel.usesNib
+extension EquatableCellModel where Self: Equatable {
+    public func isEqual(to other: CellModel) -> Bool {
+        guard let otherCellModel = other as? Self else { return false }
+        return self == otherCellModel
     }
+}
 
-    public var bundle: Bundle {
-        return cellModel.bundle
-    }
-
-    public var nib: UINib? {
-        return cellModel.nib
-    }
-
-    public var cellClass: AnyClass {
-        return cellModel.cellClass
-    }
-
-    public var reuseIdentifier: String {
-        return cellModel.reuseIdentifier
-    }
-
-    // MARK: - Cell model properties
-
-    public var cellHeight: CGFloat {
-        return cellModel.cellHeight
-    }
-
-    public var highlighting: Bool {
-        return cellModel.highlighting
-    }
-
-    public var separatorIsHidden: Bool {
-        return cellModel.separatorIsHidden
-    }
+struct EquatableCellModelWrapper {
+    let cellModel: EquatableCellModel
 
     init(_ cellModel: EquatableCellModel) {
         self.cellModel = cellModel
     }
-
-    public func configure(cell: AnyObject) {
-        cellModel.configure(cell: cell)
-    }
 }
 
-extension AnyEquatableCellModel: Equatable {
-    public static func ==(lhs: AnyEquatableCellModel, rhs: AnyEquatableCellModel) -> Bool {
-        return lhs.cellModel.isEqualTo(rhs.cellModel)
+extension EquatableCellModelWrapper: Equatable {
+    static func ==(lhs: EquatableCellModelWrapper, rhs: EquatableCellModelWrapper) -> Bool {
+        return lhs.cellModel.isEqual(to: rhs.cellModel)
     }
 }

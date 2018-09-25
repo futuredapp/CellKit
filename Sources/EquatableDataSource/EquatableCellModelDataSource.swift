@@ -20,7 +20,7 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         }
     }
 
-    let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, AnyEquatableCellModel>
+    let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, EquatableCellModelWrapper>
 
     public init(_ tableView: UITableView, sections: [EquatableCellModelSection]) {
         self.diffCalculator = TableViewDiffCalculator(tableView: tableView)
@@ -57,6 +57,6 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
     }
 
     override func cellModel(at indexPath: IndexPath) -> CellModel {
-        return self.diffCalculator.value(atIndexPath: indexPath)
+        return self.diffCalculator.value(atIndexPath: indexPath).cellModel
     }
 }
