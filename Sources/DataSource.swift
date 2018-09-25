@@ -172,10 +172,34 @@ extension AbstractDataSource: UITableViewDelegate {
 
         delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
     }
+
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
+            theCellModel.willDisplay()
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
+            theCellModel.didEndDisplay()
+        }
+    }
 }
 
 extension AbstractDataSource: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
+            theCellModel.willDisplay()
+        }
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let theCellModel = cellModel(at: indexPath) as? CellModelPresentationHandling {
+            theCellModel.didEndDisplay()
+        }
     }
 }
