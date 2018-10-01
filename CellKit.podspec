@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.subspec 'Equatable' do |equatable|
     equatable.dependency 'CellKit/Core'    
     equatable.source_files = 'Sources/EquatableDataSource/*'
-    equatable.dependency 'Dwifft', '~> 0.8'
+    equatable.dependency 'Dwifft', '~> 0.9'
   end
 
   s.default_subspec = 'Core'  
