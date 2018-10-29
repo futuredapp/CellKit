@@ -6,18 +6,13 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-public typealias ReusableCellConvertible = CellConvertible & ReusableView
-
-public protocol CellConvertible {
+public protocol CellConvertible: ReusableView {
     associatedtype Cell: CellConfigurable
 }
 
 public extension CellConvertible {
     var cellClass: AnyClass {
         return Cell.self
-    }
-    var reuseIdentifier: String {
-        return String(describing: Cell.self)
     }
 }
 
