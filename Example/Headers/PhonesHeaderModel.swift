@@ -17,7 +17,7 @@ struct PhonesHeaderModel {
 extension PhonesHeaderModel: SupplementaryViewModel, CellConvertible {
     typealias Cell = PhonesHeader
 
-    var height: CGFloat {
+    var height: Double {
         return 50
     }
 }

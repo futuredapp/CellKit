@@ -127,7 +127,8 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return header(in: section)?.height ?? CGFloat.leastNonzeroMagnitude
+        let height = header(in: section)?.height
+        return height.flatMap { CGFloat($0) }  ?? CGFloat.leastNonzeroMagnitude
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -138,7 +139,8 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return footer(in: section)?.height ?? CGFloat.leastNonzeroMagnitude
+        let height = footer(in: section)?.height
+        return height.flatMap { CGFloat($0) }  ?? CGFloat.leastNonzeroMagnitude
     }
 }
 
@@ -162,7 +164,7 @@ extension AbstractDataSource: UICollectionViewDataSource {
 
 extension AbstractDataSource: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellModel(at: indexPath).cellHeight
+        return CGFloat(cellModel(at: indexPath).cellHeight)
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
