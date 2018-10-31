@@ -6,12 +6,8 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-import struct UIKit.CGFloat
-import class Foundation.Bundle
-import class UIKit.UINib
-
 public protocol CellModel: ReusableView {
-    var cellHeight: CGFloat { get }
+    var cellHeight: Double { get }
     var highlighting: Bool { get }
     var separatorIsHidden: Bool { get }
 
@@ -19,8 +15,8 @@ public protocol CellModel: ReusableView {
 }
 
 public extension CellModel {
-    var cellHeight: CGFloat {
-        return 44
+    var cellHeight: Double {
+        return 44.0
     }
 
     var highlighting: Bool {
@@ -33,7 +29,7 @@ public extension CellModel {
 }
 
 public protocol SupplementaryViewModel: ReusableView {
-    var height: CGFloat { get }
+    var height: Double { get }
 
     func configure(cell: AnyObject)
 }
