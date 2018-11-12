@@ -9,7 +9,7 @@
 import UIKit
 import CellKit
 
-struct NibTableViewCellModel: ReusableCellConvertible, EquatableCellModel, Equatable {
+struct NibTableViewCellModel: CellConvertible, EquatableCellModel, Equatable {
     typealias Cell = NibTableViewCell
 
     let text: String
