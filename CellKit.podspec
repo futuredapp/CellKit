@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CellKit"
-  s.version      = "0.1"
+  s.version      = "0.3"
   s.summary      = "Table View and Collection View data source wrapper"
   s.description  = <<-DESC
     Your description here.
@@ -22,10 +22,10 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Equatable' do |equatable|
-    equatable.dependency 'CellKit/Core'    
+    equatable.dependency 'CellKit/Core'
     equatable.source_files = 'Sources/EquatableDataSource/*'
     equatable.dependency 'Dwifft', '~> 0.9'
   end
 
-  s.default_subspec = 'Core'  
+  s.default_subspec = 'Core'
 end
