@@ -43,11 +43,13 @@
 		D095541720DD1D7300BA32F9 /* DeviceAndroidCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541620DD1D7300BA32F9 /* DeviceAndroidCellModel.swift */; };
 		D095541920DD335900BA32F9 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541820DD335900BA32F9 /* DataSource.swift */; };
 		D095541E20DFDDE100BA32F9 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095541D20DFDDE100BA32F9 /* Dwifft.framework */; };
-		D095542020DFDDF400BA32F9 /* Dwifft_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095541F20DFDDF400BA32F9 /* Dwifft_tvOS.framework */; };
 		D095542620DFE96900BA32F9 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095542520DFE96800BA32F9 /* Dwifft.framework */; };
 		D095542720DFE96900BA32F9 /* Dwifft.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D095542520DFE96800BA32F9 /* Dwifft.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD7502881C68FEDE006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CellKit.framework */; };
 		DD7502921C690C7A006590AF /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* CellKit.framework */; };
+		E7A4E044223122B70097CB6F /* Dwifft_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D095541F20DFDDF400BA32F9 /* Dwifft_tvOS.framework */; };
+		E7A4E045223122D40097CB6F /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BF419D20D7BC5700187490 /* CellConfigurable.swift */; };
+		E7A4E046223122E10097CB6F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095541820DD335900BA32F9 /* DataSource.swift */; };
 		E7AE9F5920EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
 		E7AE9F5A20EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
 		E7AE9F5B20EA6E0700830345 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AE9F5820EA6E0700830345 /* ReusableView.swift */; };
@@ -162,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D095542020DFDDF400BA32F9 /* Dwifft_tvOS.framework in Frameworks */,
+				E7A4E044223122B70097CB6F /* Dwifft_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +644,8 @@
 			files = (
 				D02135C820CA742B00EE79D1 /* CellModelSelectable.swift in Sources */,
 				D082B7D020CACA8100B5E7C8 /* EquatableCellModelDataSource.swift in Sources */,
+				E7A4E045223122D40097CB6F /* CellConfigurable.swift in Sources */,
+				E7A4E046223122E10097CB6F /* DataSource.swift in Sources */,
 				D082B7E920D3A73C00B5E7C8 /* CellModelSection.swift in Sources */,
 				E7AE9F5B20EA6E0700830345 /* ReusableView.swift in Sources */,
 				D02135BD20CA6EAA00EE79D1 /* CellConvertible.swift in Sources */,
@@ -857,7 +861,7 @@
 		52D6D9911BEFF229002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
@@ -884,7 +888,7 @@
 		52D6D9921BEFF229002C0205 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
@@ -936,7 +940,7 @@
 		52D6DA021BEFFFBE002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -962,7 +966,7 @@
 		52D6DA031BEFFFBE002C0205 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
