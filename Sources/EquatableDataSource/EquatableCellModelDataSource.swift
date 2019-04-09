@@ -7,7 +7,7 @@
 //
 
 import UIKit
-#if os(tvOS)
+#if CARTHAGE && os(tvOS)
 import Dwifft_tvOS
 #else
 import Dwifft

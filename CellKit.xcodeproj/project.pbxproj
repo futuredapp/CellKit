@@ -687,6 +687,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_SWIFT_FLAGS = "-D CARTHAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thefuntasty.CellKit.CellKit-iOS";
 				PRODUCT_NAME = CellKit;
 				SKIP_INSTALL = YES;
@@ -713,6 +714,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D CARTHAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thefuntasty.CellKit.CellKit-iOS";
 				PRODUCT_NAME = CellKit;
 				SKIP_INSTALL = YES;
@@ -737,6 +739,7 @@
 				INFOPLIST_FILE = Configs/CellKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D CARTHAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thefuntasty.CellKit.CellKit-tvOS";
 				PRODUCT_NAME = CellKit;
 				SDKROOT = appletvos;
@@ -763,6 +766,7 @@
 				INFOPLIST_FILE = Configs/CellKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D CARTHAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thefuntasty.CellKit.CellKit-tvOS";
 				PRODUCT_NAME = CellKit;
 				SDKROOT = appletvos;
