@@ -5,7 +5,8 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
     Generic abstraction over table/collection data source
     with automatic cell registration and
-    cell models and automatic animation using diffs.
+    with automatic cell registration of
+    cell models and automatic animations using diffs.
   DESC
   s.homepage     = "https://github.com/thefuntasty/CellKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
