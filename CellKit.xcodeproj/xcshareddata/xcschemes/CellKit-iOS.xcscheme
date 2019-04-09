@@ -33,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52D6D9851BEFF229002C0205"
-               BuildableName = "CellKit-iOS Tests.xctest"
-               BlueprintName = "CellKit-iOS Tests"
+               BlueprintIdentifier = "E7B8C000225CB883003B042C"
+               BuildableName = "CellKitTests.xctest"
+               BlueprintName = "CellKitTests"
                ReferencedContainer = "container:CellKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
