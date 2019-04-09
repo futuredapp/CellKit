@@ -6,7 +6,7 @@
 //  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
 //
 
-import UIKit
+import struct Foundation.IndexPath
 
 public protocol CellModelDataSourceDelegate: class {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath)

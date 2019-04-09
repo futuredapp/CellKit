@@ -1,18 +1,20 @@
 Pod::Spec.new do |s|
   s.name         = "CellKit"
-  s.version      = "0.1"
+  s.version      = "0.3"
   s.summary      = "Table View and Collection View data source wrapper"
   s.description  = <<-DESC
-    Your description here.
+    Generic abstraction over table/collection data source
+    with automatic cell registration and
+    with automatic cell registration of
+    cell models and automatic animations using diffs.
   DESC
   s.homepage     = "https://github.com/thefuntasty/CellKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Petr Zvoníček" => "petr.zvonicek@thefuntasty.com" }
-  s.social_media_url   = ""
+  s.social_media_url   = "https://twitter.com/TheFuntasty"
   s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.9"
-  s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
+  s.swift_version = "5.0"
   s.source       = { :git => "https://github.com/thefuntasty/CellKit.git", :tag => s.version.to_s }  
   s.frameworks  = "Foundation"
 
@@ -21,10 +23,10 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Equatable' do |equatable|
-    equatable.dependency 'CellKit/Core'    
+    equatable.dependency 'CellKit/Core'
     equatable.source_files = 'Sources/EquatableDataSource/*'
     equatable.dependency 'Dwifft', '~> 0.9'
   end
 
-  s.default_subspec = 'Core'  
+  s.default_subspec = 'Core'
 end

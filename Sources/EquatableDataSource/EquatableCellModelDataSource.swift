@@ -7,7 +7,11 @@
 //
 
 import UIKit
+#if CARTHAGE && os(tvOS)
+import Dwifft_tvOS
+#else
 import Dwifft
+#endif
 
 open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
 
