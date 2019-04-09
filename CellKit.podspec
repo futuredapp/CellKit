@@ -10,8 +10,6 @@ Pod::Spec.new do |s|
   s.author             = { "Petr Zvoníček" => "petr.zvonicek@thefuntasty.com" }
   s.social_media_url   = ""
   s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.9"
-  s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
   s.swift_version = "5.0"
   s.source       = { :git => "https://github.com/thefuntasty/CellKit.git", :tag => s.version.to_s }  
