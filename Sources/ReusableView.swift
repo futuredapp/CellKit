@@ -8,7 +8,6 @@
 
 import class Foundation.Bundle
 import class UIKit.UINib
-import class UIKit.UIView
 
 public protocol ReusableView {
     var registersLazily: Bool { get }
@@ -35,18 +34,8 @@ public extension ReusableView {
 
     var nib: UINib? {
         if usesNib {
-            return UINib(nibName: reuseIdentifier, bundle: bundle)
+            return UINib(nibName: String(describing: cellClass), bundle: bundle)
         }
         return nil
-    }
-    
-    var reuseIdentifier: String {
-        return String(describing: cellClass)
-    }
-}
-
-public extension ReusableView where Self: UIView {
-    var cellClass: AnyClass {
-        return type(of: self)
     }
 }
