@@ -217,7 +217,7 @@ extension AbstractDataSource: UITableViewDelegate {
     }
 }
 
-extension AbstractDataSource: UICollectionViewDelegate {
+extension AbstractDataSource: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
     }
