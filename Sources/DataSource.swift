@@ -25,7 +25,7 @@ open class AbstractDataSource: NSObject {
 
     public var registersCellsLazily: Bool = true
     private var registeredCellReuseIdentifiers: Set<String> = []
-    private var registeredHeaderFooterReuseIdentifiers: Set<String> = []
+    private var registeredSupplementaryViewIdentifiers: Set<String> = []
 
     func numberOfSections() -> Int {
         fatalError("Needs to be overriden")
@@ -74,7 +74,7 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, headerFooter.registersLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+        guard registersCellsLazily, headerFooter.registersLazily, !registeredSupplementaryViewIdentifiers.contains(headerFooter.reuseIdentifier) else {
             return
         }
 
@@ -83,7 +83,7 @@ open class AbstractDataSource: NSObject {
         } else {
             tableView.register(headerFooter.cellClass, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         }
-        registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
+        registeredSupplementaryViewIdentifiers.insert(headerFooter.reuseIdentifier)
     }
 
     private func view(for headerFooter: SupplementaryViewModel?, in tableView: UITableView) -> UIView? {
