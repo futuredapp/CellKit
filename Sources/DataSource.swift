@@ -197,7 +197,9 @@ extension AbstractDataSource: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let viewModel = supplementaryViewModel(indexPath: indexPath, kind: kind)
-        let reusableView = view(for: viewModel, kind: kind, at: indexPath, in: collectionView) ?? UICollectionReusableView()
+        guard let reusableView = view(for: viewModel, kind: kind, at: indexPath, in: collectionView) ?? view(for: CollectionReusableViewModel(), kind: kind, at: indexPath, in: collectionView) else {
+            fatalError("No supplementary view can be reused")
+        }
         viewModel?.configure(cell: reusableView)
         return reusableView
     }
