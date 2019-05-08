@@ -86,6 +86,32 @@ open class AbstractDataSource: NSObject {
         registeredSupplementaryViewIdentifiers.insert(headerFooter.reuseIdentifier)
     }
 
+    private func registerLazily(supplementaryView: SupplementaryViewModel, kind: String, to collectionView: UICollectionView) {
+        guard registersCellsLazily, supplementaryView.registersLazily, !registeredSupplementaryViewIdentifiers.contains(supplementaryView.reuseIdentifier) else {
+            return
+        }
+
+        let joinedReuseIdentifier = kind + supplementaryView.reuseIdentifier
+
+        if supplementaryView.usesNib, let nib = supplementaryView.nib {
+            collectionView.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: joinedReuseIdentifier)
+        } else {
+            collectionView.register(supplementaryView.cellClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: joinedReuseIdentifier)
+        }
+        registeredSupplementaryViewIdentifiers.insert(joinedReuseIdentifier)
+    }
+
+    private func supplementaryViewModel(indexPath: IndexPath, kind: String) -> SupplementaryViewModel? {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            return header(in: indexPath.section)
+        case UICollectionView.elementKindSectionFooter:
+            return footer(in: indexPath.section)
+        default:
+            return nil
+        }
+    }
+
     private func view(for headerFooter: SupplementaryViewModel?, in tableView: UITableView) -> UIView? {
         guard let headerFooter = headerFooter else {
             return nil
@@ -95,6 +121,14 @@ open class AbstractDataSource: NSObject {
             return nil
         }
         return header
+    }
+
+    private func view(for supplementaryViewModel: SupplementaryViewModel?, kind: String, at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionReusableView? {
+        guard let supplementaryViewModel = supplementaryViewModel else {
+            return nil
+        }
+        registerLazily(supplementaryView: supplementaryViewModel, kind: kind, to: collectionView)
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind + supplementaryViewModel.reuseIdentifier, for: indexPath)
     }
 }
 
@@ -159,6 +193,13 @@ extension AbstractDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
         item.configure(cell: cell)
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let viewModel = supplementaryViewModel(indexPath: indexPath, kind: kind)
+        let reusableView = view(for: viewModel, kind: kind, at: indexPath, in: collectionView) ?? UICollectionReusableView()
+        viewModel?.configure(cell: reusableView)
+        return reusableView
     }
 }
 
