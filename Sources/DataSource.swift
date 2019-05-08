@@ -52,7 +52,7 @@ open class AbstractDataSource: NSObject {
             return
         }
 
-        if let nib = cellModel.nib {
+        if cellModel.usesNib, let nib = cellModel.nib {
             tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
         } else {
             tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
@@ -65,7 +65,7 @@ open class AbstractDataSource: NSObject {
             return
         }
 
-        if let nib = cellModel.nib {
+        if cellModel.usesNib, let nib = cellModel.nib {
             collectionView.register(nib, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         } else {
             collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
@@ -78,7 +78,7 @@ open class AbstractDataSource: NSObject {
             return
         }
 
-        if let nib = headerFooter.nib {
+        if headerFooter.usesNib, let nib = headerFooter.nib {
             tableView.register(nib, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         } else {
             tableView.register(headerFooter.cellClass, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
