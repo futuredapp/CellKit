@@ -18,6 +18,7 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public override init() {
         self.sections = []
+        super.init()
     }
 
     public init(_ sections: [CellModelSection]) {
