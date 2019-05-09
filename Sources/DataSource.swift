@@ -19,8 +19,6 @@ public protocol DataSource {
 
 open class AbstractDataSource: NSObject {
 
-    internal override init() { }
-
     public weak var delegate: CellModelDataSourceDelegate?
 
     public var registersCellsLazily: Bool = true
