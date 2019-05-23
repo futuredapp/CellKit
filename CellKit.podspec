@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   DESC
   s.homepage               = "https://github.com/thefuntasty/CellKit"
   s.license                = { type: "MIT", file: "LICENSE" }
-  s.author                 = { "Petr Zvoníček": "petr.zvonicek@thefuntasty.com" }
+  s.author                 = { "Matěj K. Jirásek": "matej.jirasek@thefuntasty.com", "Petr Zvoníček": "zvonicek@gmail.com" }
   s.social_media_url       = "https://twitter.com/TheFuntasty"
   s.ios.deployment_target  = "8.0"
   s.tvos.deployment_target = "9.0"
