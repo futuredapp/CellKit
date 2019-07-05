@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "CellKit"
-  s.version     = "0.3"
+  s.version     = "0.4"
   s.summary     = "Table View and Collection View data source wrapper"
   s.description = <<-DESC
     Generic abstraction over table/collection data source
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   DESC
   s.homepage               = "https://github.com/thefuntasty/CellKit"
   s.license                = { type: "MIT", file: "LICENSE" }
-  s.author                 = { "Petr Zvoníček": "petr.zvonicek@thefuntasty.com" }
+  s.author                 = { "Matěj K. Jirásek": "matej.jirasek@thefuntasty.com", "Petr Zvoníček": "zvonicek@gmail.com" }
   s.social_media_url       = "https://twitter.com/TheFuntasty"
   s.ios.deployment_target  = "8.0"
   s.tvos.deployment_target = "9.0"

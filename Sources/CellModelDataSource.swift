@@ -16,6 +16,11 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
+    public override init() {
+        self.sections = []
+        super.init()
+    }
+
     public init(_ sections: [CellModelSection]) {
         self.sections = sections
     }

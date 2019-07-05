@@ -19,13 +19,15 @@ public protocol DataSource {
 
 open class AbstractDataSource: NSObject {
 
-    internal override init() { }
+    internal override init() {
+        super.init()
+    }
 
     public weak var delegate: CellModelDataSourceDelegate?
 
     public var registersCellsLazily: Bool = true
     private var registeredCellReuseIdentifiers: Set<String> = []
-    private var registeredHeaderFooterReuseIdentifiers: Set<String> = []
+    private var registeredSupplementaryViewIdentifiers: Set<String> = []
 
     func numberOfSections() -> Int {
         fatalError("Needs to be overriden")
@@ -52,7 +54,7 @@ open class AbstractDataSource: NSObject {
             return
         }
 
-        if let nib = cellModel.nib {
+        if cellModel.usesNib, let nib = cellModel.nib {
             tableView.register(nib, forCellReuseIdentifier: cellModel.reuseIdentifier)
         } else {
             tableView.register(cellModel.cellClass, forCellReuseIdentifier: cellModel.reuseIdentifier)
@@ -65,7 +67,7 @@ open class AbstractDataSource: NSObject {
             return
         }
 
-        if let nib = cellModel.nib {
+        if cellModel.usesNib, let nib = cellModel.nib {
             collectionView.register(nib, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
         } else {
             collectionView.register(cellModel.cellClass, forCellWithReuseIdentifier: cellModel.reuseIdentifier)
@@ -74,16 +76,42 @@ open class AbstractDataSource: NSObject {
     }
 
     private func registerLazily(headerFooter: SupplementaryViewModel, to tableView: UITableView) {
-        guard registersCellsLazily, headerFooter.registersLazily, !registeredHeaderFooterReuseIdentifiers.contains(headerFooter.reuseIdentifier) else {
+        guard registersCellsLazily, headerFooter.registersLazily, !registeredSupplementaryViewIdentifiers.contains(headerFooter.reuseIdentifier) else {
             return
         }
 
-        if let nib = headerFooter.nib {
+        if headerFooter.usesNib, let nib = headerFooter.nib {
             tableView.register(nib, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         } else {
             tableView.register(headerFooter.cellClass, forHeaderFooterViewReuseIdentifier: headerFooter.reuseIdentifier)
         }
-        registeredHeaderFooterReuseIdentifiers.insert(headerFooter.reuseIdentifier)
+        registeredSupplementaryViewIdentifiers.insert(headerFooter.reuseIdentifier)
+    }
+
+    private func registerLazily(supplementaryView: SupplementaryViewModel, kind: String, to collectionView: UICollectionView) {
+        guard registersCellsLazily, supplementaryView.registersLazily, !registeredSupplementaryViewIdentifiers.contains(supplementaryView.reuseIdentifier) else {
+            return
+        }
+
+        let joinedReuseIdentifier = kind + supplementaryView.reuseIdentifier
+
+        if supplementaryView.usesNib, let nib = supplementaryView.nib {
+            collectionView.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: joinedReuseIdentifier)
+        } else {
+            collectionView.register(supplementaryView.cellClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: joinedReuseIdentifier)
+        }
+        registeredSupplementaryViewIdentifiers.insert(joinedReuseIdentifier)
+    }
+
+    private func supplementaryViewModel(indexPath: IndexPath, kind: String) -> SupplementaryViewModel? {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            return header(in: indexPath.section)
+        case UICollectionView.elementKindSectionFooter:
+            return footer(in: indexPath.section)
+        default:
+            return nil
+        }
     }
 
     private func view(for headerFooter: SupplementaryViewModel?, in tableView: UITableView) -> UIView? {
@@ -95,6 +123,14 @@ open class AbstractDataSource: NSObject {
             return nil
         }
         return header
+    }
+
+    private func view(for supplementaryViewModel: SupplementaryViewModel?, kind: String, at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionReusableView? {
+        guard let supplementaryViewModel = supplementaryViewModel else {
+            return nil
+        }
+        registerLazily(supplementaryView: supplementaryViewModel, kind: kind, to: collectionView)
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kind + supplementaryViewModel.reuseIdentifier, for: indexPath)
     }
 }
 
@@ -160,6 +196,15 @@ extension AbstractDataSource: UICollectionViewDataSource {
         item.configure(cell: cell)
         return cell
     }
+
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let viewModel = supplementaryViewModel(indexPath: indexPath, kind: kind)
+        guard let reusableView = view(for: viewModel, kind: kind, at: indexPath, in: collectionView) ?? view(for: CollectionReusableViewModel(), kind: kind, at: indexPath, in: collectionView) else {
+            fatalError("No supplementary view can be reused")
+        }
+        viewModel?.configure(cell: reusableView)
+        return reusableView
+    }
 }
 
 extension AbstractDataSource: UITableViewDelegate {
@@ -176,7 +221,7 @@ extension AbstractDataSource: UITableViewDelegate {
     }
 }
 
-extension AbstractDataSource: UICollectionViewDelegate {
+extension AbstractDataSource: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectCellModel(cellModel(at: indexPath), at: indexPath)
     }
