@@ -9,11 +9,19 @@ let package = Package(
         .library(
             name: "CellKit",
             targets: ["CellKit"]),
-
+        .library(
+            name: "DiffableCellKit",
+            targets: ["DiffableCellKit"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/DenTelezhkin/Dwifft", .branch("swift-pm"))
     ],
     targets: [
         .target(
             name: "CellKit",
-            dependencies: [])
+            dependencies: []),
+        .target(
+            name: "DiffableCellKit",
+            dependencies: ["CellKit", "Dwifft"])
     ]
 )
