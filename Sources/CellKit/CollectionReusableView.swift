@@ -24,4 +24,3 @@ public struct CollectionReusableViewModel: SupplementaryViewModel, CellConvertib
         return false
     }
 }
-

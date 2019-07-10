@@ -21,7 +21,9 @@ extension EquatableCellModel {
 
 extension EquatableCellModel where Self: Equatable {
     public func isEqual(to other: CellModel) -> Bool {
-        guard let otherCellModel = other as? Self else { return false }
+        guard let otherCellModel = other as? Self else {
+            return false
+        }
         return self == otherCellModel
     }
 }
@@ -35,7 +37,7 @@ struct EquatableCellModelWrapper {
 }
 
 extension EquatableCellModelWrapper: Equatable {
-    static func ==(lhs: EquatableCellModelWrapper, rhs: EquatableCellModelWrapper) -> Bool {
+    static func == (lhs: EquatableCellModelWrapper, rhs: EquatableCellModelWrapper) -> Bool {
         return lhs.cellModel.isEqual(to: rhs.cellModel)
     }
 }
