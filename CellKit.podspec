@@ -18,13 +18,13 @@ Pod::Spec.new do |s|
   s.frameworks             = ["Foundation", "UIKit"]
   s.default_subspec        = "Core"
 
-  s.subspec "Core" do |core|
-    core.source_files  = "Sources/*"
+  s.subspec "Core" do |ss|
+    ss.source_files  = "Sources/CellKit/*"
   end
 
-  s.subspec "Equatable" do |equatable|
-    equatable.dependency "CellKit/Core"
-    equatable.source_files = "Sources/EquatableDataSource/*"
-    equatable.dependency "Dwifft", "~> 0.9"
+  s.subspec "Diffable" do |ss|
+    ss.dependency "CellKit/Core"
+    ss.source_files = "Sources/DiffableCellKit/*"
+    ss.dependency "Dwifft", "~> 0.9"
   end
 end

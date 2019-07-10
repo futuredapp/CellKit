@@ -5,7 +5,9 @@
 //  Created by Matěj Kašpar Jirásek on 10/07/2019.
 //
 
+#if SWIFT_PACKAGE
 import CellKit
+#endif
 
 public protocol EquatableCellModel: CellModel {
     func isEqual(to other: CellModel) -> Bool

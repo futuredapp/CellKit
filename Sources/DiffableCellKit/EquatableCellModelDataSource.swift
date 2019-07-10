@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import CellKit
 import Dwifft
+#if SWIFT_PACKAGE
+import CellKit
+#endif
 
 public typealias EquatableCellModelSection = GenericCellModelSection<EquatableCellModel>
 
