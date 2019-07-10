@@ -8,6 +8,7 @@
 
 import UIKit
 import CellKit
+import DiffableCellKit
 
 struct DeviceAndroidCellModel: CellConvertible, EquatableCellModel, Equatable {
     typealias Cell = DeviceAndroidCell

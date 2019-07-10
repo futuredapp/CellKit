@@ -8,6 +8,7 @@
 
 import UIKit
 import CellKit
+import DiffableCellKit
 
 struct NibTableViewCellModel: ReusableCellConvertible, EquatableCellModel, Equatable {
     typealias Cell = NibTableViewCell
