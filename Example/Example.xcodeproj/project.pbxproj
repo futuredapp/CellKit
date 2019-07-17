@@ -21,55 +21,7 @@
 		E7BB268022D4B63800A7713E /* PhonesHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */; };
 		E7BB268122D4B63800A7713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267322D4B63800A7713E /* AppDelegate.swift */; };
 		E7BB268422D4B65600A7713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BB268322D4B65600A7713E /* Assets.xcassets */; };
-		E7BB26B922D5D4FA00A7713E /* CellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BB26AE22D5D4E300A7713E /* CellKit.framework */; };
-		E7BB26BA22D5D4FA00A7713E /* DiffableCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BB26B022D5D4E300A7713E /* DiffableCellKit.framework */; };
-		E7BB26BB22D5D4FA00A7713E /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BB26B222D5D4E300A7713E /* Dwifft.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E7BB26AD22D5D4E300A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "CellKit::CellKit::Product";
-			remoteInfo = CellKit;
-		};
-		E7BB26AF22D5D4E300A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "CellKit::DiffableCellKit::Product";
-			remoteInfo = DiffableCellKit;
-		};
-		E7BB26B122D5D4E300A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Dwifft::Dwifft::Product";
-			remoteInfo = Dwifft;
-		};
-		E7BB26B322D5D4F100A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "CellKit::CellKit";
-			remoteInfo = CellKit;
-		};
-		E7BB26B522D5D4F100A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "CellKit::DiffableCellKit";
-			remoteInfo = DiffableCellKit;
-		};
-		E7BB26B722D5D4F100A7713E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Dwifft::Dwifft";
-			remoteInfo = Dwifft;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D095542820DFE96900BA32F9 /* Embed Frameworks */ = {
@@ -101,7 +53,7 @@
 		E7BB267322D4B63800A7713E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7BB267422D4B63800A7713E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7BB268322D4B65600A7713E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CellKit.xcodeproj; path = ../CellKit.xcodeproj; sourceTree = "<group>"; };
+		E7BCF6B622DF11AD00E71478 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7BB26B922D5D4FA00A7713E /* CellKit.framework in Frameworks */,
-				E7BB26BA22D5D4FA00A7713E /* DiffableCellKit.framework in Frameworks */,
-				E7BB26BB22D5D4FA00A7713E /* Dwifft.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +70,6 @@
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
-				E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */,
 				E7BB266222D4B63800A7713E /* Sources */,
 				52D6D97D1BEFF229002C0205 /* Products */,
 				E7BB269B22D5D42D00A7713E /* Frameworks */,
@@ -177,18 +125,9 @@
 		E7BB269B22D5D42D00A7713E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7BCF6B622DF11AD00E71478 /* CellKit */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E7BB26A622D5D4E300A7713E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E7BB26AE22D5D4E300A7713E /* CellKit.framework */,
-				E7BB26B022D5D4E300A7713E /* DiffableCellKit.framework */,
-				E7BB26B222D5D4E300A7713E /* Dwifft.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +146,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E7BB26B422D5D4F100A7713E /* PBXTargetDependency */,
-				E7BB26B622D5D4F100A7713E /* PBXTargetDependency */,
-				E7BB26B822D5D4F100A7713E /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -244,42 +180,12 @@
 			mainGroup = 52D6D9721BEFF229002C0205;
 			productRefGroup = 52D6D97D1BEFF229002C0205 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E7BB26A622D5D4E300A7713E /* Products */;
-					ProjectRef = E7BB26A522D5D4E300A7713E /* CellKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D02135A320CA609D00EE79D1 /* Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E7BB26AE22D5D4E300A7713E /* CellKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CellKit.framework;
-			remoteRef = E7BB26AD22D5D4E300A7713E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7BB26B022D5D4E300A7713E /* DiffableCellKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DiffableCellKit.framework;
-			remoteRef = E7BB26AF22D5D4E300A7713E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7BB26B222D5D4E300A7713E /* Dwifft.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Dwifft.framework;
-			remoteRef = E7BB26B122D5D4E300A7713E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D02135A220CA609D00EE79D1 /* Resources */ = {
@@ -335,24 +241,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E7BB26B422D5D4F100A7713E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CellKit;
-			targetProxy = E7BB26B322D5D4F100A7713E /* PBXContainerItemProxy */;
-		};
-		E7BB26B622D5D4F100A7713E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DiffableCellKit;
-			targetProxy = E7BB26B522D5D4F100A7713E /* PBXContainerItemProxy */;
-		};
-		E7BB26B822D5D4F100A7713E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Dwifft;
-			targetProxy = E7BB26B722D5D4F100A7713E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */ = {
