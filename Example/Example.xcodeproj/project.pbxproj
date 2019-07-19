@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E79CE44322E1F57A00017B98 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E79CE44222E1F57A00017B98 /* CellKit */; };
+		E79CE44522E1F57A00017B98 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E79CE44422E1F57A00017B98 /* DiffableCellKit */; };
 		E7BB267522D4B63800A7713E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266322D4B63800A7713E /* ViewController.swift */; };
 		E7BB267622D4B63800A7713E /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */; };
 		E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266622D4B63800A7713E /* NibTableViewCell.xib */; };
@@ -22,9 +24,6 @@
 		E7BB268122D4B63800A7713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267322D4B63800A7713E /* AppDelegate.swift */; };
 		E7BB268422D4B65600A7713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BB268322D4B65600A7713E /* Assets.xcassets */; };
 		E7BCF6BE22DF145F00E71478 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */; };
-		E7BCF6D322DF150D00E71478 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7BCF6D222DF150D00E71478 /* CellKit */; };
-		E7BCF6D522DF150D00E71478 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7BCF6D422DF150D00E71478 /* DiffableCellKit */; };
-		E7BCF6D622DF151E00E71478 /* CellKit in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7BCF6B622DF11AD00E71478 /* CellKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E7BCF6D622DF151E00E71478 /* CellKit in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		D02135A420CA609D00EE79D1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E79CE44122E1F56600017B98 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ../..; sourceTree = "<group>"; };
 		E7BB266322D4B63800A7713E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCell.swift; sourceTree = "<group>"; };
 		E7BB266622D4B63800A7713E /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		E7BB267322D4B63800A7713E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7BB267422D4B63800A7713E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7BB268322D4B65600A7713E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E7BCF6B622DF11AD00E71478 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ..; sourceTree = "<group>"; };
 		E7BCF6BB22DF145F00E71478 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		E7BCF6BF22DF145F00E71478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7BCF6D522DF150D00E71478 /* DiffableCellKit in Frameworks */,
-				E7BCF6D322DF150D00E71478 /* CellKit in Frameworks */,
+				E79CE44522E1F57A00017B98 /* DiffableCellKit in Frameworks */,
+				E79CE44322E1F57A00017B98 /* CellKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +114,7 @@
 		E7BB266222D4B63800A7713E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E79CE44122E1F56600017B98 /* CellKit */,
 				E7BB266322D4B63800A7713E /* ViewController.swift */,
 				E7BB266422D4B63800A7713E /* Cells */,
 				E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */,
@@ -154,7 +153,6 @@
 		E7BB269B22D5D42D00A7713E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E7BCF6B622DF11AD00E71478 /* CellKit */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,13 +189,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E7BCF6CF22DF150800E71478 /* PBXTargetDependency */,
-				E7BCF6D122DF150800E71478 /* PBXTargetDependency */,
 			);
 			name = Example;
 			packageProductDependencies = (
-				E7BCF6D222DF150D00E71478 /* CellKit */,
-				E7BCF6D422DF150D00E71478 /* DiffableCellKit */,
+				E79CE44222E1F57A00017B98 /* CellKit */,
+				E79CE44422E1F57A00017B98 /* DiffableCellKit */,
 			);
 			productName = Example;
 			productReference = D02135A420CA609D00EE79D1 /* Example.app */;
@@ -315,14 +311,6 @@
 			isa = PBXTargetDependency;
 			target = D02135A320CA609D00EE79D1 /* Example */;
 			targetProxy = E7BCF6C022DF145F00E71478 /* PBXContainerItemProxy */;
-		};
-		E7BCF6CF22DF150800E71478 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = E7BCF6CE22DF150800E71478 /* CellKit */;
-		};
-		E7BCF6D122DF150800E71478 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = E7BCF6D022DF150800E71478 /* DiffableCellKit */;
 		};
 /* End PBXTargetDependency section */
 
@@ -613,19 +601,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E7BCF6CE22DF150800E71478 /* CellKit */ = {
+		E79CE44222E1F57A00017B98 /* CellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CellKit;
 		};
-		E7BCF6D022DF150800E71478 /* DiffableCellKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DiffableCellKit;
-		};
-		E7BCF6D222DF150D00E71478 /* CellKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CellKit;
-		};
-		E7BCF6D422DF150D00E71478 /* DiffableCellKit */ = {
+		E79CE44422E1F57A00017B98 /* DiffableCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiffableCellKit;
 		};
