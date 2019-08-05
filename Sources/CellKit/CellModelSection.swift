@@ -9,7 +9,6 @@
 import Foundation
 
 public typealias CellModelSection = GenericCellModelSection<CellModel>
-public typealias EquatableCellModelSection = GenericCellModelSection<EquatableCellModel>
 
 public struct GenericCellModelSection<Cell>: ExpressibleByArrayLiteral {
     public typealias ArrayLiteralElement = Cell

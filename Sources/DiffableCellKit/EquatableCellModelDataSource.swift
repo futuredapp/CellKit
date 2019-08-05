@@ -7,11 +7,12 @@
 //
 
 import UIKit
-#if CARTHAGE && os(tvOS)
-import Dwifft_tvOS
-#else
 import Dwifft
+#if SWIFT_PACKAGE
+import CellKit
 #endif
+
+public typealias EquatableCellModelSection = GenericCellModelSection<EquatableCellModel>
 
 open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
 
@@ -44,23 +45,23 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         return diffCalculator.value(forSection: index)
     }
 
-    override func numberOfSections() -> Int {
+    override open func numberOfSections() -> Int {
         return self.diffCalculator.numberOfSections()
     }
 
-    override func cellModels(in section: Int) -> [CellModel] {
+    override open func cellModels(in section: Int) -> [CellModel] {
         return self.diffCalculator.value(forSection: section).cells
     }
 
-    override func header(in section: Int) -> SupplementaryViewModel? {
+    override open func header(in section: Int) -> SupplementaryViewModel? {
         return self.diffCalculator.value(forSection: section).headerView
     }
 
-    override func footer(in section: Int) -> SupplementaryViewModel? {
+    override open func footer(in section: Int) -> SupplementaryViewModel? {
         return self.diffCalculator.value(forSection: section).footerView
     }
 
-    override func cellModel(at indexPath: IndexPath) -> CellModel {
+    override open func cellModel(at indexPath: IndexPath) -> CellModel {
         return self.diffCalculator.value(atIndexPath: indexPath).cellModel
     }
 }

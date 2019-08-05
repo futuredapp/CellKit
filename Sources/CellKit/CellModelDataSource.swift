@@ -29,23 +29,23 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
         return sections[index]
     }
 
-    override func numberOfSections() -> Int {
+    override open func numberOfSections() -> Int {
         return sections.count
     }
 
-    override func cellModels(in section: Int) -> [CellModel] {
+    override open func cellModels(in section: Int) -> [CellModel] {
         return sections[section].cells
     }
 
-    override func header(in section: Int) -> SupplementaryViewModel? {
+    override open func header(in section: Int) -> SupplementaryViewModel? {
         return sections[section].headerView
     }
 
-    override func footer(in section: Int) -> SupplementaryViewModel? {
+    override open func footer(in section: Int) -> SupplementaryViewModel? {
         return sections[section].footerView
     }
 
-    override func cellModel(at indexPath: IndexPath) -> CellModel {
+    override open func cellModel(at indexPath: IndexPath) -> CellModel {
         return sections[indexPath.section].cells[indexPath.row]
     }
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "CellKit"
-  s.version     = "0.4"
+  s.version     = "0.5.0"
   s.summary     = "Table View and Collection View data source wrapper"
   s.description = <<-DESC
     Generic abstraction over table/collection data source
@@ -13,18 +13,18 @@ Pod::Spec.new do |s|
   s.social_media_url       = "https://twitter.com/TheFuntasty"
   s.ios.deployment_target  = "8.0"
   s.tvos.deployment_target = "9.0"
-  s.swift_versions         = ["4.2", "5.0"]
+  s.swift_versions         = ["4.2", "5.0", "5.1"]
   s.source                 = { git: "https://github.com/thefuntasty/CellKit.git", tag: s.version.to_s }
   s.frameworks             = ["Foundation", "UIKit"]
   s.default_subspec        = "Core"
 
-  s.subspec "Core" do |core|
-    core.source_files  = "Sources/*"
+  s.subspec "Core" do |ss|
+    ss.source_files  = "Sources/CellKit/*"
   end
 
-  s.subspec "Equatable" do |equatable|
-    equatable.dependency "CellKit/Core"
-    equatable.source_files = "Sources/EquatableDataSource/*"
-    equatable.dependency "Dwifft", "~> 0.9"
+  s.subspec "Diffable" do |ss|
+    ss.dependency "CellKit/Core"
+    ss.source_files = "Sources/DiffableCellKit/*"
+    ss.dependency "Dwifft", "~> 0.9"
   end
 end

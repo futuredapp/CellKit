@@ -8,8 +8,9 @@
 
 import UIKit
 import CellKit
+import DiffableCellKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
 
