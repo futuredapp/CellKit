@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E79CE44322E1F57A00017B98 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E79CE44222E1F57A00017B98 /* CellKit */; };
-		E79CE44522E1F57A00017B98 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E79CE44422E1F57A00017B98 /* DiffableCellKit */; };
+		E72976192313B07A008B6E2F /* CellKit in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E72976182313B04B008B6E2F /* CellKit */; };
+		E729761B2313B089008B6E2F /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E729761A2313B089008B6E2F /* CellKit */; };
+		E729761D2313B089008B6E2F /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E729761C2313B089008B6E2F /* DiffableCellKit */; };
 		E7BB267522D4B63800A7713E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266322D4B63800A7713E /* ViewController.swift */; };
 		E7BB267622D4B63800A7713E /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */; };
 		E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266622D4B63800A7713E /* NibTableViewCell.xib */; };
@@ -43,6 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E72976192313B07A008B6E2F /* CellKit in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		D02135A420CA609D00EE79D1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E79CE44122E1F56600017B98 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ../..; sourceTree = "<group>"; };
+		E72976182313B04B008B6E2F /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ../..; sourceTree = "<group>"; };
 		E7BB266322D4B63800A7713E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCell.swift; sourceTree = "<group>"; };
 		E7BB266622D4B63800A7713E /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
@@ -77,8 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E79CE44522E1F57A00017B98 /* DiffableCellKit in Frameworks */,
-				E79CE44322E1F57A00017B98 /* CellKit in Frameworks */,
+				E729761D2313B089008B6E2F /* DiffableCellKit in Frameworks */,
+				E729761B2313B089008B6E2F /* CellKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +116,7 @@
 		E7BB266222D4B63800A7713E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E79CE44122E1F56600017B98 /* CellKit */,
+				E72976182313B04B008B6E2F /* CellKit */,
 				E7BB266322D4B63800A7713E /* ViewController.swift */,
 				E7BB266422D4B63800A7713E /* Cells */,
 				E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */,
@@ -192,8 +194,8 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				E79CE44222E1F57A00017B98 /* CellKit */,
-				E79CE44422E1F57A00017B98 /* DiffableCellKit */,
+				E729761A2313B089008B6E2F /* CellKit */,
+				E729761C2313B089008B6E2F /* DiffableCellKit */,
 			);
 			productName = Example;
 			productReference = D02135A420CA609D00EE79D1 /* Example.app */;
@@ -601,11 +603,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E79CE44222E1F57A00017B98 /* CellKit */ = {
+		E729761A2313B089008B6E2F /* CellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CellKit;
 		};
-		E79CE44422E1F57A00017B98 /* DiffableCellKit */ = {
+		E729761C2313B089008B6E2F /* DiffableCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiffableCellKit;
 		};
