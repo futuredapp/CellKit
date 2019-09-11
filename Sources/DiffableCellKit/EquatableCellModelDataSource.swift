@@ -7,61 +7,74 @@
 //
 
 import UIKit
-import Dwifft
+import DifferenceKit
 #if SWIFT_PACKAGE
 import CellKit
 #endif
 
-public typealias EquatableCellModelSection = GenericCellModelSection<EquatableCellModel>
+public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
+
+private typealias DiffSection = ArraySection<String, DifferentiableCellModelWrapper>
+private extension DifferentiableCellModelSection {
+    var arraySection: DiffSection {
+        return DiffSection(model: identifier, elements: cells.map(DifferentiableCellModelWrapper.init))
+    }
+}
+
+extension String: Differentiable { }
 
 open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
 
-    public var sections: [EquatableCellModelSection] {
+    private enum Container {
+        case table(UITableView)
+        case collection(UICollectionView)
+
+        func reload<C>( using stagedChangeset: StagedChangeset<C>, setData: (C) -> Void) {
+            switch self {
+            case .table(let table):
+                table.reload(using: stagedChangeset, with: .automatic, setData: setData)
+            case .collection(let collection):
+                collection.reload(using: stagedChangeset, setData: setData)
+            }
+        }
+    }
+
+
+    private let container: Container
+
+    private var _sections: [DifferentiableCellModelSection]
+    public var sections: [DifferentiableCellModelSection] {
         get {
-            return diffCalculator.sectionedValues.sectionsAndValues.map { $0.0 }
+            return _sections
         }
         set {
-            diffCalculator.sectionedValues = SectionedValues(newValue.map { ($0, $0.cells.map { $0.asEquatable() }) })
+            let oldSection = _sections.map { $0.arraySection }
+            let newSection = newValue.map { $0.arraySection }
+            let stagedSet = StagedChangeset(source: oldSection, target: newSection)
+            container.reload(using: stagedSet) { _ in
+                _sections = newValue
+            }
         }
     }
 
-    let diffCalculator: AbstractDiffCalculator<EquatableCellModelSection, EquatableCellModelWrapper>
 
-    public init(_ tableView: UITableView, sections: [EquatableCellModelSection]) {
-        self.diffCalculator = TableViewDiffCalculator(tableView: tableView)
+    public init(_ tableView: UITableView, sections: [DifferentiableCellModelSection]) {
+        container = .table(tableView)
+        _sections = []
         super.init()
 
         self.sections = sections
     }
 
-    public init(_ collectionView: UICollectionView, sections: [EquatableCellModelSection]) {
-        self.diffCalculator = CollectionViewDiffCalculator(collectionView: collectionView)
+    public init(_ collectionView: UICollectionView, sections: [DifferentiableCellModelSection]) {
+        container = .collection(collectionView)
+        _sections = []
         super.init()
 
         self.sections = sections
     }
 
-    public subscript(index: Int) -> EquatableCellModelSection {
-        return diffCalculator.value(forSection: index)
-    }
-
-    override open func numberOfSections() -> Int {
-        return self.diffCalculator.numberOfSections()
-    }
-
-    override open func cellModels(in section: Int) -> [CellModel] {
-        return self.diffCalculator.value(forSection: section).cells
-    }
-
-    override open func header(in section: Int) -> SupplementaryViewModel? {
-        return self.diffCalculator.value(forSection: section).headerView
-    }
-
-    override open func footer(in section: Int) -> SupplementaryViewModel? {
-        return self.diffCalculator.value(forSection: section).footerView
-    }
-
-    override open func cellModel(at indexPath: IndexPath) -> CellModel {
-        return self.diffCalculator.value(atIndexPath: indexPath).cellModel
+    public subscript(index: Int) -> DifferentiableCellModelSection {
+        return sections[index]
     }
 }
