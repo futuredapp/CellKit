@@ -77,4 +77,24 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
     public subscript(index: Int) -> DifferentiableCellModelSection {
         return sections[index]
     }
+
+    override open func numberOfSections() -> Int {
+        return sections.count
+    }
+
+    override open func cellModels(in section: Int) -> [CellModel] {
+        return sections[section].cells
+    }
+
+    override open func header(in section: Int) -> SupplementaryViewModel? {
+        return sections[section].headerView
+    }
+
+    override open func footer(in section: Int) -> SupplementaryViewModel? {
+        return sections[section].footerView
+    }
+
+    override open func cellModel(at indexPath: IndexPath) -> CellModel {
+        return sections[indexPath.section].cells[indexPath.row]
+    }
 }
