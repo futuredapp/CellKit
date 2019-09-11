@@ -10,6 +10,8 @@ import DifferenceKit
 import CellKit
 #endif
 
+public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
+
 struct SectionMetadata: ContentEquatable, Differentiable {
     func isContentEqual(to source: SectionMetadata) -> Bool {
         return identifier == identifier
@@ -29,8 +31,6 @@ struct SectionMetadata: ContentEquatable, Differentiable {
         identifier = section.identifier
     }
 }
-
-public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
 
 extension DifferentiableCellModelSection {
     var arraySection: ArraySection<SectionMetadata, DifferentiableCellModelWrapper> {
