@@ -1,5 +1,5 @@
 //
-//  CellModelManager.swift
+//  DifferentiableCellModelDataSource.swift
 //  Example
 //
 //  Created by Petr Zvoníček on 08.06.18.
@@ -12,19 +12,8 @@ import DifferenceKit
 import CellKit
 #endif
 
-public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
-
-private typealias DiffSection = ArraySection<String, DifferentiableCellModelWrapper>
-private extension DifferentiableCellModelSection {
-    var arraySection: DiffSection {
-        return DiffSection(model: identifier, elements: cells.map(DifferentiableCellModelWrapper.init))
-    }
-}
-
-extension String: Differentiable { }
-
-open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
-
+open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
+    
     private enum Container {
         case table(UITableView)
         case collection(UICollectionView)
@@ -50,9 +39,10 @@ open class EquatableCellModelDataSource: AbstractDataSource, DataSource {
         set {
             let oldSection = _sections.map { $0.arraySection }
             let newSection = newValue.map { $0.arraySection }
-            let stagedSet = StagedChangeset(source: oldSection, target: newSection)
-            container.reload(using: stagedSet) { _ in
-                _sections = newValue
+            let stagedSet = StagedChangeset.init(source: oldSection, target: newSection)
+            container.reload(using: stagedSet) { data in
+                let sections = data.map { DifferentiableCellModelSection(cells: $0.elements.map { $0.cellModel }, headerView: $0.model.headerView, footerView: $0.model.footerView, identifier: $0.model.identifier) }
+                _sections = sections
             }
         }
     }
