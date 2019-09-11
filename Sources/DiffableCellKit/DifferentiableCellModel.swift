@@ -10,12 +10,8 @@ import DifferenceKit
 import CellKit
 #endif
 
-public protocol IdentifiableWithinReusableDomain {
-    var domainIndentifier: Int { get }
-}
-
 public protocol DifferentiableCellModel: CellModel {
-    var uniqueIdentifier: String { get }
+    var domainIndentifier: Int { get }
 
     func hasEqualContent(with other: CellModel) -> Bool
 }
@@ -35,12 +31,6 @@ extension DifferentiableCellModel where Self: Equatable {
     }
 }
 
-extension DifferentiableCellModel where Self: IdentifiableWithinReusableDomain {
-    var uniqueIdentifier: String {
-        return  "\(reuseIdentifier)<.>\(domainIndentifier)"
-    }
-}
-
 struct DifferentiableCellModelWrapper {
     let cellModel: DifferentiableCellModel
 
@@ -55,6 +45,6 @@ extension DifferentiableCellModelWrapper: Equatable, Differentiable {
     }
 
     var differenceIdentifier: String {
-        return cellModel.uniqueIdentifier
+        return "\(cellModel.reuseIdentifier)<.>\(cellModel.domainIndentifier)"
     }
 }
