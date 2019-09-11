@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.subspec "Diffable" do |ss|
     ss.dependency "CellKit/Core"
     ss.source_files = "Sources/DiffableCellKit/*"
-    ss.dependency "Dwifft", "~> 0.9"
+    ss.dependency "DifferenceKit", "~> 2.0"
   end
 end
