@@ -14,7 +14,7 @@ let package = Package(
             targets: ["DiffableCellKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/jflinter/Dwifft", .from: "0.6")
+        .package(url: "https://github.com/jflinter/Dwifft", from: "0.6")
     ],
     targets: [
         .target(
