@@ -9,15 +9,15 @@ Table View and Collection View data source wrapper
 
 ## Requirements
 
-- iOS 8.0+
+- iOS 9.0+
 - Xcode 7.3
 
 ## Installation
  
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `YourLibrary` by adding it to your `Podfile`:
+You can use [CocoaPods](http://cocoapods.org/) to install `CellKit` by adding it to your `Podfile`:
 
 ```ruby
 use_frameworks!
-pod 'YourLibrary'
+pod 'CellKit'
 ```
