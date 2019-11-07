@@ -10,7 +10,18 @@ import UIKit
 import CellKit
 import DiffableCellKit
 
-struct DeviceiOSCellModel: CellConvertible, EquatableCellModel, Equatable {
+struct DeviceiOSCellModel: CellConvertible, DifferentiableCellModel {
+    var domainIndentifier: Int {
+        return name.hashValue
+    }
+
+    func hasEqualContent(with other: CellModel) -> Bool {
+        guard let other = other as? DeviceiOSCellModel else {
+            return false
+        }
+        return other.name == self.name
+    }
+
     typealias Cell = DeviceiOSCell
 
     let name: String

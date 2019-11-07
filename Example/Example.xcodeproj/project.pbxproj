@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E72976192313B07A008B6E2F /* CellKit in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E72976182313B04B008B6E2F /* CellKit */; };
-		E729761B2313B089008B6E2F /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E729761A2313B089008B6E2F /* CellKit */; };
-		E729761D2313B089008B6E2F /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = E729761C2313B089008B6E2F /* DiffableCellKit */; };
+		BEFF59F22374373900B3A342 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F12374373900B3A342 /* CellKit */; };
+		BEFF59F42374373D00B3A342 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F32374373D00B3A342 /* DiffableCellKit */; };
+		BEFF59F623743F1000B3A342 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF59F523743F1000B3A342 /* Storyboard.storyboard */; };
 		E7BB267522D4B63800A7713E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266322D4B63800A7713E /* ViewController.swift */; };
 		E7BB267622D4B63800A7713E /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */; };
 		E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266622D4B63800A7713E /* NibTableViewCell.xib */; };
@@ -17,13 +17,11 @@
 		E7BB267922D4B63800A7713E /* DeviceAndroidCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266822D4B63800A7713E /* DeviceAndroidCellModel.swift */; };
 		E7BB267A22D4B63800A7713E /* DeviceiOSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266922D4B63800A7713E /* DeviceiOSCell.swift */; };
 		E7BB267B22D4B63800A7713E /* DeviceiOSCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266A22D4B63800A7713E /* DeviceiOSCellModel.swift */; };
-		E7BB267C22D4B63800A7713E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */; };
 		E7BB267D22D4B63800A7713E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266D22D4B63800A7713E /* Main.storyboard */; };
 		E7BB267E22D4B63800A7713E /* PhonesHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB267022D4B63800A7713E /* PhonesHeader.xib */; };
 		E7BB267F22D4B63800A7713E /* PhonesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267122D4B63800A7713E /* PhonesHeader.swift */; };
 		E7BB268022D4B63800A7713E /* PhonesHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */; };
 		E7BB268122D4B63800A7713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267322D4B63800A7713E /* AppDelegate.swift */; };
-		E7BB268422D4B65600A7713E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7BB268322D4B65600A7713E /* Assets.xcassets */; };
 		E7BCF6BE22DF145F00E71478 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E72976192313B07A008B6E2F /* CellKit in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,8 +49,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BEFF59EF2374371D00B3A342 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ..; sourceTree = "<group>"; };
+		BEFF59F523743F1000B3A342 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		D02135A420CA609D00EE79D1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E72976182313B04B008B6E2F /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ../..; sourceTree = "<group>"; };
 		E7BB266322D4B63800A7713E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCell.swift; sourceTree = "<group>"; };
 		E7BB266622D4B63800A7713E /* NibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibTableViewCell.xib; sourceTree = "<group>"; };
@@ -61,14 +59,12 @@
 		E7BB266822D4B63800A7713E /* DeviceAndroidCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCellModel.swift; sourceTree = "<group>"; };
 		E7BB266922D4B63800A7713E /* DeviceiOSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceiOSCell.swift; sourceTree = "<group>"; };
 		E7BB266A22D4B63800A7713E /* DeviceiOSCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceiOSCellModel.swift; sourceTree = "<group>"; };
-		E7BB266C22D4B63800A7713E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7BB266E22D4B63800A7713E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7BB267022D4B63800A7713E /* PhonesHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhonesHeader.xib; sourceTree = "<group>"; };
 		E7BB267122D4B63800A7713E /* PhonesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeader.swift; sourceTree = "<group>"; };
 		E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeaderModel.swift; sourceTree = "<group>"; };
 		E7BB267322D4B63800A7713E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7BB267422D4B63800A7713E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7BB268322D4B65600A7713E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7BCF6BB22DF145F00E71478 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		E7BCF6BF22DF145F00E71478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,8 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E729761D2313B089008B6E2F /* DiffableCellKit in Frameworks */,
-				E729761B2313B089008B6E2F /* CellKit in Frameworks */,
+				BEFF59F42374373D00B3A342 /* DiffableCellKit in Frameworks */,
+				BEFF59F22374373900B3A342 /* CellKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +96,8 @@
 				E7BCF6C522DF146B00E71478 /* Tests */,
 				E7BB266222D4B63800A7713E /* Sources */,
 				52D6D97D1BEFF229002C0205 /* Products */,
-				E7BB269B22D5D42D00A7713E /* Frameworks */,
+				BEFF59EF2374371D00B3A342 /* CellKit */,
+				BEFF59F02374373900B3A342 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,18 +110,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BEFF59F02374373900B3A342 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E7BB266222D4B63800A7713E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E72976182313B04B008B6E2F /* CellKit */,
-				E7BB266322D4B63800A7713E /* ViewController.swift */,
-				E7BB266422D4B63800A7713E /* Cells */,
-				E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */,
-				E7BB266D22D4B63800A7713E /* Main.storyboard */,
 				E7BB266F22D4B63800A7713E /* Headers */,
+				E7BB266422D4B63800A7713E /* Cells */,
+				E7BB266322D4B63800A7713E /* ViewController.swift */,
+				E7BB266D22D4B63800A7713E /* Main.storyboard */,
 				E7BB267322D4B63800A7713E /* AppDelegate.swift */,
 				E7BB267422D4B63800A7713E /* Info.plist */,
-				E7BB268322D4B65600A7713E /* Assets.xcassets */,
+				BEFF59F523743F1000B3A342 /* Storyboard.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -150,13 +152,6 @@
 				E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		E7BB269B22D5D42D00A7713E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E7BCF6BC22DF145F00E71478 /* ExampleUITests */ = {
@@ -194,8 +189,8 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				E729761A2313B089008B6E2F /* CellKit */,
-				E729761C2313B089008B6E2F /* DiffableCellKit */,
+				BEFF59F12374373900B3A342 /* CellKit */,
+				BEFF59F32374373D00B3A342 /* DiffableCellKit */,
 			);
 			productName = Example;
 			productReference = D02135A420CA609D00EE79D1 /* Example.app */;
@@ -265,9 +260,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7BB267D22D4B63800A7713E /* Main.storyboard in Resources */,
+				BEFF59F623743F1000B3A342 /* Storyboard.storyboard in Resources */,
 				E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */,
-				E7BB267C22D4B63800A7713E /* LaunchScreen.storyboard in Resources */,
-				E7BB268422D4B65600A7713E /* Assets.xcassets in Resources */,
 				E7BB267E22D4B63800A7713E /* PhonesHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,14 +311,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E7BB266B22D4B63800A7713E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7BB266C22D4B63800A7713E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		E7BB266D22D4B63800A7713E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -452,7 +438,6 @@
 		D02135B420CA609F00EE79D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -476,14 +461,13 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D02135B520CA609F00EE79D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -508,7 +492,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -603,11 +587,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E729761A2313B089008B6E2F /* CellKit */ = {
+		BEFF59F12374373900B3A342 /* CellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CellKit;
 		};
-		E729761C2313B089008B6E2F /* DiffableCellKit */ = {
+		BEFF59F32374373D00B3A342 /* DiffableCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiffableCellKit;
 		};
