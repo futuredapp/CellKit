@@ -14,7 +14,7 @@ let package = Package(
             targets: ["DiffableCellKit"])
     ],
     dependencies: [
-    .package(url: "https://github.com/ra1028/DifferenceKit.git", from: "1.0.0")
+        .package(url: "https://github.com/ra1028/DifferenceKit.git", from: "1.0.0")
     ],
     targets: [
         .target(

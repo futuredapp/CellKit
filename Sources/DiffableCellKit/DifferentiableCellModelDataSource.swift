@@ -39,7 +39,7 @@ open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
         set {
             let oldSection = _sections.map { $0.arraySection }
             let newSection = newValue.map { $0.arraySection }
-            let stagedSet = StagedChangeset.init(source: oldSection, target: newSection)
+            let stagedSet = StagedChangeset(source: oldSection, target: newSection)
             container.reload(using: stagedSet) { data in
                 let sections = data.map { DifferentiableCellModelSection(cells: $0.elements.map { $0.cellModel }, headerView: $0.model.headerView, footerView: $0.model.footerView, identifier: $0.model.identifier) }
                 _sections = sections

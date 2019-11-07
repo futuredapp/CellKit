@@ -11,7 +11,7 @@ import CellKit
 #endif
 
 
-/// Support for determining whether cell model belongs to a cretain cell, whether cell should be inserted, removed, updated or moved.
+/// Support for determining whether cell model belongs to a certain cell, whether cell should be inserted, removed, updated or moved.
 public protocol DifferentiableCellModel: CellModel {
 
     /// Identifier of a cell model inside it's own domain determined by reusable identifier. Assuming model is already presented inside a view, changing of this value will result in it's removal and insertion into the view.
@@ -24,8 +24,8 @@ public protocol DifferentiableCellModel: CellModel {
 }
 
 extension DifferentiableCellModel {
-    func asDifferentaibleBox() -> DifferentiableCellModelWrapper {
-        return DifferentiableCellModelWrapper(self)
+    func asDifferentaibleWrapper() -> DifferentiableCellModelWrapper {
+        return DifferentiableCellModelWrapper(cellModel: self)
     }
 }
 
@@ -40,10 +40,6 @@ extension DifferentiableCellModel where Self: Equatable {
 
 struct DifferentiableCellModelWrapper {
     let cellModel: DifferentiableCellModel
-
-    init(_ cellModel: DifferentiableCellModel) {
-        self.cellModel = cellModel
-    }
 }
 
 extension DifferentiableCellModelWrapper: Equatable, Differentiable {
