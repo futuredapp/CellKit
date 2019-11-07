@@ -16,7 +16,7 @@ protocol DeletableCellModel {
 
 final class ActionSensitiveDiffDataSource: DifferentiableCellModelDataSource {
 
-    var deletionHandler: ((IndexPath, DeletableCellModel)->Void)?
+    var deletionHandler: ((IndexPath, DeletableCellModel) -> Void)?
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return (sections[indexPath.section].cells[indexPath.row] as? DeletableCellModel)?.allowDelete == true

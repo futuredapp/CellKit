@@ -13,7 +13,7 @@ import CellKit
 #endif
 
 open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
-    
+
     private enum Container {
         case table(UITableView)
         case collection(UICollectionView)
@@ -27,7 +27,6 @@ open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
             }
         }
     }
-
 
     private let container: Container
 
@@ -46,7 +45,6 @@ open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
             }
         }
     }
-
 
     public init(_ tableView: UITableView, sections: [DifferentiableCellModelSection]) {
         container = .table(tableView)

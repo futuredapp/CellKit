@@ -14,7 +14,7 @@ struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
     var domainIndentifier: Int {
         return text.hashValue
     }
-    
+
     func hasEqualContent(with other: CellModel) -> Bool {
         guard let other = other as? NibTableViewCellModel else {
             return false
@@ -22,7 +22,7 @@ struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
 
         return other.text == self.text
     }
-    
+
     typealias Cell = NibTableViewCell
 
     let text: String
