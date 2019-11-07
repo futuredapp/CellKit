@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BEFF59F22374373900B3A342 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F12374373900B3A342 /* CellKit */; };
-		BEFF59F42374373D00B3A342 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F32374373D00B3A342 /* DiffableCellKit */; };
 		BEFF59F623743F1000B3A342 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF59F523743F1000B3A342 /* Launch.storyboard */; };
 		BEFF59FB23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF59FA23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift */; };
+		BEFF5A012374530300B3A342 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF5A002374530300B3A342 /* CellKit */; };
+		BEFF5A032374530300B3A342 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF5A022374530300B3A342 /* DiffableCellKit */; };
 		E7BB267522D4B63800A7713E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266322D4B63800A7713E /* ViewController.swift */; };
 		E7BB267622D4B63800A7713E /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */; };
 		E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266622D4B63800A7713E /* NibTableViewCell.xib */; };
@@ -77,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEFF59F42374373D00B3A342 /* DiffableCellKit in Frameworks */,
-				BEFF59F22374373900B3A342 /* CellKit in Frameworks */,
+				BEFF5A032374530300B3A342 /* DiffableCellKit in Frameworks */,
+				BEFF5A012374530300B3A342 /* CellKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,10 +95,10 @@
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
+				BEFF59EF2374371D00B3A342 /* CellKit */,
 				E7BCF6C522DF146B00E71478 /* Tests */,
 				E7BB266222D4B63800A7713E /* Sources */,
 				52D6D97D1BEFF229002C0205 /* Products */,
-				BEFF59EF2374371D00B3A342 /* CellKit */,
 				BEFF59F02374373900B3A342 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -213,11 +213,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				BEFF59FD237452FD00B3A342 /* PBXTargetDependency */,
+				BEFF59FF237452FD00B3A342 /* PBXTargetDependency */,
 			);
 			name = Example;
 			packageProductDependencies = (
-				BEFF59F12374373900B3A342 /* CellKit */,
-				BEFF59F32374373D00B3A342 /* DiffableCellKit */,
+				BEFF5A002374530300B3A342 /* CellKit */,
+				BEFF5A022374530300B3A342 /* DiffableCellKit */,
 			);
 			productName = Example;
 			productReference = D02135A420CA609D00EE79D1 /* Example.app */;
@@ -258,6 +260,7 @@
 					};
 					E7BCF6BA22DF145F00E71478 = {
 						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = D02135A320CA609D00EE79D1;
 					};
 				};
@@ -331,6 +334,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BEFF59FD237452FD00B3A342 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = BEFF59FC237452FD00B3A342 /* CellKit */;
+		};
+		BEFF59FF237452FD00B3A342 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = BEFF59FE237452FD00B3A342 /* DiffableCellKit */;
+		};
 		E7BCF6C122DF145F00E71478 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D02135A320CA609D00EE79D1 /* Example */;
@@ -615,11 +626,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BEFF59F12374373900B3A342 /* CellKit */ = {
+		BEFF59FC237452FD00B3A342 /* CellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CellKit;
 		};
-		BEFF59F32374373D00B3A342 /* DiffableCellKit */ = {
+		BEFF59FE237452FD00B3A342 /* DiffableCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DiffableCellKit;
+		};
+		BEFF5A002374530300B3A342 /* CellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CellKit;
+		};
+		BEFF5A022374530300B3A342 /* DiffableCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiffableCellKit;
 		};
