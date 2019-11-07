@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		BEFF59F22374373900B3A342 /* CellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F12374373900B3A342 /* CellKit */; };
 		BEFF59F42374373D00B3A342 /* DiffableCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = BEFF59F32374373D00B3A342 /* DiffableCellKit */; };
-		BEFF59F623743F1000B3A342 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF59F523743F1000B3A342 /* Storyboard.storyboard */; };
+		BEFF59F623743F1000B3A342 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFF59F523743F1000B3A342 /* Launch.storyboard */; };
+		BEFF59FB23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF59FA23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift */; };
 		E7BB267522D4B63800A7713E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266322D4B63800A7713E /* ViewController.swift */; };
 		E7BB267622D4B63800A7713E /* DeviceAndroidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */; };
 		E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7BB266622D4B63800A7713E /* NibTableViewCell.xib */; };
@@ -50,7 +51,8 @@
 
 /* Begin PBXFileReference section */
 		BEFF59EF2374371D00B3A342 /* CellKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CellKit; path = ..; sourceTree = "<group>"; };
-		BEFF59F523743F1000B3A342 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		BEFF59F523743F1000B3A342 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		BEFF59FA23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSensitiveDiffDataSource.swift; sourceTree = "<group>"; };
 		D02135A420CA609D00EE79D1 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BB266322D4B63800A7713E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceAndroidCell.swift; sourceTree = "<group>"; };
@@ -117,41 +119,66 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BEFF59F7237448BC00B3A342 /* AndroidCell */ = {
+			isa = PBXGroup;
+			children = (
+				E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */,
+				E7BB266822D4B63800A7713E /* DeviceAndroidCellModel.swift */,
+			);
+			path = AndroidCell;
+			sourceTree = "<group>";
+		};
+		BEFF59F8237448C300B3A342 /* IOSCell */ = {
+			isa = PBXGroup;
+			children = (
+				E7BB266922D4B63800A7713E /* DeviceiOSCell.swift */,
+				E7BB266A22D4B63800A7713E /* DeviceiOSCellModel.swift */,
+			);
+			path = IOSCell;
+			sourceTree = "<group>";
+		};
+		BEFF59F923744CE700B3A342 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				E7BB267322D4B63800A7713E /* AppDelegate.swift */,
+				BEFF59F523743F1000B3A342 /* Launch.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		E7BB266222D4B63800A7713E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E7BB266F22D4B63800A7713E /* Headers */,
-				E7BB266422D4B63800A7713E /* Cells */,
+				E7BB266F22D4B63800A7713E /* Table Headers */,
+				E7BB266422D4B63800A7713E /* Table Cells */,
+				BEFF59FA23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift */,
 				E7BB266322D4B63800A7713E /* ViewController.swift */,
 				E7BB266D22D4B63800A7713E /* Main.storyboard */,
-				E7BB267322D4B63800A7713E /* AppDelegate.swift */,
 				E7BB267422D4B63800A7713E /* Info.plist */,
-				BEFF59F523743F1000B3A342 /* Storyboard.storyboard */,
+				BEFF59F923744CE700B3A342 /* Supporting */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		E7BB266422D4B63800A7713E /* Cells */ = {
+		E7BB266422D4B63800A7713E /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E7BB266522D4B63800A7713E /* DeviceAndroidCell.swift */,
 				E7BB266622D4B63800A7713E /* NibTableViewCell.xib */,
 				E7BB266722D4B63800A7713E /* NibTableViewCell.swift */,
-				E7BB266822D4B63800A7713E /* DeviceAndroidCellModel.swift */,
-				E7BB266922D4B63800A7713E /* DeviceiOSCell.swift */,
-				E7BB266A22D4B63800A7713E /* DeviceiOSCellModel.swift */,
+				BEFF59F7237448BC00B3A342 /* AndroidCell */,
+				BEFF59F8237448C300B3A342 /* IOSCell */,
 			);
-			path = Cells;
+			path = "Table Cells";
 			sourceTree = "<group>";
 		};
-		E7BB266F22D4B63800A7713E /* Headers */ = {
+		E7BB266F22D4B63800A7713E /* Table Headers */ = {
 			isa = PBXGroup;
 			children = (
 				E7BB267022D4B63800A7713E /* PhonesHeader.xib */,
 				E7BB267122D4B63800A7713E /* PhonesHeader.swift */,
 				E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */,
 			);
-			path = Headers;
+			path = "Table Headers";
 			sourceTree = "<group>";
 		};
 		E7BCF6BC22DF145F00E71478 /* ExampleUITests */ = {
@@ -260,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7BB267D22D4B63800A7713E /* Main.storyboard in Resources */,
-				BEFF59F623743F1000B3A342 /* Storyboard.storyboard in Resources */,
+				BEFF59F623743F1000B3A342 /* Launch.storyboard in Resources */,
 				E7BB267722D4B63800A7713E /* NibTableViewCell.xib in Resources */,
 				E7BB267E22D4B63800A7713E /* PhonesHeader.xib in Resources */,
 			);
@@ -280,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEFF59FB23744D1C00B3A342 /* ActionSensitiveDiffDataSource.swift in Sources */,
 				E7BB267A22D4B63800A7713E /* DeviceiOSCell.swift in Sources */,
 				E7BB268022D4B63800A7713E /* PhonesHeaderModel.swift in Sources */,
 				E7BB267B22D4B63800A7713E /* DeviceiOSCellModel.swift in Sources */,

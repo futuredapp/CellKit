@@ -18,11 +18,11 @@ enum Constants {
 
 final class ViewController: UITableViewController {
 
-    private var dataSource: DifferentiableCellModelDataSource!
+    private var dataSource: ActionSensitiveDiffDataSource!
 
     private var phonesSection: DifferentiableCellModelSection {
-        let iPhoneCellModels: [DifferentiableCellModel] = Constants.iPhones.prefix(5).map { DeviceiOSCellModel(name: $0) }
-        let androidCellModels: [DifferentiableCellModel] = Constants.androids.prefix(5).map { DeviceAndroidCellModel(name: $0) }
+        let iPhoneCellModels: [DifferentiableCellModel] = Constants.iPhones.prefix(5).map { DeviceiOSCellModel(numberOfTaps: 0, name: $0) }
+        let androidCellModels: [DifferentiableCellModel] = Constants.androids.prefix(5).map { DeviceAndroidCellModel(numberOfTaps: 0, name: $0) }
         let cellModels = iPhoneCellModels + androidCellModels
         let header = PhonesHeaderModel(title: "Cell Phones")
 
@@ -43,10 +43,14 @@ final class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataSource = DifferentiableCellModelDataSource(tableView, sections: defaultSections)
+        dataSource = ActionSensitiveDiffDataSource(tableView, sections: defaultSections)
         dataSource.delegate = self
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
+
+        dataSource.deletionHandler = { [weak self] indexPath, _ in
+            self?.shouldDeleteRow(at: indexPath)
+        }
     }
 
     @IBAction func didTapReset() {
@@ -60,7 +64,7 @@ final class ViewController: UITableViewController {
 
         let available = Set(Constants.iPhones).subtracting(Set(visibleItems))
         if let item = available.first {
-            dataSource?.sections[1].cells.insert(DeviceiOSCellModel(name: item), at: 0)
+            dataSource?.sections[1].cells.insert(DeviceiOSCellModel(numberOfTaps: 0, name: item), at: 0)
         }
     }
 
@@ -71,15 +75,29 @@ final class ViewController: UITableViewController {
 
         let available = Set(Constants.androids).subtracting(Set(visibleItems))
         if let item = available.first {
-            dataSource?.sections[1].cells.insert(DeviceAndroidCellModel(name: item), at: 0)
+            dataSource?.sections[1].cells.insert(DeviceAndroidCellModel(numberOfTaps: 0, name: item), at: 0)
+        }
+    }
+
+    private func shouldDeleteRow(at indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            dataSource?.sections[indexPath.section].cells.remove(at: indexPath.row)
         }
     }
 }
 
 extension ViewController: CellModelDataSourceDelegate {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            dataSource?.sections[indexPath.section].cells.remove(at: indexPath.row)
+        if indexPath.section == 1, var sourceModel = dataSource?.sections[indexPath.section].cells[indexPath.row] {
+            if var iosModel = sourceModel as? DeviceiOSCellModel {
+                iosModel.numberOfTaps += 1
+                sourceModel = iosModel
+            }
+            if var android = sourceModel as? DeviceAndroidCellModel {
+                android.numberOfTaps += 1
+                sourceModel = android
+            }
+            dataSource?.sections[indexPath.section].cells[indexPath.row] = sourceModel
         }
     }
 }

@@ -15,6 +15,6 @@ final class DeviceAndroidCell: UITableViewCell {
 
 extension DeviceAndroidCell: CellConfigurable {
     func configure(with model: DeviceAndroidCellModel) {
-        self.nameLabel.text = model.name
+        self.nameLabel.text = model.name + " tapped: \(model.numberOfTaps)"
     }
 }
