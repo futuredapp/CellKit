@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "CellKit",
-    platforms: [.iOS(.v8), .tvOS(.v9)],
+    platforms: [.iOS(.v9), .tvOS(.v9)],
     products: [
         .library(
             name: "CellKit",
@@ -14,7 +14,7 @@ let package = Package(
             targets: ["DiffableCellKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/jflinter/Dwifft", .revision("6fec2bc0246091b3e17a9d42e722fb98e05ac3ff"))
+        .package(url: "https://github.com/ra1028/DifferenceKit.git", from: "1.0.0")
     ],
     targets: [
         .target(
@@ -22,6 +22,6 @@ let package = Package(
             dependencies: []),
         .target(
             name: "DiffableCellKit",
-            dependencies: ["CellKit", "Dwifft"])
+            dependencies: ["CellKit", "DifferenceKit"])
     ]
 )

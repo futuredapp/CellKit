@@ -10,7 +10,19 @@ import UIKit
 import CellKit
 import DiffableCellKit
 
-struct NibTableViewCellModel: ReusableCellConvertible, EquatableCellModel, Equatable {
+struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
+    var domainIndentifier: Int {
+        return text.hashValue
+    }
+
+    func hasEqualContent(with other: CellModel) -> Bool {
+        guard let other = other as? NibTableViewCellModel else {
+            return false
+        }
+
+        return other.text == self.text
+    }
+
     typealias Cell = NibTableViewCell
 
     let text: String
