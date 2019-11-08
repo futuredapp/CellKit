@@ -21,8 +21,7 @@ struct SectionMetadata: ContentEquatable, Differentiable {
         return identifier
     }
 
-    var headerView: SupplementaryViewModel?
-    var footerView: SupplementaryViewModel?
+    var headerView, footerView: SupplementaryViewModel?
     let identifier: String
 
     init<T>(from section: GenericCellModelSection<T>) {
