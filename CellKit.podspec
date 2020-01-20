@@ -7,14 +7,14 @@ Pod::Spec.new do |s|
     with automatic cell registration of
     cell models and automatic animations using diffs.
   DESC
-  s.homepage               = "https://github.com/thefuntasty/CellKit"
+  s.homepage               = "https://github.com/futuredapp/CellKit"
   s.license                = { type: "MIT", file: "LICENSE" }
-  s.author                 = { "Matěj K. Jirásek": "matej.jirasek@thefuntasty.com", "Petr Zvoníček": "zvonicek@gmail.com" }
-  s.social_media_url       = "https://twitter.com/TheFuntasty"
+  s.author                 = { "Matěj K. Jirásek": "matej.jirasek@futured.app", "Petr Zvoníček": "zvonicek@gmail.com" }
+  s.social_media_url       = "https://twitter.com/Futuredapps"
   s.ios.deployment_target  = "9.0"
   s.tvos.deployment_target = "9.0"
   s.swift_versions         = ["4.2", "5.0", "5.1"]
-  s.source                 = { git: "https://github.com/thefuntasty/CellKit.git", tag: s.version.to_s }
+  s.source                 = { git: "https://github.com/futuredapp/CellKit.git", tag: s.version.to_s }
   s.frameworks             = ["Foundation", "UIKit"]
   s.default_subspec        = "Core"
 
