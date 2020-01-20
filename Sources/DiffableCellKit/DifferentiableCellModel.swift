@@ -1,10 +1,3 @@
-//
-//  DifferentiableCellModel.swift
-//
-//
-//  Created by Matěj Kašpar Jirásek on 10/07/2019.
-//
-
 import DifferenceKit
 #if SWIFT_PACKAGE
 import CellKit

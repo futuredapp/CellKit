@@ -1,11 +1,3 @@
-//
-//  ActionSensitiveDiffDataSource.swift
-//  Example
-//
-//  Created by Mikoláš Stuchlík on 07/11/2019.
-//  Copyright © 2019 FUNTASTY Digital, s.r.o. All rights reserved.
-//
-
 import UIKit
 import CellKit
 import DiffableCellKit

@@ -1,11 +1,3 @@
-//
-//  PhonesHeader.swift
-//  SmallAlarmClient
-//
-//  Created by Adam Leitgeb on 23/04/2018.
-//  Copyright © 2018 Adam Leitgeb. All rights reserved.
-//
-
 import UIKit
 import CellKit
 

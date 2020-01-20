@@ -1,11 +1,3 @@
-//
-//  ReusableCellConvertible.swift
-//  CellKit-iOS
-//
-//  Created by Matěj Jirásek on 21/06/2018.
-//  Copyright © 2018 FUNTASTY Digital, s.r.o. All rights reserved.
-//
-
 import class Foundation.Bundle
 import class UIKit.UINib
 
