@@ -5,7 +5,7 @@ import CellKit
 
 public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
 
-struct SectionMetadata: ContentEquatable, Differentiable {
+struct SectionMetadata: Differentiable {
     func isContentEqual(to source: SectionMetadata) -> Bool {
         return identifier == identifier
     }
