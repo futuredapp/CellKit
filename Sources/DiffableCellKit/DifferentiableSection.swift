@@ -1,10 +1,3 @@
-//
-//  DifferentiableSection.swift
-//  
-//
-//  Created by Mikoláš Stuchlík on 11/09/2019.
-//
-
 import DifferenceKit
 #if SWIFT_PACKAGE
 import CellKit
