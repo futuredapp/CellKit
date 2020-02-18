@@ -7,7 +7,7 @@ public typealias DifferentiableCellModelSection = GenericCellModelSection<Differ
 
 struct SectionMetadata: Differentiable {
     func isContentEqual(to source: SectionMetadata) -> Bool {
-        return identifier == identifier
+        return source.identifier == identifier
     }
 
     var differenceIdentifier: String {
