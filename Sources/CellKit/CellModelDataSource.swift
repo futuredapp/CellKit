@@ -1,6 +1,6 @@
 import struct Foundation.IndexPath
 
-public protocol CellModelDataSourceDelegate: class {
+public protocol CellModelDataSourceDelegate: AnyObject {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath)
 }
 
