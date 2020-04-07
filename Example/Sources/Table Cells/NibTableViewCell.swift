@@ -18,7 +18,7 @@ struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
     typealias Cell = NibTableViewCell
 
     let text: String
-    let cellHeight: CGFloat  = 170.0
+    let cellHeight: CGFloat = 170.0
 }
 
 final class NibTableViewCell: UITableViewCell, CellConfigurable {
