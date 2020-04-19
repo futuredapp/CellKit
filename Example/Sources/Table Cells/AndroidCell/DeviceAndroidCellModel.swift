@@ -4,7 +4,7 @@ import DiffableCellKit
 
 struct DeviceAndroidCellModel: CellConvertible, DifferentiableCellModel, DeletableCellModel {
 
-    var domainIndentifier: Int {
+    var domainIdentifier: Int {
         return name.hashValue
     }
 

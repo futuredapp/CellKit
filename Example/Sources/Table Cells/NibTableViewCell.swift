@@ -3,7 +3,8 @@ import CellKit
 import DiffableCellKit
 
 struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
-    var domainIndentifier: Int {
+
+    var domainIdentifier: Int {
         return text.hashValue
     }
 

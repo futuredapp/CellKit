@@ -18,23 +18,23 @@ open class AbstractDataSource: NSObject {
     private var registeredSupplementaryViewIdentifiers: Set<String> = []
 
     open func numberOfSections() -> Int {
-        fatalError("Needs to be overriden")
+        fatalError("Needs to be overridden")
     }
 
     open func cellModels(in section: Int) -> [CellModel] {
-        fatalError("Needs to be overriden")
+        fatalError("Needs to be overridden")
     }
 
     open func header(in section: Int) -> SupplementaryViewModel? {
-        fatalError("Needs to be overriden")
+        fatalError("Needs to be overridden")
     }
 
     open func footer(in section: Int) -> SupplementaryViewModel? {
-        fatalError("Needs to be overriden")
+        fatalError("Needs to be overridden")
     }
 
     open func cellModel(at indexPath: IndexPath) -> CellModel {
-        fatalError("Needs to be overriden")
+        fatalError("Needs to be overridden")
     }
 
     private func registerLazily(cellModel: CellModel, to tableView: UITableView) {
