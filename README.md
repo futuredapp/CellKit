@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/cocoapods/l/CellKit.svg)
 ![Continuous integration](https://img.shields.io/bitrise/57c06040e101a852.svg?token=xvYC9NW6ZszIzFdjkapmVg)
 
-CellKit is a swift package that streamlines the workflow with cells in collection views like UITableView and UICollectionView in MVVM architecture. No more registering cell classes or xibs, no more dequing cells and setting its view models. CellKit handles this all.
+CellKit is a Swift package that streamlines the workflow with cells in UITableView and UICollectionView. No more registering cell classes or XIBs, no more dequeueing cells and setting its view models. CellKit handles this all.
 
 ## Installation
 ### Swift Package
@@ -16,11 +16,11 @@ Add following line to your swift package dependencies, or in Xcode, go to `File 
 ### CocoaPods
 Add following line to your  `Podfile` and then run `bundle exec pod install`
 ```
-pod 'CellKit', '~> 0.8.0'
+pod 'CellKit', '~> 0.8'
 ```
 
 ## Usage
-CellKit provides a dataSource and a section model which you fill with your cells, headers and footers. All you're left to do is to define your cell View and your cell ViewModel (a.k.a. CellModel) with CellKit protocols and CellKit will handle the rest.
+CellKit provides a data source and a section model which you fill with your cells, headers and footer models. All you're left to do is to define your cell view and your cell model with protocol conformance to CellConvertible and CellConfigurable and CellKit will handle the rest.
 
 ### 1. step: Set a DataSource
 CellKit provides a `CellModelDataSource` datasource and `GenericCellModelSection` section, which define your `UITableView`/`UICollectionView` cell structure. You can always subclass `CellModelDataSource` and override it's methods to suit your needs.  
@@ -52,7 +52,7 @@ CellKit support wide variety of cell declarations including `.xib` files , `UITa
 In order for your cells and cell view models to work with CellKit, they have to conform to these protocols:
 
 #### CellConfigurable
-This is a protocol for your *Cell*. This protocol provides a `configuration(model:)` method which gets call when a tableview dequest a reusable cell and is used to distribute your model to your cells.
+This is a protocol for your *Cell*. This protocol provides a `configure(model:)` method which gets call when a tableview request a reusable cell and is used to distribute your model to your cells. 
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -185,3 +185,22 @@ struct CodeCellViewModel: CellConvertible, CellModel {
     var cellHeight: Double = 64
 }
 ```
+
+## Contributors
+
+Current maintainer and main contributor is [Matěj Kašpar Jirásek](https://github.com/mkj-is), <matej.jirasek@futured.app>.
+
+We want to thank other contributors, namely:
+
+- [Matěj Kašpar Jirásek](https://github.com/mkj-is)
+- [Petr Zvoníček](https://github.com/zvonicek)
+- [Mikoláš Stuchlík](https://github.com/mikolasstuchlik)
+- [Michal Šrůtek](https://github.com/michalsrutek)
+- [Tomáš Babulák](https://github.com/tomasbabulak)
+- [Adam Salih](https://github.com/max9631)
+- [Michal Martinů](https://github.com/MichalMartinu)
+
+## License
+
+CellKit is available under the MIT license. See the [LICENSE](LICENSE) for more information.
+
