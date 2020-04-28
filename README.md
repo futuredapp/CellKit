@@ -5,37 +5,65 @@
 ![License](https://img.shields.io/cocoapods/l/CellKit.svg)
 ![Continuous integration](https://img.shields.io/bitrise/57c06040e101a852.svg?token=xvYC9NW6ZszIzFdjkapmVg)
 
-CellKit is a swift package that simplifies the workflow with cells in collection views like UITableViews and UICollectionView with MVVM architecture. No more registering cell classes or xibs, no more dequing cells and setting its view models. CellKit handles this all.
+CellKit is a swift package that streamlines the workflow with cells in collection views like UITableView and UICollectionView in MVVM architecture. No more registering cell classes or xibs, no more dequing cells and setting its view models. CellKit handles this all.
 
 ## Installation
 ### Swift Package
+Add following line to your swift package dependencies, or in Xcode, go to `File -> Swift Packages -> Add Package Dependency` and type in URL address of this repository.
 ```
 .package(url: "https://github.com/futuredapp/CellKit", from: "0.8.0")
 ```
 ### CocoaPods
+Add following line to your  `Podfile` and then run `bundle exec pod install`
 ```
 pod 'CellKit', '~> 0.8.0'
 ```
 
-## Features
-CellKit provides a dataSource and a section model which you fill with your cells, headers and footers. All you're left to do is to define your cell View and your cell ViewModel with CellKit protocols and CellKit will handle the rest.
+## Usage
+CellKit provides a dataSource and a section model which you fill with your cells, headers and footers. All you're left to do is to define your cell View and your cell ViewModel (a.k.a. CellModel) with CellKit protocols and CellKit will handle the rest.
 
-### DataSource
-DataSource and section model are pretty straight forward. CellKit comes with `CellModelDataSource` and `GenericCellModelSection` which represents your UITableView/UICollectionView cell structure. 
+### 1. step: Set a DataSource
+CellKit provides a `CellModelDataSource` datasource and `GenericCellModelSection` section, which define your `UITableView`/`UICollectionView` cell structure. You can always subclass `CellModelDataSource` and override it's methods to suit your needs.  
+Here's an example of typical CellKit datasource usage:
+```swift
+lazy var dataSource: CellModelDataSource = {
+    CellModelDataSource([
+        GenericCellModelSection(arrayLiteral:
+            PrototypeCellViewModel(name: "Prototype")
+        ),
+        GenericCellModelSection(arrayLiteral:
+            CodeCellViewModel(name: "Code")
+        ),
+        GenericCellModelSection(arrayLiteral:
+            XIBCellViewModel(name: "XIB")
+        )
+    ])
+}()
 
-#### CellModelDataSource
-`CellModelDataSource` is an open class which means that you can make a subclass a override its behaviour to suit your needs.
-`CellModelDataSource` only accepts an array of `GenericCellModelSection` objects.
+tableView.dataSource = dataSource
+collectionView.dataSource = dataSource
+```
 
-#### GenericCellModelSection
-`GenericCellModelSection` represents a section in tableView/collectionView. It accepts following arguments:
+### 2. step: Create your cell and CellModel
+CellKit support wide variety of cell declarations including `.xib` files , `UITableView` interface builder prototype cells and Cells written entirely in code.  
+*Please note that your `.xib` file, Cell subclass and Cell identifier have to to have the same name.* It is possible to not use the same identifier, but it is not recommended.
 
+### 3. Implement CellKit protocols
+In order for your cells and cell view models to work with CellKit, they have to conform to these protocols:
 
-### Cell protocols
-In order for your cells and cell view models to work with CellKit, they have to conform to three protocols: `CellConfigurable`, `CellConvertible` and `CellModel`
+#### CellConfigurable
+This is a protocol for your *Cell*. This protocol provides a `configuration(model:)` method which gets call when a tableview dequest a reusable cell and is used to distribute your model to your cells.
+```swift
+class XIBCell: UITableViewCell, CellConfigurable {
+    @IBOutlet private weak var label: UILabel!
+}
 
-#### CellConfigurable protocol
-Provides a `configuration(model:)` method which gets call when a tableview dequest a new reusable cell. This protocol is for cell views only.
+extension XIBCell: CellConfigurable {
+    func configure(with model: XIBCellViewModel) {
+        label.text = model.name
+    }
+}
+```
 
 #### CellModel
 Provides configurable informations about a cell view
@@ -58,7 +86,7 @@ Extends CellModel with associated type and thus can
 In order for your cells to work with 
 
 
-## Usage
+## Examples
 When using CellKit you have two 
 CellKit provides a `CellModelDataSource` datasource and `GenericCellModelSection` section, where you define your TableView/CollectionView structure. 
 Here's an example of typical CellKit datasource usage:
