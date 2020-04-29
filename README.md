@@ -14,7 +14,7 @@ Add following line to your swift package dependencies, or in Xcode, go to `File 
 .package(url: "https://github.com/futuredapp/CellKit", from: "0.8.0")
 ```
 ### CocoaPods
-Add following line to your  `Podfile` and then run `bundle exec pod install`
+Add following line to your `Podfile` and then run `pod install`
 ```
 pod 'CellKit', '~> 0.8'
 ```
@@ -23,22 +23,20 @@ pod 'CellKit', '~> 0.8'
 CellKit provides a data source and a section model which you fill with your cells, headers and footer models. All you're left to do is to define your cell view and your cell model with protocol conformance to CellConvertible and CellConfigurable and CellKit will handle the rest.
 
 ### 1. step: Set a DataSource
-CellKit provides a `CellModelDataSource` datasource and `GenericCellModelSection` section, which define your `UITableView`/`UICollectionView` cell structure. You can always subclass `CellModelDataSource` and override it's methods to suit your needs.  
-Here's an example of typical CellKit datasource usage:
+CellKit provides a `CellModelDataSource` and `GenericCellModelSection`, which define your `UITableView`/`UICollectionView` cell structure. You can always subclass `CellModelDataSource` and override its methods to suit your needs.  
+Here's an example of typical CellKit data source usage:
 ```swift
-lazy var dataSource: CellModelDataSource = {
-    CellModelDataSource([
-        GenericCellModelSection(arrayLiteral:
-            PrototypeCellViewModel(name: "Prototype")
-        ),
-        GenericCellModelSection(arrayLiteral:
-            CodeCellViewModel(name: "Code")
-        ),
-        GenericCellModelSection(arrayLiteral:
-            XIBCellViewModel(name: "XIB")
-        )
-    ])
-}()
+let dataSource = CellModelDataSource([
+    GenericCellModelSection(arrayLiteral:
+        PrototypeCellViewModel(name: "Prototype")
+    ),
+    GenericCellModelSection(arrayLiteral:
+        CodeCellViewModel(name: "Code")
+    ),
+    GenericCellModelSection(arrayLiteral:
+        XIBCellViewModel(name: "XIB")
+    )
+])
 
 tableView.dataSource = dataSource
 collectionView.dataSource = dataSource
@@ -49,7 +47,7 @@ CellKit support wide variety of cell declarations including `.xib` files , `UITa
 *Please note that your `.xib` file, Cell subclass and Cell identifier have to to have the same name.* It is possible to not use the same identifier, but it is not recommended.  
 Pro tip: You can use our [custom teplates](https://github.com/futuredapp/MVVM-C-Templates) to generate Cell with CellKit protocols in just a few clicks.
 
-### 3. Implement CellKit protocols
+### 3. step: Conform to CellKit protocols
 In order for your cells and cell view models to work with CellKit, they have to conform to these protocols:
 
 #### CellConfigurable
@@ -67,7 +65,7 @@ extension XIBCell: CellConfigurable {
 ```
 
 #### CellModel
-Protocol for your cell model. Use this procotol to specify your cell configuration such as height xib location, whether the cell can be highlighted, etc.. 
+Protocol for your cell model. Use this procotol to specify your cell configuration such as height, xib location, whether the cell is highlightable, etc.
 
 ```swift
 struct PrototypeCellViewModel {
@@ -92,7 +90,7 @@ Here is a handy table of configurable properties and its default values in which
 | separatorIsHidden | Bool     | false                                                    | Indicates whether should hide separator                                     |
 
 #### CellConvertible 
-This protocol extends CellModel with associated type and thus can provide a default `cellClass`  and  `reuseIdentifier` value based on type's name.    
+This protocol extends CellModel with associated type and thus can provide a default `cellClass` and `reuseIdentifier` value based on type's name.    
 It's espeatially handy when you declare your cell in XIB, becouse all you need to do is define its associated type and CellKit will provide the rest. Take a look at `XIB cell` example.
 
 ## Examples
@@ -134,15 +132,15 @@ struct PrototypeCellViewModel: CellConvertible, CellModel {
     
     // MARK: CellConvertible
     typealias Cell = PrototypeCell
-    var usesNib: Bool { false }
-    var registersLazily: Bool { false }
+    let usesNib: Bool = false
+    let registersLazily: Bool = false
 }
 ```
 ### Cell defined in code
 cell:
 ```swift
 class CodeCell: UITableViewCell, CellConfigurable {
-    var label: UILabel = UILabel()
+    let label: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -168,8 +166,8 @@ struct CodeCellViewModel: CellConvertible, CellModel {
     
     // MARK: CellConvertible
     typealias Cell = CodeCell
-    var usesNib: Bool { false }
-    var cellHeight: Double = 64
+    let usesNib: Bool = false
+    let cellHeight: Double = 64
 }
 ```
 
