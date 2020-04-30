@@ -1,3 +1,4 @@
+![FTAPIKit](Documentation/CellKit.svg)
 # CellKit
 
 ![Cocoapods](https://img.shields.io/cocoapods/v/CellKit.svg)
