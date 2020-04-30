@@ -163,6 +163,13 @@ struct XIBCellViewModel: CellConvertible, DifferentiableCellModel, Equatable {
 ## CellKit Examples
 ### XIB cell
 ```swift
+class XIBCell: UITableViewCell, CellConfigurable {
+    @IBOutlet private weak var label: UILabel!
+    func configure(with model: XIBCellViewModel) {
+        label.text = "\(model.name)"
+    }
+}
+
 struct XIBCellViewModel: CellConvertible, CellModel {
     let name: String
     
@@ -172,7 +179,6 @@ struct XIBCellViewModel: CellConvertible, CellModel {
 ```
 
 ### Storyboard prototype cell
-cell:
 ```swift
 class PrototypeCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -181,9 +187,7 @@ class PrototypeCell: UITableViewCell, CellConfigurable {
         label.text = "\(model.name)"
     }
 }
-```
-model:
-```swift
+
 struct PrototypeCellViewModel: CellConvertible, CellModel {
     let name: String
     
@@ -194,7 +198,6 @@ struct PrototypeCellViewModel: CellConvertible, CellModel {
 }
 ```
 ### Cell defined in code
-cell:
 ```swift
 class CodeCell: UITableViewCell, CellConfigurable {
     let label: UILabel = UILabel()
@@ -215,9 +218,7 @@ class CodeCell: UITableViewCell, CellConfigurable {
         label.text = "\(model.name)"
     }
 }
-```
-model:
-```swift
+
 struct CodeCellViewModel: CellConvertible, CellModel {
     let name: String
     
