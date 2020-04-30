@@ -83,7 +83,7 @@ extension PrototypeCellViewModel: CellModel
     var registersLazily: Bool { false }
 }
 ```
-Here is a handy table of configurable properties and its default values in which you can provide your own values.
+Here is a handy table of configurable properties and their default values in which you can provide your own values.
 | properties        | datatype | default                                                  | description                                                                 |
 |-------------------|----------|----------------------------------------------------------|-----------------------------------------------------------------------------|
 | registersLazily   | Bool     | true                                                     | Indicates whether DataSource should register a view to its presenting view. |
