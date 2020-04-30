@@ -101,6 +101,7 @@ Here's an example
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
+    
     func configure(with model: XIBCellViewModel) {
         label.text = "\(model.name)"
     }
@@ -139,19 +140,28 @@ let datasource = DifferentiableCellModelDataSource(self.tableView, sections: [
 Just like `CellModel`, `DifferentiableCellModel` is a protocol for your cell model. `DifferentiableCellModel` provides one new `domainIdentifier` property  and a `hasEqualContent(with:)` method which provides enough information for `DiffableCellKit` to recognize changes and issue `UITableView`/`UICollectionView` update.  
 When your cell model conforms to `Equatable` protocol, `DiffableCellKit` provides an `Equatable` extension, so you don't have to implement `hasEqualContent(with:)` method.
 DifferentiableCellModel can still be combined with `CellKit`'s  `CellConvertible` protocol.
-
-## Examples
-### XIB cell
-cell:
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
+    
     func configure(with model: XIBCellViewModel) {
         label.text = "\(model.name)"
     }
 }
+
+struct XIBCellViewModel: CellConvertible, DifferentiableCellModel, Equatable {
+    let name: String
+    
+    //MARK: DifferentiableCellModel
+    var domainIdentifier: Int
+    
+    // MARK: CellConvertible
+    typealias Cell = XIBCell
+}
 ```
-model:
+
+## CellKit Examples
+### XIB cell
 ```swift
 struct XIBCellViewModel: CellConvertible, CellModel {
     let name: String
