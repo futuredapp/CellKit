@@ -14,10 +14,15 @@ Add following line to your swift package dependencies, or in Xcode, go to `File 
 ```
 .package(url: "https://github.com/futuredapp/CellKit", from: "0.8.0")
 ```
+Optionally you can add `DiffableCellKit`.
 ### CocoaPods
 Add following line to your `Podfile` and then run `pod install`
 ```
 pod 'CellKit', '~> 0.8'
+```
+Optionally you can add `DiffableCellKit` subspec:
+```
+pod 'CellKit', '~> 0.8', subspecs: ['Diffable']
 ```
 
 ## Usage
@@ -92,11 +97,72 @@ Here is a handy table of configurable properties and their default values in whi
 
 #### CellConvertible 
 This protocol extends CellModel with associated type and thus can provide a default `cellClass` and `reuseIdentifier` value based on type's name.    
-It's espeatially handy when you declare your cell in XIB, becouse all you need to do is define its associated type and CellKit will provide the rest. Take a look at `XIB cell` example.
+It's espetially handy when you declare your cell in XIB, because all you need to do is to define its associated type and CellKit will provide the rest.    
+Here's an example:
+```swift
+class XIBCell: UITableViewCell, CellConfigurable {
+    @IBOutlet private weak var label: UILabel!
+    
+    func configure(with model: XIBCellViewModel) {
+        label.text = "\(model.name)"
+    }
+}
 
-## Examples
+struct XIBCellViewModel: CellConvertible, CellModel {
+    let name: String
+    
+    // MARK: CellConvertible
+    typealias Cell = XIBCell
+}
+```
+
+
+## DiffableCellKit
+DiffableCellKit is an extension build on top of `CellKit` and `DifferenceKit` which captures your data source changes and automatically updates/removes/inserts your `UITableView`/`UICollectionView` cells.  
+
+### DifferentiableCellModelDataSource
+`DifferentiableCellModelDataSource` is built on top of the same foundation as `CellModelDataSource` with the difference (no pun intended), that it accepts `DifferentiableCellModelSection` and when you change the content of its `sections` property, the data source will issue an animated update to its `UITableView`/`UICollectionView`. 
+`DifferentiableCellModelDataSource` is still an open class, so you can subclass it and override its methods and propertes to suit your needs.
+```swift
+let datasource = DifferentiableCellModelDataSource(self.tableView, sections: [
+    DifferentiableCellModelSection(arrayLiteral:
+        PrototypeCellViewModel(domainIdentifier: 1, name: "Prototype")
+    ),
+    DifferentiableCellModelSection(arrayLiteral:
+        CodeCellViewModel(domainIdentifier: 2, name: "Code")
+    ),
+    DifferentiableCellModelSection(arrayLiteral:
+        XIBCellViewModel(domainIdentifier: 3, name: "XIB")
+    )
+])
+```
+
+### DifferentiableCellModel
+Just like `CellModel`, `DifferentiableCellModel` is a protocol for your cell model. `DifferentiableCellModel` provides one new `domainIdentifier` property  and a `hasEqualContent(with:)` method which provides enough information for `DiffableCellKit` to recognize changes and issue `UITableView`/`UICollectionView` update.  
+When your cell model conforms to `Equatable` protocol, `DiffableCellKit` provides an `Equatable` extension, so you don't have to implement `hasEqualContent(with:)` method.
+DifferentiableCellModel can still be combined with `CellConvertible` protocol.
+```swift
+class XIBCell: UITableViewCell, CellConfigurable {
+    @IBOutlet private weak var label: UILabel!
+    
+    func configure(with model: XIBCellViewModel) {
+        label.text = "\(model.name)"
+    }
+}
+
+struct XIBCellViewModel: CellConvertible, DifferentiableCellModel, Equatable {
+    let name: String
+    
+    // MARK: DifferentiableCellModel
+    var domainIdentifier: Int
+    
+    // MARK: CellConvertible
+    typealias Cell = XIBCell
+}
+```
+
+## CellKit Examples
 ### XIB cell
-cell:
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -104,9 +170,7 @@ class XIBCell: UITableViewCell, CellConfigurable {
         label.text = "\(model.name)"
     }
 }
-```
-model:
-```swift
+
 struct XIBCellViewModel: CellConvertible, CellModel {
     let name: String
     
@@ -116,7 +180,6 @@ struct XIBCellViewModel: CellConvertible, CellModel {
 ```
 
 ### Storyboard prototype cell
-cell:
 ```swift
 class PrototypeCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -125,9 +188,7 @@ class PrototypeCell: UITableViewCell, CellConfigurable {
         label.text = "\(model.name)"
     }
 }
-```
-model:
-```swift
+
 struct PrototypeCellViewModel: CellConvertible, CellModel {
     let name: String
     
@@ -138,7 +199,6 @@ struct PrototypeCellViewModel: CellConvertible, CellModel {
 }
 ```
 ### Cell defined in code
-cell:
 ```swift
 class CodeCell: UITableViewCell, CellConfigurable {
     let label: UILabel = UILabel()
@@ -159,9 +219,7 @@ class CodeCell: UITableViewCell, CellConfigurable {
         label.text = "\(model.name)"
     }
 }
-```
-model:
-```swift
+
 struct CodeCellViewModel: CellConvertible, CellModel {
     let name: String
     
