@@ -15,8 +15,8 @@ CellKit is a Swift package that streamlines the workflow with cells in UITableVi
 Add following line to your swift package dependencies, or in Xcode, go to `File -> Swift Packages -> Add Package Dependency` and type in URL address of this repository.
 
 ```swift
+.package(url: "https://github.com/futuredapp/CellKit", from: "0.8.1")
 ```
-.package(url: "https://github.com/futuredapp/CellKit", from: "0.8.0")
 
 Optionally you can add `DiffableCellKit`.
 
