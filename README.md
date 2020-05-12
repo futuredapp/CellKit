@@ -14,13 +14,13 @@ Add following line to your swift package dependencies, or in Xcode, go to `File 
 ```
 .package(url: "https://github.com/futuredapp/CellKit", from: "0.8.0")
 ```
-Optionally you can add `DiffableCellKit`
+Optionally you can add `DiffableCellKit`.
 ### CocoaPods
 Add following line to your `Podfile` and then run `pod install`
 ```
 pod 'CellKit', '~> 0.8'
 ```
-Optionally you can add `DiffableCellKit` subspec
+Optionally you can add `DiffableCellKit` subspec:
 ```
 pod 'CellKit', '~> 0.8', subspecs: ['Diffable']
 ```
@@ -97,8 +97,8 @@ Here is a handy table of configurable properties and their default values in whi
 
 #### CellConvertible 
 This protocol extends CellModel with associated type and thus can provide a default `cellClass` and `reuseIdentifier` value based on type's name.    
-It's espeatially handy when you declare your cell in XIB, becouse all you need to do is define its associated type and CellKit will provide the rest.  
-Here's an example
+It's espetially handy when you declare your cell in XIB, because all you need to do is to define its associated type and CellKit will provide the rest.    
+Here's an example:
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -121,7 +121,7 @@ struct XIBCellViewModel: CellConvertible, CellModel {
 DiffableCellKit is an extension build on top of `CellKit` and `DifferenceKit` which captures your data source changes and automatically updates/removes/inserts your `UITableView`/`UICollectionView` cells.  
 
 ### DifferentiableCellModelDataSource
-`DifferentiableCellModelDataSource` is built on top of the same foundation as `CellModelDataSource` with the difference, (no pun intended) that it accepts `DifferentiableCellModelSection` and when you change the content of its `sections` property, the data source will issue an animated update to its `UITableView`/`UICollectionView`. 
+`DifferentiableCellModelDataSource` is built on top of the same foundation as `CellModelDataSource` with the difference (no pun intended), that it accepts `DifferentiableCellModelSection` and when you change the content of its `sections` property, the data source will issue an animated update to its `UITableView`/`UICollectionView`. 
 `DifferentiableCellModelDataSource` is still an open class, so you can subclass it and override its methods and propertes to suit your needs.
 ```swift
 let datasource = DifferentiableCellModelDataSource(self.tableView, sections: [
@@ -140,7 +140,7 @@ let datasource = DifferentiableCellModelDataSource(self.tableView, sections: [
 ### DifferentiableCellModel
 Just like `CellModel`, `DifferentiableCellModel` is a protocol for your cell model. `DifferentiableCellModel` provides one new `domainIdentifier` property  and a `hasEqualContent(with:)` method which provides enough information for `DiffableCellKit` to recognize changes and issue `UITableView`/`UICollectionView` update.  
 When your cell model conforms to `Equatable` protocol, `DiffableCellKit` provides an `Equatable` extension, so you don't have to implement `hasEqualContent(with:)` method.
-DifferentiableCellModel can still be combined with `CellKit`'s  `CellConvertible` protocol.
+DifferentiableCellModel can still be combined with `CellConvertible` protocol.
 ```swift
 class XIBCell: UITableViewCell, CellConfigurable {
     @IBOutlet private weak var label: UILabel!
@@ -153,7 +153,7 @@ class XIBCell: UITableViewCell, CellConfigurable {
 struct XIBCellViewModel: CellConvertible, DifferentiableCellModel, Equatable {
     let name: String
     
-    //MARK: DifferentiableCellModel
+    // MARK: DifferentiableCellModel
     var domainIdentifier: Int
     
     // MARK: CellConvertible
