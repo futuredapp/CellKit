@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "CellKit"
-  s.version     = "0.8.0"
+  s.version     = "0.8.1"
   s.summary     = "Table View and Collection View data source wrapper"
   s.description = <<-DESC
     Generic abstraction over table/collection data source
