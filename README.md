@@ -1,4 +1,5 @@
-![FTAPIKit](Documentation/CellKit.svg)
+<img alt="CellKit icon" src="Documentation/CellKit.svg" align="right">
+
 # CellKit
 
 ![Cocoapods](https://img.shields.io/cocoapods/v/CellKit.svg)
@@ -73,7 +74,7 @@ In order for your cells and cell view models to work with CellKit, they have to 
 This is a protocol for your *Cell*. This protocol provides a `configure(model:)` method which gets call when a tableview request a reusable cell and is used to distribute your model to your cells. 
 
 ```swift
-class XIBCell: UITableViewCell, CellConfigurable {
+class XIBCell: UITableViewCell {
     @IBOutlet private weak var label: UILabel!
 }
 
@@ -93,7 +94,7 @@ struct PrototypeCellViewModel {
     let name: String
 }
 
-extension PrototypeCellViewModel: CellModel
+extension PrototypeCellViewModel: CellModel {
     var usesNib: Bool { false }
     var registersLazily: Bool { false }
 }
