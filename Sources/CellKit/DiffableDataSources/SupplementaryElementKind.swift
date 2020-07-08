@@ -1,12 +1,12 @@
 import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
-public enum SupplementaryElementKind {
+public enum SupplementaryElementKind: RawRepresentable {
     case header
     case footer
     case custom(String)
 
-    public init?(rawValue: String) {
+    public init(rawValue: String) {
         switch rawValue {
         case UICollectionView.elementKindSectionHeader:
             self = .header
