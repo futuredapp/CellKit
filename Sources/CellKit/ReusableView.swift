@@ -13,15 +13,15 @@ public protocol ReusableView {
 
 public extension ReusableView {
     var registersLazily: Bool {
-        return true
+        true
     }
 
     var usesNib: Bool {
-        return true
+        true
     }
 
     var bundle: Bundle {
-        return Bundle(for: cellClass)
+        Bundle(for: cellClass)
     }
 
     var nib: UINib? {

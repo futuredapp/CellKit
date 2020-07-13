@@ -9,10 +9,10 @@ public struct CollectionReusableViewModel: SupplementaryViewModel, CellConvertib
     public typealias Cell = CollectionReusableView
 
     public var height: Double {
-        return 0.0
+        0.0
     }
 
     public var usesNib: Bool {
-        return false
+        false
     }
 }

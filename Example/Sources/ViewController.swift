@@ -1,6 +1,6 @@
-import UIKit
 import CellKit
 import DiffableCellKit
+import UIKit
 
 enum Constants {
 
@@ -22,11 +22,11 @@ final class ViewController: UITableViewController {
     }
 
     private var welcomeSection: DifferentiableCellModelSection {
-        return [NibTableViewCellModel(text: "Welcome!")]
+        [NibTableViewCellModel(text: "Welcome!")]
     }
 
     private var defaultSections: [DifferentiableCellModelSection] {
-        return [
+        [
             welcomeSection,
             phonesSection
         ]
@@ -45,11 +45,11 @@ final class ViewController: UITableViewController {
         }
     }
 
-    @IBAction func didTapReset() {
+    @IBAction private func didTapReset() {
         dataSource?.sections = defaultSections
     }
 
-    @IBAction func didTapAddIPhone() {
+    @IBAction private func didTapAddIPhone() {
         let visibleItems = dataSource?.sections.last?.cells
             .compactMap { $0 as? DeviceiOSCellModel }
             .compactMap { $0.name } ?? []
@@ -60,7 +60,7 @@ final class ViewController: UITableViewController {
         }
     }
 
-    @IBAction func didTapAddAndroid() {
+    @IBAction private func didTapAddAndroid() {
         let visibleItems = dataSource?.sections.last?.cells
             .compactMap { $0 as? DeviceAndroidCellModel }
             .compactMap { $0.name } ?? []

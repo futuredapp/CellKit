@@ -1,5 +1,5 @@
-import UIKit
 import DifferenceKit
+import UIKit
 #if SWIFT_PACKAGE
 import CellKit
 #endif
@@ -25,7 +25,7 @@ open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
     private var _sections: [DifferentiableCellModelSection]
     public var sections: [DifferentiableCellModelSection] {
         get {
-            return _sections
+            _sections
         }
         set {
             let oldSection = _sections.map { $0.arraySection }
@@ -55,26 +55,26 @@ open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
     }
 
     public subscript(index: Int) -> DifferentiableCellModelSection {
-        return sections[index]
+        sections[index]
     }
 
     override open func numberOfSections() -> Int {
-        return sections.count
+        sections.count
     }
 
     override open func cellModels(in section: Int) -> [CellModel] {
-        return sections[section].cells
+        sections[section].cells
     }
 
     override open func header(in section: Int) -> SupplementaryViewModel? {
-        return sections[section].headerView
+        sections[section].headerView
     }
 
     override open func footer(in section: Int) -> SupplementaryViewModel? {
-        return sections[section].footerView
+        sections[section].footerView
     }
 
     override open func cellModel(at indexPath: IndexPath) -> CellModel {
-        return sections[indexPath.section].cells[indexPath.row]
+        sections[indexPath.section].cells[indexPath.row]
     }
 }

@@ -1,11 +1,11 @@
-import UIKit
 import CellKit
 import DiffableCellKit
+import UIKit
 
 struct DeviceAndroidCellModel: CellConvertible, DifferentiableCellModel, DeletableCellModel {
 
     var domainIdentifier: Int {
-        return name.hashValue
+        name.hashValue
     }
 
     func hasEqualContent(with other: CellModel) -> Bool {

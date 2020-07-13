@@ -1,5 +1,5 @@
-import UIKit
 import CellKit
+import UIKit
 
 class PhonesHeader: UITableViewHeaderFooterView {
     @IBOutlet private weak var titleLabel: UILabel!

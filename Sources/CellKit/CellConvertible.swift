@@ -8,10 +8,10 @@ public protocol CellConvertible {
 
 public extension CellConvertible {
     var cellClass: AnyClass {
-        return Cell.self
+        Cell.self
     }
     var reuseIdentifier: String {
-        return String(describing: Cell.self)
+        String(describing: Cell.self)
     }
 }
 
