@@ -8,15 +8,15 @@ public protocol CellModel: ReusableView {
 
 public extension CellModel {
     var cellHeight: Double {
-        return 44.0
+        44.0
     }
 
     var highlighting: Bool {
-        return true
+        true
     }
 
     var separatorIsHidden: Bool {
-        return false
+        false
     }
 }
 

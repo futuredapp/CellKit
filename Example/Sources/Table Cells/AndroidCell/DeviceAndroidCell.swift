@@ -1,8 +1,8 @@
-import UIKit
 import CellKit
+import UIKit
 
 final class DeviceAndroidCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
 }
 
 extension DeviceAndroidCell: CellConfigurable {

@@ -16,7 +16,7 @@ public protocol DifferentiableCellModel: CellModel {
 
 extension DifferentiableCellModel {
     func asDifferentiableWrapper() -> DifferentiableCellModelWrapper {
-        return DifferentiableCellModelWrapper(cellModel: self)
+        DifferentiableCellModelWrapper(cellModel: self)
     }
 }
 
@@ -35,10 +35,10 @@ struct DifferentiableCellModelWrapper {
 
 extension DifferentiableCellModelWrapper: Equatable, Differentiable {
     static func == (lhs: DifferentiableCellModelWrapper, rhs: DifferentiableCellModelWrapper) -> Bool {
-        return lhs.cellModel.hasEqualContent(with: rhs.cellModel)
+        lhs.cellModel.hasEqualContent(with: rhs.cellModel)
     }
 
     var differenceIdentifier: String {
-        return "\(cellModel.reuseIdentifier)<.>\(cellModel.domainIdentifier)"
+        "\(cellModel.reuseIdentifier)<.>\(cellModel.domainIdentifier)"
     }
 }

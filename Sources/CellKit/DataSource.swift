@@ -124,11 +124,11 @@ open class AbstractDataSource: NSObject {
 
 extension AbstractDataSource: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections()
+        numberOfSections()
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellModels(in: section).count
+        cellModels(in: section).count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,7 +140,7 @@ extension AbstractDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return cellModel(at: indexPath).highlighting
+        cellModel(at: indexPath).highlighting
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -170,11 +170,11 @@ extension AbstractDataSource: UITableViewDataSource {
 
 extension AbstractDataSource: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return numberOfSections()
+        numberOfSections()
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellModels(in: section).count
+        cellModels(in: section).count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -197,7 +197,7 @@ extension AbstractDataSource: UICollectionViewDataSource {
 
 extension AbstractDataSource: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(cellModel(at: indexPath).cellHeight)
+        CGFloat(cellModel(at: indexPath).cellHeight)
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

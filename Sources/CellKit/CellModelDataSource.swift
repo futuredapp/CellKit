@@ -8,7 +8,7 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]
 
-    public override init() {
+    override public init() {
         self.sections = []
         super.init()
     }
@@ -18,26 +18,26 @@ open class CellModelDataSource: AbstractDataSource, DataSource {
     }
 
     public subscript(index: Int) -> CellModelSection {
-        return sections[index]
+        sections[index]
     }
 
     override open func numberOfSections() -> Int {
-        return sections.count
+        sections.count
     }
 
     override open func cellModels(in section: Int) -> [CellModel] {
-        return sections[section].cells
+        sections[section].cells
     }
 
     override open func header(in section: Int) -> SupplementaryViewModel? {
-        return sections[section].headerView
+        sections[section].headerView
     }
 
     override open func footer(in section: Int) -> SupplementaryViewModel? {
-        return sections[section].footerView
+        sections[section].footerView
     }
 
     override open func cellModel(at indexPath: IndexPath) -> CellModel {
-        return sections[indexPath.section].cells[indexPath.row]
+        sections[indexPath.section].cells[indexPath.row]
     }
 }
