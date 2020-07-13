@@ -7,11 +7,11 @@ public typealias DifferentiableCellModelSection = GenericCellModelSection<Differ
 
 struct SectionMetadata: Differentiable {
     func isContentEqual(to source: SectionMetadata) -> Bool {
-        return source.identifier == identifier
+        source.identifier == identifier
     }
 
     var differenceIdentifier: String {
-        return identifier
+        identifier
     }
 
     var headerView, footerView: SupplementaryViewModel?
@@ -26,7 +26,7 @@ struct SectionMetadata: Differentiable {
 
 extension DifferentiableCellModelSection {
     var arraySection: ArraySection<SectionMetadata, DifferentiableCellModelWrapper> {
-        return DiffSection(model: SectionMetadata(from: self), elements: self.cells.map(DifferentiableCellModelWrapper.init))
+        DiffSection(model: SectionMetadata(from: self), elements: self.cells.map(DifferentiableCellModelWrapper.init))
     }
 }
 

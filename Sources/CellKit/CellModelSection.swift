@@ -22,12 +22,12 @@ public struct GenericCellModelSection<Cell>: ExpressibleByArrayLiteral {
     }
 
     public var isEmpty: Bool {
-        return cells.isEmpty
+        cells.isEmpty
     }
 }
 
 extension GenericCellModelSection: Equatable {
     public static func == (lhs: GenericCellModelSection<Cell>, rhs: GenericCellModelSection<Cell>) -> Bool {
-        return lhs.identifier == rhs.identifier
+        lhs.identifier == rhs.identifier
     }
 }

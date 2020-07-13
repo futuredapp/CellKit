@@ -1,6 +1,6 @@
-import UIKit
 import CellKit
 import DiffableCellKit
+import UIKit
 
 protocol DeletableCellModel {
     var allowDelete: Bool { get }
@@ -11,7 +11,7 @@ final class ActionSensitiveDiffDataSource: DifferentiableCellModelDataSource {
     var deletionHandler: ((IndexPath, DeletableCellModel) -> Void)?
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return (sections[indexPath.section].cells[indexPath.row] as? DeletableCellModel)?.allowDelete == true
+        (sections[indexPath.section].cells[indexPath.row] as? DeletableCellModel)?.allowDelete == true
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -19,12 +19,13 @@ final class ActionSensitiveDiffDataSource: DifferentiableCellModelDataSource {
             return nil
         }
 
-        return [UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (_, indexPath) in
-            guard let model = self?.sections[indexPath.section].cells[indexPath.row] as? DeletableCellModel else {
-                return
+        return [
+            UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] _, indexPath in
+                guard let model = self?.sections[indexPath.section].cells[indexPath.row] as? DeletableCellModel else {
+                    return
+                }
+                self?.deletionHandler?(indexPath, model)
             }
-            self?.deletionHandler?(indexPath, model)
-        }]
+        ]
     }
-
 }

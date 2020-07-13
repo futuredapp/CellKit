@@ -1,11 +1,11 @@
-import UIKit
 import CellKit
 import DiffableCellKit
+import UIKit
 
 struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
 
     var domainIdentifier: Int {
-        return text.hashValue
+        text.hashValue
     }
 
     func hasEqualContent(with other: CellModel) -> Bool {
