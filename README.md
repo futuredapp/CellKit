@@ -2,7 +2,6 @@
 
 # CellKit
 
-![Test](https://github.com/futuredapp/CellKit/workflows/Test/badge.svg)
 ![Cocoapods](https://img.shields.io/cocoapods/v/CellKit.svg)
 ![Cocoapods platforms](https://img.shields.io/cocoapods/p/CellKit.svg)
 ![License](https://img.shields.io/cocoapods/l/CellKit.svg)
