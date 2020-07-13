@@ -4,15 +4,15 @@ import UIKit
 public final class LazySupplementaryViewProvider {
 
     private var registeredIdentifiers: [String: Set<String>]
-    private var provider: (String, IndexPath) -> CollectionSupplementaryViewModel?
+    private var provider: (SupplementaryElementKind, IndexPath) -> CollectionSupplementaryViewModel?
 
-    public init(provider: @escaping (String, IndexPath) -> CollectionSupplementaryViewModel?) {
+    public init(provider: @escaping (SupplementaryElementKind, IndexPath) -> CollectionSupplementaryViewModel?) {
         self.registeredIdentifiers = [:]
         self.provider = provider
     }
 
     public func provide(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
-        guard let item = provider(kind, indexPath) else {
+        guard let item = provider(SupplementaryElementKind(rawValue: kind), indexPath) else {
             return nil
         }
         if !(registeredIdentifiers[kind]?.contains(item.reuseIdentifier) ?? false) {
