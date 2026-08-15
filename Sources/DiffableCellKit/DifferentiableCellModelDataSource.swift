@@ -4,6 +4,7 @@ import UIKit
 import CellKit
 #endif
 
+@MainActor
 open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
 
     private enum Container {
