@@ -2,6 +2,7 @@
 //  CellConvertible.swift
 public typealias ReusableCellConvertible = CellConvertible & ReusableView
 
+@MainActor
 public protocol CellConvertible {
     associatedtype Cell: CellConfigurable
 }

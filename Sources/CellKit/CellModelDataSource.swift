@@ -1,9 +1,11 @@
 import struct Foundation.IndexPath
 
+@MainActor
 public protocol CellModelDataSourceDelegate: AnyObject {
     func didSelectCellModel(_ cellModel: CellModel, at indexPath: IndexPath)
 }
 
+@MainActor
 open class CellModelDataSource: AbstractDataSource, DataSource {
 
     public var sections: [CellModelSection]

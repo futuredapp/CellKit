@@ -1,5 +1,6 @@
 import UIKit
 
+@MainActor
 public protocol DataSource {
     associatedtype Section
 
@@ -9,6 +10,7 @@ public protocol DataSource {
     subscript(index: Int) -> Section { get }
 }
 
+@MainActor
 open class AbstractDataSource: NSObject {
 
     public weak var delegate: CellModelDataSourceDelegate?

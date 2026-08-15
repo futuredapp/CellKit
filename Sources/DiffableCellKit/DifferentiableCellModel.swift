@@ -4,6 +4,7 @@ import CellKit
 #endif
 
 /// Support for determining whether cell model belongs to a certain cell, whether cell should be inserted, removed, updated or moved.
+@MainActor
 public protocol DifferentiableCellModel: CellModel {
 
     /// Identifier of a cell model inside it's own domain determined by reusable identifier. Assuming model is already presented inside a view, changing of this value will result in it's removal and insertion into the view.
@@ -31,14 +32,21 @@ extension DifferentiableCellModel where Self: Equatable {
 
 struct DifferentiableCellModelWrapper {
     let cellModel: DifferentiableCellModel
+    let differenceIdentifier: String
+
+    @MainActor
+    init(cellModel: DifferentiableCellModel) {
+        self.cellModel = cellModel
+        self.differenceIdentifier = "\(cellModel.reuseIdentifier)<.>\(cellModel.domainIdentifier)"
+    }
 }
 
 extension DifferentiableCellModelWrapper: Equatable, Differentiable {
     static func == (lhs: DifferentiableCellModelWrapper, rhs: DifferentiableCellModelWrapper) -> Bool {
-        lhs.cellModel.hasEqualContent(with: rhs.cellModel)
-    }
-
-    var differenceIdentifier: String {
-        "\(cellModel.reuseIdentifier)<.>\(cellModel.domainIdentifier)"
+        // DifferenceKit requires a nonisolated `==`, but wrappers are only ever created and
+        // diffed by `DifferentiableCellModelDataSource`, which is main actor-isolated.
+        MainActor.assumeIsolated {
+            lhs.cellModel.hasEqualContent(with: rhs.cellModel)
+        }
     }
 }

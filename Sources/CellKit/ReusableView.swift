@@ -1,6 +1,7 @@
 import class Foundation.Bundle
 import class UIKit.UINib
 
+@MainActor
 public protocol ReusableView {
     var registersLazily: Bool { get }
     var usesNib: Bool { get }

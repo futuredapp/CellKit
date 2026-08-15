@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "CellKit",
-    platforms: [.iOS(.v9), .tvOS(.v9)],
+    platforms: [.iOS(.v13), .tvOS(.v13)],
     products: [
         .library(
             name: "CellKit",

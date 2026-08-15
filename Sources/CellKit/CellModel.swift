@@ -1,3 +1,4 @@
+@MainActor
 public protocol CellModel: ReusableView {
     var cellHeight: Double { get }
     var highlighting: Bool { get }
@@ -20,6 +21,7 @@ public extension CellModel {
     }
 }
 
+@MainActor
 public protocol SupplementaryViewModel: ReusableView {
     var height: Double { get }
 
