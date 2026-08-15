@@ -38,7 +38,7 @@ struct DeviceCellModel: ReusableCellConvertible, DifferentiableCellModel {
 }
 ```
 
-**If your module is itself main actor by default** (`SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`), isolate the conformance explicitly:
+**If your module is itself main actor by default** (`SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`), isolate each conformance explicitly:
 
 ```swift
 struct DeviceCellModel: @MainActor ReusableCellConvertible, @MainActor DifferentiableCellModel {
@@ -47,7 +47,9 @@ struct DeviceCellModel: @MainActor ReusableCellConvertible, @MainActor Different
 }
 ```
 
-The second form is required because conformance isolation is not yet inferred through inherited protocol requirements, even with `InferIsolatedConformances` enabled — see [SE-0470](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0470-isolated-conformances.md). It is needed whether or not CellKit itself is main actor-isolated, so this is not new. The `Example` app is set up this way.
+Conformance isolation is not inferred for conformances to protocols that are themselves main actor-isolated, and `InferIsolatedConformances` — which Xcode's *Approachable Concurrency* setting turns on — does not cover that case either. See [SE-0470](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0470-isolated-conformances.md).
+
+A main actor-isolated module already needs one such annotation per model type against CellKit today; isolating CellKit's own API makes it one per CellKit protocol you conform to. The `Example` app is configured this way and shows what it looks like.
 
 Subclasses of `CellModelDataSource`, `AbstractDataSource` and `DifferentiableCellModelDataSource` are main actor-isolated, and so are your subclasses of them.
 
