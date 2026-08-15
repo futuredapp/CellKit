@@ -6,7 +6,7 @@ struct PhonesHeaderModel {
     let title: String
 }
 
-extension PhonesHeaderModel: SupplementaryViewModel, CellConvertible {
+extension PhonesHeaderModel: @MainActor SupplementaryViewModel, @MainActor CellConvertible {
     typealias Cell = PhonesHeader
 
     var height: Double {

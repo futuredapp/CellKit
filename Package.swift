@@ -1,10 +1,17 @@
-// swift-tools-version:5.1
+// swift-tools-version:6.2
 
 import PackageDescription
 
+let swiftSettings: [SwiftSetting] = [
+    .swiftLanguageMode(.v6),
+    .defaultIsolation(MainActor.self),
+    .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+    .enableUpcomingFeature("InferIsolatedConformances")
+]
+
 let package = Package(
     name: "CellKit",
-    platforms: [.iOS(.v9), .tvOS(.v9)],
+    platforms: [.iOS(.v15), .tvOS(.v15)],
     products: [
         .library(
             name: "CellKit",
@@ -19,9 +26,11 @@ let package = Package(
     targets: [
         .target(
             name: "CellKit",
-            dependencies: []),
+            dependencies: [],
+            swiftSettings: swiftSettings),
         .target(
             name: "DiffableCellKit",
-            dependencies: ["CellKit", "DifferenceKit"])
+            dependencies: ["CellKit", "DifferenceKit"],
+            swiftSettings: swiftSettings)
     ]
 )

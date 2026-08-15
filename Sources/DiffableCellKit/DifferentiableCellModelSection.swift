@@ -1,7 +1,5 @@
-import DifferenceKit
-#if SWIFT_PACKAGE
 import CellKit
-#endif
+import DifferenceKit
 
 public typealias DifferentiableCellModelSection = GenericCellModelSection<DifferentiableCellModel>
 

@@ -1,6 +1,5 @@
 import UIKit
 
-@available(iOS 13.0, tvOS 13.0, *)
 public final class LazySupplementaryViewProvider {
 
     private var registeredIdentifiers: [String: Set<String>]

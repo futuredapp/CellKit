@@ -2,36 +2,54 @@
 
 # CellKit
 
-![Cocoapods](https://img.shields.io/cocoapods/v/CellKit.svg)
-![Cocoapods platforms](https://img.shields.io/cocoapods/p/CellKit.svg)
-![License](https://img.shields.io/cocoapods/l/CellKit.svg)
+![Swift 6](https://img.shields.io/badge/Swift-6-orange.svg)
+![Platforms](https://img.shields.io/badge/platform-iOS%20%7C%20tvOS-lightgrey.svg)
+![License](https://img.shields.io/github/license/futuredapp/CellKit.svg)
 
 CellKit is a Swift package that streamlines the workflow with cells in UITableView and UICollectionView. No more registering cell classes or XIBs, no more dequeueing cells and setting its view models. CellKit handles this all.
+
+## Requirements
+
+- iOS 15+ / tvOS 15+
+- Xcode 26+ (Swift 6.2 toolchain)
 
 ## Installation
 
 ### Swift Package
 
-Add following line to your swift package dependencies, or in Xcode, go to `File -> Swift Packages -> Add Package Dependency` and type in URL address of this repository.
+Add following line to your swift package dependencies, or in Xcode, go to `File -> Add Package Dependencies` and type in URL address of this repository.
 
 ```swift
-.package(url: "https://github.com/futuredapp/CellKit", from: "0.8.1")
+.package(url: "https://github.com/futuredapp/CellKit", from: "1.0.0")
 ```
 
 Optionally you can add `DiffableCellKit`.
 
-### CocoaPods
+## Concurrency
 
-Add following line to your `Podfile` and then run `pod install`:
+CellKit is compiled in the Swift 6 language mode with `defaultIsolation` set to `MainActor`, so its entire API is main actor-isolated. Because CellKit is a `UITableView`/`UICollectionView` data source layer, every one of its protocols is only ever exercised on the main thread anyway.
 
-```ruby
-pod 'CellKit', '~> 0.8'
+**If your module uses the default `nonisolated` isolation**, conformances need no annotations at all:
+
+```swift
+struct DeviceCellModel: ReusableCellConvertible, DifferentiableCellModel {
+    typealias Cell = DeviceCell
+    // ...
+}
 ```
-Optionally you can add `DiffableCellKit` subspec:
 
-```ruby
-pod 'CellKit', '~> 0.8', subspecs: ['Diffable']
+**If your module is itself main actor by default** (`SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`), isolate the conformance explicitly:
+
+```swift
+struct DeviceCellModel: @MainActor ReusableCellConvertible, @MainActor DifferentiableCellModel {
+    typealias Cell = DeviceCell
+    // ...
+}
 ```
+
+The second form is required because conformance isolation is not yet inferred through inherited protocol requirements, even with `InferIsolatedConformances` enabled — see [SE-0470](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0470-isolated-conformances.md). It is needed whether or not CellKit itself is main actor-isolated, so this is not new. The `Example` app is set up this way.
+
+Subclasses of `CellModelDataSource`, `AbstractDataSource` and `DifferentiableCellModelDataSource` are main actor-isolated, and so are your subclasses of them.
 
 ## Usage
 CellKit provides a data source and a section model which you fill with your cells, headers and footer models. All you're left to do is to define your cell view and your cell model with protocol conformance to CellConvertible and CellConfigurable and CellKit will handle the rest.

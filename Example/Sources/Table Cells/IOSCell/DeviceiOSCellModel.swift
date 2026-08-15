@@ -2,7 +2,7 @@ import CellKit
 import DiffableCellKit
 import UIKit
 
-struct DeviceiOSCellModel: CellConvertible, DifferentiableCellModel, DeletableCellModel {
+struct DeviceiOSCellModel: @MainActor CellConvertible, @MainActor DifferentiableCellModel, DeletableCellModel {
 
     var domainIdentifier: Int {
         name.hashValue

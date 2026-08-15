@@ -1,8 +1,6 @@
+import CellKit
 import DifferenceKit
 import UIKit
-#if SWIFT_PACKAGE
-import CellKit
-#endif
 
 open class DifferentiableCellModelDataSource: AbstractDataSource, DataSource {
 

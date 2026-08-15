@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v6
+    - name: Install SwiftLint
+      run: brew install swiftlint
+    - name: Lint
+      run: |
+        swiftlint --strict
+    - name: Build
+      run: |
+        xcodebuild -scheme CellKit -destination 'generic/platform=iOS' build
+        xcodebuild -scheme DiffableCellKit -destination 'generic/platform=iOS' build
+    - name: Build example app
+      run: |
+        xcodebuild -project Example/Example.xcodeproj -scheme Example -destination 'generic/platform=iOS Simulator' -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO build
