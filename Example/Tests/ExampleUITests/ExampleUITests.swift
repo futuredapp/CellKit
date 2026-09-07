@@ -11,18 +11,16 @@ final class ExampleUITests: XCTestCase {
         app = XCUIApplication()
         app.launch()
         table = app.tables.firstMatch
+        XCTAssertTrue(table.waitForExistence(timeout: 5))
     }
 
     func testLaunchShowsSections() {
-        XCTAssertTrue(table.waitForExistence(timeout: 5))
         XCTAssertTrue(table.staticTexts["Welcome!"].exists)
         XCTAssertTrue(table.staticTexts["iPhone tapped: 0"].exists)
         XCTAssertGreaterThan(table.cells.count, 1)
     }
 
     func testTapUpdatesCellThroughDiff() {
-        XCTAssertTrue(table.waitForExistence(timeout: 5))
-
         let cell = table.staticTexts["iPhone tapped: 0"]
         XCTAssertTrue(cell.exists)
         cell.tap()
@@ -32,28 +30,29 @@ final class ExampleUITests: XCTestCase {
     }
 
     func testInsertAndResetThroughDiff() {
-        XCTAssertTrue(table.waitForExistence(timeout: 5))
-        let firstDeviceCell = table.cells.element(boundBy: 1)
-        let nameLabel = firstDeviceCell.staticTexts.matching(NSPredicate(format: "label CONTAINS 'tapped:'")).firstMatch
-        XCTAssertEqual(nameLabel.label, "iPhone tapped: 0")
+        // The name label of whatever device cell is currently first in the "Cell Phones" section.
+        let firstDeviceName = table.cells.element(boundBy: 1).staticTexts
+            .matching(NSPredicate(format: "label CONTAINS 'tapped:'"))
+            .firstMatch
+        XCTAssertEqual(firstDeviceName.label, "iPhone tapped: 0")
 
         app.navigationBars.buttons["+iPhone"].tap()
-
-        let inserted = nameLabel
-        XCTAssertTrue(inserted.waitForExistence(timeout: 5))
-        XCTAssertNotEqual(inserted.label, "iPhone tapped: 0")
-        XCTAssertTrue(inserted.label.hasSuffix(" tapped: 0"))
+        wait(until: firstDeviceName, "label != %@", "iPhone tapped: 0")
+        XCTAssertTrue(firstDeviceName.label.hasPrefix("iPhone"))
+        XCTAssertTrue(firstDeviceName.label.hasSuffix(" tapped: 0"))
         XCTAssertTrue(table.staticTexts["iPhone tapped: 0"].exists)
 
         app.navigationBars.buttons["+Android"].tap()
-        let insertedAndroid = nameLabel
-        XCTAssertTrue(insertedAndroid.waitForExistence(timeout: 5))
-        XCTAssertFalse(insertedAndroid.label.hasPrefix("iPhone"))
+        wait(until: firstDeviceName, "NOT label BEGINSWITH 'iPhone'")
+        XCTAssertTrue(firstDeviceName.label.hasSuffix(" tapped: 0"))
 
         app.navigationBars.buttons["Reset"].tap()
+        wait(until: firstDeviceName, "label == %@", "iPhone tapped: 0")
+    }
 
-        let reset = NSPredicate(format: "label == %@", "iPhone tapped: 0")
-        let expectation = XCTNSPredicateExpectation(predicate: reset, object: nameLabel)
-        XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: 5), .completed)
+    private func wait(until element: XCUIElement, _ format: String, _ arguments: CVarArg..., timeout: TimeInterval = 5) {
+        let predicate = NSPredicate(format: format, argumentArray: arguments)
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: element)
+        XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: timeout), .completed, "Timed out waiting for: \(format)")
     }
 }

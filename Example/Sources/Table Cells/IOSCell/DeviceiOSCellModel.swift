@@ -19,7 +19,7 @@ struct DeviceiOSCellModel: @MainActor CellConvertible, @MainActor Differentiable
 
     var numberOfTaps: Int
     let name: String
-    let cellHeight: CGFloat = 60.0
+    let cellHeight: Double = 60.0
     let registersLazily: Bool = false
     let allowDelete: Bool = true
 }
