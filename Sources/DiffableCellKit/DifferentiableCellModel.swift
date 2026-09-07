@@ -1,7 +1,5 @@
-import DifferenceKit
-#if SWIFT_PACKAGE
 import CellKit
-#endif
+import DifferenceKit
 
 /// Support for determining whether cell model belongs to a certain cell, whether cell should be inserted, removed, updated or moved.
 public protocol DifferentiableCellModel: CellModel {

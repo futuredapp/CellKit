@@ -2,7 +2,7 @@ import CellKit
 import DiffableCellKit
 import UIKit
 
-struct DeviceiOSCellModel: CellConvertible, DifferentiableCellModel, DeletableCellModel {
+struct DeviceiOSCellModel: @MainActor CellConvertible, @MainActor DifferentiableCellModel, DeletableCellModel {
 
     var domainIdentifier: Int {
         name.hashValue
@@ -19,7 +19,7 @@ struct DeviceiOSCellModel: CellConvertible, DifferentiableCellModel, DeletableCe
 
     var numberOfTaps: Int
     let name: String
-    let cellHeight: CGFloat = 60.0
+    let cellHeight: Double = 60.0
     let registersLazily: Bool = false
     let allowDelete: Bool = true
 }

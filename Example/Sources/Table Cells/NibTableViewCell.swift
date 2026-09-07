@@ -2,7 +2,7 @@ import CellKit
 import DiffableCellKit
 import UIKit
 
-struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
+struct NibTableViewCellModel: @MainActor ReusableCellConvertible, @MainActor DifferentiableCellModel {
 
     var domainIdentifier: Int {
         text.hashValue
@@ -19,7 +19,7 @@ struct NibTableViewCellModel: ReusableCellConvertible, DifferentiableCellModel {
     typealias Cell = NibTableViewCell
 
     let text: String
-    let cellHeight: CGFloat = 170.0
+    let cellHeight: Double = 170.0
 }
 
 final class NibTableViewCell: UITableViewCell, CellConfigurable {

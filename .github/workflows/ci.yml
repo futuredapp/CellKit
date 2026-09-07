@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: Install SwiftLint
+      run: brew install swiftlint
+    - name: Lint
+      run: |
+        swiftlint --strict
+    - name: Build
+      run: |
+        xcodebuild -scheme CellKit -destination 'generic/platform=iOS' build
+        xcodebuild -scheme DiffableCellKit -destination 'generic/platform=iOS' build
+    - name: Test example app
+      run: |
+        RUNTIME=$(xcrun simctl list runtimes available --json | jq -r '[.runtimes[] | select(.platform == "iOS")] | sort_by(.version | split(".") | map(tonumber)) | last | .identifier')
+        UDID=$(xcrun simctl list devices available --json | jq -r --arg RT "$RUNTIME" '.devices[$RT][]? | select(.name | test("^iPhone")) | .udid' | head -1)
+        xcodebuild test \
+          -project Example/Example.xcodeproj \
+          -scheme Example \
+          -destination "platform=iOS Simulator,id=$UDID" \
+          -parallel-testing-enabled NO \
+          -retry-tests-on-failure \
+          CODE_SIGNING_ALLOWED=NO
