@@ -51,6 +51,8 @@ Conformance isolation is not inferred for conformances to protocols that are the
 
 A main actor-isolated module already needs one such annotation per model type against CellKit today; isolating CellKit's own API makes it one per CellKit protocol you conform to. The `Example` app is configured this way and shows what it looks like.
 
+Swift 6.4 (Xcode 27) infers these conformances correctly and no longer needs the annotations; they are harmless to keep while you still build with Xcode 26.
+
 Subclasses of `CellModelDataSource`, `AbstractDataSource` and `DifferentiableCellModelDataSource` are main actor-isolated, and so are your subclasses of them.
 
 ## Usage
