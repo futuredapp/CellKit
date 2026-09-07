@@ -14,6 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v6
+    - name: Toolchain
+      run: |
+        xcodebuild -version
+        swift --version
     - name: Install SwiftLint
       run: brew install swiftlint
     - name: Lint
@@ -23,6 +27,15 @@ jobs:
       run: |
         xcodebuild -scheme CellKit -destination 'generic/platform=iOS' build
         xcodebuild -scheme DiffableCellKit -destination 'generic/platform=iOS' build
-    - name: Build example app
+    - name: Test example app
       run: |
-        xcodebuild -project Example/Example.xcodeproj -scheme Example -destination 'generic/platform=iOS Simulator' -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO build
+        RUNTIME=$(xcrun simctl list runtimes available --json | jq -r '[.runtimes[] | select(.platform == "iOS")] | sort_by(.version | split(".") | map(tonumber)) | last | .identifier')
+        UDID=$(xcrun simctl list devices available --json | jq -r --arg RT "$RUNTIME" '.devices[$RT][]? | select(.name | test("^iPhone")) | .udid' | head -1)
+        echo "Using simulator $UDID on $RUNTIME"
+        xcodebuild test \
+          -project Example/Example.xcodeproj \
+          -scheme Example \
+          -destination "platform=iOS Simulator,id=$UDID" \
+          -parallel-testing-enabled NO \
+          -retry-tests-on-failure \
+          CODE_SIGNING_ALLOWED=NO
