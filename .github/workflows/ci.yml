@@ -13,11 +13,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v6
-    - name: Toolchain
-      run: |
-        xcodebuild -version
-        swift --version
+    - uses: actions/checkout@v7
     - name: Install SwiftLint
       run: brew install swiftlint
     - name: Lint
@@ -31,7 +27,6 @@ jobs:
       run: |
         RUNTIME=$(xcrun simctl list runtimes available --json | jq -r '[.runtimes[] | select(.platform == "iOS")] | sort_by(.version | split(".") | map(tonumber)) | last | .identifier')
         UDID=$(xcrun simctl list devices available --json | jq -r --arg RT "$RUNTIME" '.devices[$RT][]? | select(.name | test("^iPhone")) | .udid' | head -1)
-        echo "Using simulator $UDID on $RUNTIME"
         xcodebuild test \
           -project Example/Example.xcodeproj \
           -scheme Example \
