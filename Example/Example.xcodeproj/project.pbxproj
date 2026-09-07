@@ -23,6 +23,7 @@
 		E7BB267F22D4B63800A7713E /* PhonesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267122D4B63800A7713E /* PhonesHeader.swift */; };
 		E7BB268022D4B63800A7713E /* PhonesHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */; };
 		E7BB268122D4B63800A7713E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267322D4B63800A7713E /* AppDelegate.swift */; };
+		E7BB268122D4B63800A7713F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BB267322D4B63800A7713F /* SceneDelegate.swift */; };
 		E7BCF6BE22DF145F00E71478 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		E7BB267122D4B63800A7713E /* PhonesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeader.swift; sourceTree = "<group>"; };
 		E7BB267222D4B63800A7713E /* PhonesHeaderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonesHeaderModel.swift; sourceTree = "<group>"; };
 		E7BB267322D4B63800A7713E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E7BB267322D4B63800A7713F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E7BB267422D4B63800A7713E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7BCF6BB22DF145F00E71478 /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF6BD22DF145F00E71478 /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				E7BB267322D4B63800A7713E /* AppDelegate.swift */,
+				E7BB267322D4B63800A7713F /* SceneDelegate.swift */,
 				BEFF59F523743F1000B3A342 /* Launch.storyboard */,
 			);
 			path = Supporting;
@@ -315,6 +318,7 @@
 				E7BB268022D4B63800A7713E /* PhonesHeaderModel.swift in Sources */,
 				E7BB267B22D4B63800A7713E /* DeviceiOSCellModel.swift in Sources */,
 				E7BB268122D4B63800A7713E /* AppDelegate.swift in Sources */,
+				E7BB268122D4B63800A7713F /* SceneDelegate.swift in Sources */,
 				E7BB267F22D4B63800A7713E /* PhonesHeader.swift in Sources */,
 				E7BB267522D4B63800A7713E /* ViewController.swift in Sources */,
 				E7BB267922D4B63800A7713E /* DeviceAndroidCellModel.swift in Sources */,
@@ -566,8 +570,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thefuntasty.ExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Example;
@@ -597,8 +600,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Example;
